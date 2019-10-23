@@ -1,34 +1,40 @@
 # Team01-Entrega4 - FutureGuide
 
-* [UML](https://www.lucidchart.com/invitations/accept/7fd14bca-13a3-4f38-b2bf-89cbf8616ea0) - Diagrama UML del Proyecto 📋
-* [FutureGuideoVideo](https://) - Video Propuesta
+* [UML](https://) - Diagrama UML del Proyecto 📋
+* [FutureGuideVideo](https://www.youtube.com/watch?v=VshXXhN3a8k) - Video Propuesta
 * [FutureGuideApp](https://) - Video Funcionalidades
 * [Página Web](http://) - Link de la página web
 
 ### Descripción
 
-FutureGuide ...
+FutureGuide es una iniciativa que surge como respuesta al problema de escoger qué carrera estudiar y dónde hacerlo. Nuestro público objetivo son  los jóvenes que estén a punto o ya hayan culminado su educación secundaria y estén buscando una carrera que se adapte a sus gustos y necesidades específicas. Puedes comparar diversas universidades por el parámetro que desees: perfil del egresado, precio, etc. Olvídate de complicaciones y decisiones apresuradas, toma la alternativa correcta que te hará feliz de por vida.
 
 
 ### Pre-requisitos 📋
 ```
-* Meteor
-* Instalar material-ui
-* Instalar date-io
-* Instalar sweetalert2
+* Tener Instalado Node.js
+* Express
+* React
+* Cuenta en Heroku
+* Cuenta Mongo Atlas
 ```
 
 ### Instalación 🔧
 _Paso 1_
 
 ```
-Clonar el proyecto.
+Realizar git clone al proyecto
 ```
 
 _Paso 2_
 
 ```
-Abrir una consola cmd en el proyecto. Luego hacer npm install.
+Abrir una consola cmd en el proyecto. Luego hacer npm install en la carpeta root y en la carpeta front.
+```
+_Paso 3_
+
+```
+Crear un archivo .env con el formato disponible en el archivo env.txt. con las credenciales de la base de datos creadas en Mongo Atlas.
 ```
 
 ## Deployment 📦
@@ -38,18 +44,18 @@ _Deploy en local_
 _Paso 1_
 
 ```
-Abrir una consola en la carpeta root del proyecto.
+Abrir una consola en la carpeta root del proyecto y hacer npm start.
 ```
 
 _Paso 2_
 
 ```
-Ejecutar el comando meteor
+Abrir otra consola cmd en la carpeta front y hacer npm start.
 ```
 _Paso 3_
 
 ```
-Ingresar a la url http://localhost:3000/
+En el navegador ingresar la url http://localhost:3000/
 ```
 
 _Deploy en Heroku_
@@ -87,12 +93,12 @@ Ingresar el comando heroku open para abrir la página en el browser.
 
 ## Construido con 🛠️
 
+* [ReactJs](https://es.reactjs.org/) - El framework web usado.
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias.
 * [HEROKU](https://www.heroku.com) - Herramienta Usada para el despliegue de la app.
 * [NodeJs](https://nodejs.org/es/) - Entorno de ejecución
 * [Mongo Atlas](https://www.mongodb.com/cloud/atlas) - Herramienta usada para centralizar la base de datos en la nube.
 * [Mongodb](https://www.mongodb.com/es) - Sistema Manejador de Bases de Datos NOSQL.
-* [React](https://es.reactjs.org/) - Framework usado para desarrollo de frontend.
 
 ## Autores ✒️
 
