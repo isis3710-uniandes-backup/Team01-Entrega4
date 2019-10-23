@@ -1,5 +1,5 @@
 let jwt = require( 'jsonwebtoken' );
-const config = require( './config.js' );
+const { secretKey } = require('../config');
 // Función encargada de realizar la validación del token y que es directamente consumida por server.js
 let checkToken = ( req, res, next ) => {
   
@@ -7,7 +7,6 @@ let checkToken = ( req, res, next ) => {
   // Los headers son automáticamente convertidos a lowercase
   let token = req.headers[ 'x-access-token' ] || req.headers[ 'authorization' ];
 
-  console.log("Validating token...");
   // Si existe algún valor para el token, se analiza
   // de lo contrario, un mensaje de error es retornado
   if( token ) {
@@ -17,16 +16,18 @@ let checkToken = ( req, res, next ) => {
 
         token = token.slice(7, token.length );
         // Llama la función verify del paquete jsonwebtoken que se encarga de realizar la validación del token con el secret proporcionado
-        jwt.verify( token, config.secret, ( err, decoded ) => {
+        jwt.verify( token, secretKey, ( err, decoded ) => {
       
         // Si no pasa la validación, un mensaje de error es retornado
         // de lo contrario, permite a la solicitud continuar
-        if( err ) {
+        if( err ) 
+        {
           return res.json( {
             success: false,
             message: 'Token is not valid'
           } );
-        } else {
+        } else 
+        {
           req.decoded = decoded;
           res.locals.token =  token;
 
@@ -35,7 +36,8 @@ let checkToken = ( req, res, next ) => {
         }
       } );
     }
-    else{
+    else
+    {
         jwt.verify( token, config.secret, ( err, decoded ) => {
       
             // Si no pasa la validación, un mensaje de error es retornado
@@ -53,7 +55,8 @@ let checkToken = ( req, res, next ) => {
             }
           } );
     }
-  } else {
+  } else 
+  {
     return res.json( {
       success: false,
       message: 'Auth token is not supplied'
@@ -62,8 +65,6 @@ let checkToken = ( req, res, next ) => {
   }
 
 };
-
-
 module.exports = {
   checkToken: checkToken
 }
