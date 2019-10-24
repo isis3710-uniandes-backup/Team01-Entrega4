@@ -1,11 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var middleware = require("../middleware.js");
+var Universities = require("../logic/universities.js");
+var Programs = require("../logic/programs.js");
+var Usuarios = require("../logic/usuarios.js");
+var Careers = require("../logic/careers.js");
 
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+//routes for universities
+Universities = new Universities();
+router.get('/universidades', middleware.checkToken , Universities.getListUniversities );
+router.get('/universidades/:n', middleware.checkToken, Universities.getUniversity);
+router.get('/universidades/:n/programas', middleware.checkToken, Universities.getProgramsOfUniversity);
+//router for academic prroograms
+Programs = new Programs();
+router.get('/programas', middleware.checkToken, Programs.getPrograms);
+router.get('/programas/area/:area', middleware.checkToken, Programs.getProgramsOfAarea);
+router.get('/programas/:nombre/universidades', middleware.checkToken, Programs.getUniversitiesOfProgram);
+router.get('/programas/:nombre', middleware.checkToken, Programs.getProgram);
+//router for usuarios
+Usuarios = new Usuarios();
+router.get('/usuarios', middleware.checkToken, Usuarios.getUsers);
+router.get('/usuarios/:username', middleware.checkToken, Usuarios.getUser);
+//router for careers
+Careers = new Careers();
+router.get('/carrera/:nombreUniversidad/:nombrePrograma/comentarios', middleware.checkToken, Careers.getComments);
+router.get('/carrera/:nombreUniversidad/:nombrePrograma', Careers.getCareer);
 
 module.exports = router;
