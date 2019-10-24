@@ -1,5 +1,3 @@
-var express = require('express');
-var router = express.Router();
 const mongoClient = require("mongodb").MongoClient;
 const { databaseUser, databasePassword, databaseName } = require('../config');
 const uri = "mongodb+srv://"+databaseUser+":"+databasePassword+"@educapp-viylh.gcp.mongodb.net/test?retryWrites=true&w=majority";
