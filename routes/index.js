@@ -25,5 +25,8 @@ router.get('/usuarios/:username', middleware.checkToken, Usuarios.getUser);
 Careers = new Careers();
 router.get('/carrera/:nombreUniversidad/:nombrePrograma/comentarios', middleware.checkToken, Careers.getComments);
 router.get('/carrera/:nombreUniversidad/:nombrePrograma', Careers.getCareer);
-
+router.post('/carrera/:nombreUniversidad/:nombrePrograma/comentarios', middleware.checkToken, Careers.postComment);
+//login and register
+router.post('/login', Usuarios.login);
+router.post('/register', Usuarios.register);
 module.exports = router;

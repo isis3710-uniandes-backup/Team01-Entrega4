@@ -49,6 +49,29 @@ class Careers {
             throw e;
         })
     }
+    /**
+     * Post a comment
+     * @param {*} req 
+     * @param {*} res 
+     */
+    postComment(req,res)
+    {
+        let comment = req.body;
+        let university = req.params.university;
+        let program = req.params.program;
+        conn.then(client => {
+            client.db(databaseName).collection("carreraUniversidad").updateOne({$and : [{universidad : university},{programa : program}]}, {$push: {comentarios : comment}}, (err,data)=> {
+                if(err)
+                {
+                    res.status(400).send('No se pudo añadir su comentario');
+                    throw err;
+                }
+                else{
+                    res.send(data);
+                }
+            });
+        })
+    }
 
 }
 module.exports = Careers;
