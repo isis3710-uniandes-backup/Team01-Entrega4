@@ -65,25 +65,30 @@ class Usuarios{
      */
     login(req, res)
     {
-        let username = req.body.username;
+        let username = req.body._id;
         let password = req.body.password;
 
         conn.then(client => {
-           let user = client.db(databaseName).collection("usuarios").findOne({_id : username});
-           if(user)
-           {
-               if(user.password ===  password)
-               {
-                  let newToken = jwt.sign({username : username },secretKey, {expiresIn : '3h'} );
-                  //necesito investigar si desde aqui la cookie queda para el navegador del cliente
-                  res.cookie('SESSIONID', newToken, {httpOnly : true, secure : true});
-                  res.send('Login existoso');
-               }
-               else
-               {
-                   res.status(400).send('Contraseña incorrecta');
-               }
-           }
+           client.db(databaseName).collection("usuarios").findOne({_id : username}, (err,data)=>{
+            if(err){
+                res.status(500).send('El servidor está caído, intente más tarde.');
+                throw err;
+            }
+            if(data)
+            {
+                if(data.password ===  password)
+                {
+                   let newToken = jwt.sign({username : username },secretKey, {expiresIn : '3h'} );
+                   //necesito investigar si desde aqui la cookie queda para el navegador del cliente
+                   res.cookie('SESSIONID', newToken, {httpOnly : true, secure : true});
+                   res.send('Login existoso');
+                }
+                else
+                {
+                    res.status(400).send('Contraseña incorrecta');
+                }
+            }
+           });
         })
     }
 }

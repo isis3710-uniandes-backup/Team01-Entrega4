@@ -38,7 +38,7 @@ let checkToken = ( req, res, next ) => {
     }
     else
     {
-        jwt.verify( token, config.secret, ( err, decoded ) => {
+        jwt.verify( token, secretKey, ( err, decoded ) => {
       
             // Si no pasa la validación, un mensaje de error es retornado
             // de lo contrario, permite a la solicitud continuar
