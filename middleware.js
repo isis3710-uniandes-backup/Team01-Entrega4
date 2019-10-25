@@ -1,5 +1,5 @@
 let jwt = require( 'jsonwebtoken' );
-const { secretKey } = require('../config');
+const { secretKey } = require('./config.js');
 // Función encargada de realizar la validación del token y que es directamente consumida por server.js
 let checkToken = ( req, res, next ) => {
   
