@@ -8,11 +8,9 @@ export default class futureguide extends Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <Navbar logFunc={this.loguear} />
                         <Route exact path="/" component={Home} />
                         <div>
                         </div>
-
                     </div>
                 </BrowserRouter>
             </div>

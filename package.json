@@ -6,16 +6,22 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "faker": "^4.1.0",
     "http-errors": "~1.6.3",
+    "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
     "morgan": "~1.9.1",
     "nodemon": "^1.19.4",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-router-dom": "^5.1.2",
+    "semantic-ui-react": "^0.88.1"
   }
 }
