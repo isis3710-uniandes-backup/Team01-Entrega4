@@ -76,6 +76,11 @@ class Programs
           }
         })
     }
+    /**
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
     getProgram(req,res)
     {
         let nombrePrograma = req.params.nombre;
@@ -83,6 +88,64 @@ class Programs
            let theProgram = client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma});
            res.send(theProgram);
         })
+    }
+    /**
+     * Get the programs classified by area
+     * @param {*} req 
+     * @param {*} res 
+     */
+    getProgramsClassifiedByArea(req,res)
+    {
+        conn.then(client => {
+          client.db(databaseName).collection("programas").aggregate([{
+                "$group" : {
+                    "_id" : "$area",
+                    "programs" : {$push : {
+                        "nombre" : "$nombre",
+                        "universidades" : "$universidades"
+                    }}
+                }
+            }]).toArray((err,docs) => {
+                if(err)
+                {
+                    res.status(500).send('El servidor está caído, intente más tarde.');
+                    throw err;
+                }
+                res.send(docs);
+            });
+            /* .toArray((err,data) => {
+                if(err) {
+                    res.status(500).send('El servidor está caído, intente más tarde.');
+                    throw err;
+                } */
+                /* const clusteringByAreas = new Map();
+                data.forEach( item => {
+                    const listOfPrograms = clusteringByAreas.get(item.area);
+                    if(!listOfPrograms)
+                    {
+                        clusteringByAreas.set(item.area, [item]);
+                    }
+                    else
+                    {
+                        let nuevisinho = [...listOfPrograms];
+                        nuevisinho.push(item);
+                        clusteringByAreas.set(item.area, nuevisinho);
+                    }
+                });
+               let iterableOfMap =  clusteringByAreas.entries();
+               let itemIte = null;
+               let dataTransf;
+               while(itemIte !== undefined)
+
+               {
+                   itemIte =  iterableOfMap.next().value;
+                   dataTransf = {
+                       area : itemIte[0],
+                       programas : itemIte[1]
+                   }
+               }
+                res.send(dataTransf); */
+            });
     }
 
 }

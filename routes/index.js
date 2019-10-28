@@ -14,9 +14,10 @@ router.get('/universidades/:n/programas', middleware.checkToken, Universities.ge
 //router for academic prroograms
 Programs = new Programs();
 router.get('/programas', middleware.checkToken, Programs.getPrograms);
+router.get('/programas/are', middleware.checkToken, Programs.getProgramsClassifiedByArea);
 router.get('/programas/area/:area', middleware.checkToken, Programs.getProgramsOfAarea);
-router.get('/programas/:nombre/universidades', middleware.checkToken, Programs.getUniversitiesOfProgram);
 router.get('/programas/:nombre', middleware.checkToken, Programs.getProgram);
+router.get('/programas/:nombre/universidades', middleware.checkToken, Programs.getUniversitiesOfProgram);
 //router for usuarios
 Usuarios = new Usuarios();
 router.get('/usuarios', middleware.checkToken, Usuarios.getUsers);
