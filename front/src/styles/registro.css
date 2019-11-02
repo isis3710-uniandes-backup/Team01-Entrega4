@@ -1,0 +1,30 @@
+.register-container{
+    padding: 5.2% 0%;
+}
+
+.register-form{
+    padding: 5% 7%;
+    background:#2b303a;
+    box-shadow: 0 5px 8px 0 rgba(0, 125, 198, 1), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.register-form h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#f4faff;
+    font-family: 'Cairo', serif;
+    font-size: 2.2rem;
+}
+
+#validation{
+    color: #007dc6;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 75%;
+}
+
+#but{
+    margin: auto; 
+    display: block;
+    background-color: #007dc6;
+    font-family: 'Cairo', serif;
+}
+
