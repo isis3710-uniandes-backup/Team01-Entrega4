@@ -56,7 +56,7 @@
 }
 
 .menu__level{
-    padding: 0 15%;
+    padding: 0;
 }
 
 .menu__item {
@@ -72,7 +72,8 @@
     -webkit-transition: color 0.1s;
     transition: color 0.1s;
     font-size: 100%;
-    text-align: center;
+    text-align: left;
+    left: 15%;
 }
 
 .menu__link:hover{
