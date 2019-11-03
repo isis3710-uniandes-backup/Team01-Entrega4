@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/navbar.css';
 import LogIn from './logIn';
-const Swal = require('sweetalert2')
+const Swal = require('sweetalert2');
 
 export default class navbar extends Component{
     state={
         logIn:false
-    }
+    };
 
     mostrar(){
         Swal.fire({
@@ -25,9 +25,15 @@ export default class navbar extends Component{
                 console.log(value['value'])
             })
     }
-    handleLogIn=()=>{
-        this.setState({logIn:!this.state.logIn})
-    }
+
+    closeLogIn=  ()=>{
+        this.setState({logIn: false});
+        console.log("me voy "+ this.state.logIn);
+    };
+
+    openLogIn= ()=>{
+        this.setState({logIn:true})
+    };
 
     render() {
         return(
@@ -47,8 +53,8 @@ export default class navbar extends Component{
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-user-tie"></i>Perfil</div></li>
-                            <li className="menu__item"><div className="menu__link" onClick={this.handleLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
-                            <LogIn mostrar={this.state.logIn}/>
+                            <li className="menu__item"><div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
+                                <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-sign-out-alt"></i>Registrarse</div></li>
                         </ul>
@@ -73,8 +79,8 @@ export default class navbar extends Component{
                         <div className="col-5 d-none d-sm-block col_der">
                             <div className="row">
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.handleLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
-                                    <LogIn mostrar={this.state.logIn}/>
+                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
+                                        <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                                     </div></li>
                                 </div>
                                 <div className="col-6">
@@ -100,8 +106,8 @@ export default class navbar extends Component{
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.handleLogIn}><i className="fas fa-sign-in-alt"></i></div></li>
-                                    <LogIn mostrar={this.state.logIn}/>
+                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></li>
+                                    <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                                 </div>
                                 <div className="col-6">
                                     <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-sign-out-alt"></i></div></li>
