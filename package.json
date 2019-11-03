@@ -21,7 +21,6 @@
     "nodemon": "^1.19.4",
     "pug": "^2.0.4",
     "react-bootstrap": "^1.0.0-beta.14",
-    "react-router-dom": "^5.1.2",
-    "semantic-ui-react": "^0.88.1"
+    "react-router-dom": "^5.1.2"
   }
 }

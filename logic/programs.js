@@ -101,8 +101,7 @@ class Programs
                 "$group" : {
                     "_id" : "$area",
                     "programs" : {$push : {
-                        "nombre" : "$nombre",
-                        "universidades" : "$universidades"
+                        "title" : "$nombre"
                     }}
                 }
             }]).toArray((err,docs) => {
@@ -113,39 +112,7 @@ class Programs
                 }
                 res.send(docs);
             });
-            /* .toArray((err,data) => {
-                if(err) {
-                    res.status(500).send('El servidor está caído, intente más tarde.');
-                    throw err;
-                } */
-                /* const clusteringByAreas = new Map();
-                data.forEach( item => {
-                    const listOfPrograms = clusteringByAreas.get(item.area);
-                    if(!listOfPrograms)
-                    {
-                        clusteringByAreas.set(item.area, [item]);
-                    }
-                    else
-                    {
-                        let nuevisinho = [...listOfPrograms];
-                        nuevisinho.push(item);
-                        clusteringByAreas.set(item.area, nuevisinho);
-                    }
-                });
-               let iterableOfMap =  clusteringByAreas.entries();
-               let itemIte = null;
-               let dataTransf;
-               while(itemIte !== undefined)
-
-               {
-                   itemIte =  iterableOfMap.next().value;
-                   dataTransf = {
-                       area : itemIte[0],
-                       programas : itemIte[1]
-                   }
-               }
-                res.send(dataTransf); */
-            });
+        });
     }
 
 }
