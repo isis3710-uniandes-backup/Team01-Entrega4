@@ -25,8 +25,12 @@ export default class navbar extends Component{
                 console.log(value['value'])
             })
     }
-handleLogIn=()=>{
-    this.setState({logIn:!this.state.logIn})
+closeLogIn=  ()=>{
+    this.setState({logIn: false});
+    console.log("me voy "+ this.state.logIn);
+}
+openLogIn= ()=>{
+    this.setState({logIn:true})
 }
 
     render() {
@@ -47,8 +51,8 @@ handleLogIn=()=>{
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
                             <li className="menu__item"><a className="menu__link" href="#"><i className="fas fa-user-tie"></i>Perfil</a></li>
-                            <li className="menu__item"><a className="menu__link" href="#" onClick={this.handleLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar 
-                            <LogIn mostrar={this.state.logIn}/>
+                            <li className="menu__item"><a className="menu__link" href="#" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar 
+                            <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </a></li>
                             <li className="menu__item"><a className="menu__link" href="#"><i className="fas fa-sign-out-alt"></i>Registrarse</a></li>
                         </ul>
@@ -73,8 +77,8 @@ handleLogIn=()=>{
                         <div className="col-5 col_der">
                             <div className="row">
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><a className="menu_movil__link" href="#" onClick={this.handleLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
-                                    <LogIn mostrar={this.state.logIn}/>
+                                    <li className="menu_movil__item"><a className="menu_movil__link" href="#" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
+                                    <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                                     </a></li>
                                 </div>
                                 <div className="col-6">

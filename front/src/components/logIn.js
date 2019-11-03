@@ -15,11 +15,12 @@ class LogIn extends Component {
         };
         this.changeValue = this.changeValue.bind(this);
         this.logIn = this.logIn.bind(this);
-        this.showHide = this.showHide.bind(this);
+        this.hide = this.hide.bind(this);
     }
     componentDidUpdate(prevProps)
-    {
-    
+    {    
+        console.log("actual: "+this.props.mostrar);
+        console.log("anterior: "+prevProps.mostrar)
         if (this.props.mostrar !== prevProps.mostrar) {
             this.setState({show:this.props.mostrar});
           }
@@ -57,10 +58,8 @@ class LogIn extends Component {
             console.error("Falta info")
         }
     }
-    showHide() {
-        this.setState({
-            show: !this.state.show
-        });
+    hide() {
+        this.props.cerrar();
     }
     changeValue(e) {
         if (e.target.id === "usuario") {
@@ -78,7 +77,7 @@ class LogIn extends Component {
         return (
 
             <div>
-                <Modal show={this.state.show} onHide={this.showHide}>
+                <Modal show={this.state.show} onHide={this.hide}>
                     <Modal.Header closeButton>
                         <Modal.Title>Iniciar Sesion</Modal.Title>
                     </Modal.Header>
@@ -97,10 +96,10 @@ class LogIn extends Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this, this.showHide}>
+                        <Button variant="secondary" onClick={this.hide}>
                             Cerrar
           </Button>
-                        <Button variant="primary" onClick={this.showHide}>
+                        <Button variant="primary" onClick={this.hide}>
                             Loguearme
           </Button>
                     </Modal.Footer>
