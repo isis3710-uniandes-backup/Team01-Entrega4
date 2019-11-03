@@ -21,20 +21,20 @@
     overflow: hidden;
     width: 100%;
     font-weight: 600;
-    padding: 1em 2.5em 1em 1.5em;
+    padding: 1vw 2.5vw 1vw 1.5vw;
     color: #007dc6;
     -webkit-transition: color 0.1s;
     transition: color 0.1s;
-    font-size: 100%;
+    font-size: 1.1vw;
     text-align: left;
 }
 
-.section_1{top: 5.5em;}
-.section_2{top: 23.5em;}
+.section_1{top: 5.5vw;}
+.section_2{top: 22.5vw;}
 
 .menu__wrap_1 {
     position: absolute;
-    top: 8.5em;
+    top: 8.5vw;
     bottom: 0;
     overflow: hidden;
     width: 100%;
@@ -42,7 +42,7 @@
 
 .menu__wrap_2 {
     position: absolute;
-    top: 26.5em;
+    top: 25.5vw;
     bottom: 0;
     overflow: hidden;
     width: 100%;
@@ -55,17 +55,17 @@
     font-weight: 600;
     position: relative;
     display: block;
-    padding: 1em 2.5em 1em 1.5em;
+    padding: 1vw 2.5vw 1vw 1.5vw;
     color: #edf7f6;
     -webkit-transition: color 0.1s;
     transition: color 0.1s;
-    font-size: 1em;
+    font-size: 1vw;
     text-align: left;
     left: 12%;
 }
 
-.menu__link:hover{color: #00c0be;}
-.fas{padding-right: 4%;}
+.menu__link:hover{color: #00c0be;cursor:pointer;}
+.fas{padding-right: 0.5vw;}
 
 
 
@@ -82,29 +82,43 @@
 .menu_movil .row{height: 100%;}
 
 .logo_movil{
-    top: 25%;
+    top: 20%;
     width: 100%;
     position: relative;
-    font-size:2.5rem;
     text-align: center;
 }
 
 .logo_movil img{width: 60%;}
 
 .menu_movil__link {
-    top: 12%;
+    top: 6%;
     font-weight: 600;
     position: relative;
     display: block;
     color: #edf7f6;
     -webkit-transition: color 0.1s;
     transition: color 0.1s;
-    font-size: 88%;
     text-align: center;
 }
 
-.menu_movil__link:hover{color: #00c0be;}
+@media (max-width: 576px) {
+    .menu_movil__link  {
+        display: inline;
+        top: 13%;
+        font-size: 7vw;
+    }
+    .logo_movil{top: 20%;text-align: center;}
+    .logo_movil img{width: 85%;}
+    .col_izq{padding-left: 30px}
+    .col_der{padding-right: 25px}
+}
+
+@media (min-width: 577px) {
+    .col_izq{padding-right: 0;padding-left: 30px}
+    .col_der{padding-left: 0;padding-right: 25px}
+}
+
+.menu_movil__link:hover{color: #00c0be;cursor:pointer;}
 .menu_movil__item{height: 100%;}
-.col_izq{padding-right: 0;padding-left: 30px}
-.col_der{padding-left: 0;padding-right: 25px}
+
 

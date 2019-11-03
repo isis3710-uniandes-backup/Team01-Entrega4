@@ -97,7 +97,7 @@ class LogIn extends Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this, this.showHide}>
+                        <Button variant="secondary" onClick={this.showHide}>
                             Cerrar
           </Button>
                         <Button variant="primary" onClick={this.showHide}>
