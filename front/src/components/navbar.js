@@ -61,7 +61,6 @@ export default class navbar extends Component{
 
     closeLogIn=  ()=>{
         this.setState({logIn: false});
-        console.log("me voy "+ this.state.logIn);
     };
 
     openLogIn= ()=>{
