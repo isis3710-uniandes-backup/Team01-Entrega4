@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {Button} from 'react-bootstrap';
 import '../styles/registro.css';
-//import Swal from "sweetalert2";
+import Cookies from 'js-cookie';
+import Swal from "sweetalert2";
 const url = "";
 
 
@@ -103,8 +104,27 @@ export default class register extends Component{
                                 'Content-Type': 'application/json'
                             }
                         })
-                            .then(res => res.json())
-                            .catch(error => console.error('Error:', error));
+                            .then(res => {
+                                res.json()
+                                if (res.status === 200) {
+                                    Swal.fire({
+                                        type: 'success',
+                                        title: 'Registro exitoso',
+                                        text: '¡Diviértete en nuestra plataforma!',
+                                        timer: 2000
+                                    });
+                                    this.hide();
+                                } else if (res.status === 500) {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Error en el servidor',
+                                        text: 'Vuelve a intentarlo',
+                                        timer: 1500
+                                    });
+                                }
+                            }
+
+                            ).catch(error => console.error('Error:', error));
                     
                 } catch (e) {
                     console.log(e);
