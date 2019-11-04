@@ -65,7 +65,7 @@ class Programs
             if(result.universidades.length > 0)
             {
                 conn.then(client => {
-                    client.db(databaseName).collection("universidades").find({_id : {$in : program.universidades}})
+                    client.db(databaseName).collection("universidades").find({_id : {$in : result.universidades}})
                     .toArray((err,data) => {
                       if(err) {
                           res.status(500).send('El servidor está caído, intente más tarde.');
