@@ -5,7 +5,7 @@
 .register-form{
     padding: 5% 7%;
     background:#2b303a;
-    box-shadow: 0 5px 8px 0 rgba(0, 125, 198, 1), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 8px 0 rgba(0, 192, 190, 1), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 .register-form h3{
     text-align: center;
@@ -15,8 +15,8 @@
     font-size: 2.2rem;
 }
 
-#validation{
-    color: #007dc6;
+.validation{
+    color: #00c0be;
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
 }
@@ -24,7 +24,8 @@
 #but{
     margin: auto; 
     display: block;
-    background-color: #007dc6;
+    background-color: #00c0be;
+    border-color: #00c0be;
     font-family: 'Cairo', serif;
 }
 

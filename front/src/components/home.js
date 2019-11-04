@@ -81,7 +81,10 @@ export default class home extends Component {
                     </a>
                     <form className="form-inline">
                         <button className="btn initialBtns" type="submit">Inicia sesión</button>
-                        <button className="btn initialBtns" type="submit">Registrate</button>
+                        <Link to="/register">
+                            <button className="btn initialBtns" type="submit">Registrate</button>
+                        </Link>
+                        
                     </form>
                 </nav>
                 <div id="homeContainer" className="d-flex justify-content-center align-items-center flex-wrap" >
