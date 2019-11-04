@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import {Button} from 'react-bootstrap';
+import { Modal, Button, Form, FormControl } from 'react-bootstrap';
 import '../styles/registro.css';
 import Cookies from 'js-cookie';
 import Swal from "sweetalert2";
@@ -24,11 +24,26 @@ export default class register extends Component{
             password: "",
             changeLogInStatus: this.props.changeLogInStatus,
             //logFunc: this.props.logFunc,
-            logueado: this.props.logueado
+            logueado: this.props.logueado,
+            show:false
             };
         this.changeValue = this.changeValue.bind(this);
         this.signUp = this.signUp.bind(this);
         this.validate = this.validate.bind(this);
+        this.hide = this.hide.bind(this);
+
+    }
+
+
+
+    componentDidUpdate(prevProps) {
+        if (this.props.mostrar !== prevProps.mostrar) {
+            this.setState({ show: this.props.mostrar });
+        }
+    }
+
+    hide() {
+        this.props.cerrar();
     }
 
     changeValue(e) {
@@ -143,45 +158,54 @@ export default class register extends Component{
             }} />;
         }
         return (
-            <div className="container register-container">
-                <div className="row" id="login">
-                    <div className="col-md-12">
-                        <div className="row">
-                            <div className="col-md-6 offset-md-3 register-form">
-                                <h3>Registrarse</h3>
 
-                                <div className="form-group">
-                                    <input id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
-                                           onChange={this.changeValue} title="Completa este campo."></input>
-                                    {checkUsername ? check === true ? <p id="validation">Ya esta en uso este usuario, intenta con otro.</p> : <div/> :
-                                    <p className="validation">*Este campo es obligatorio</p>}
-                                </div>
-                                    <div className="form-group">
-                                        <input id="name" required type="text" className="form-control" placeholder="Nombre "
-                                               onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkName ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
-                                    </div>
-                                    <div className="form-group">
-                                        <input id="email" required type="text" className="form-control" placeholder="Correo "
-                                               onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkEmail ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
-                                    </div>
-                                    <div className="form-group">
-                                        <input id="password" required type="password" className="form-control" placeholder="Contraseña "
-                                               onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkPassword ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
-                                    </div>
-                                    <div className="form-group">
-                                        <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}>
-                                           <strong>Registrarse</strong> 
-                                        </Button>
-                                        
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div>
+            <Modal show={this.state.show} onHide={this.hide}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Registrarse</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group >
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
+                                onChange={this.changeValue} title="Completa este campo.">
+                                
+                            </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control id="name" required type="text" className="form-control" placeholder="Nombre "
+                                onChange={this.changeValue} title="Completa este campo.">
+                               
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group >
+                            <Form.Label>Correo</Form.Label>
+                            <Form.Control id="email" required type="text" className="form-control" placeholder="Correo "
+                                onChange={this.changeValue} title="Completa este campo.">
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group >
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control id="password" required type="password" className="form-control" placeholder="Contraseña "
+                                onChange={this.changeValue} title="Completa este campo.">
+                            </Form.Control>
+                        </Form.Group>
+
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.hide}>
+                        Cerrar
+                    </Button>
+                    <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}>
+                        <strong>Registrarse</strong> 
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </div>
         )
     }
 }

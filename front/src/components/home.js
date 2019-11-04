@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/home.css';
 import { Link } from "react-router-dom";
-import logo from "../assets/imgs/FutureGuide.png"
+import logo from "../assets/imgs/FutureGuide.png";
+import Register from './registro';
 
 import { Container } from 'react-bootstrap';
 import Cookies from 'js-cookie'
@@ -13,8 +14,17 @@ export default class home extends Component {
         resultsSearched: [],
         programsByArea: [],
         programsBackUp: [],
-        valueSearched: ""
+        valueSearched: "",
+        registro: false
     }
+
+    closeRegistro=  ()=>{
+        this.setState({registro: false});
+    };
+
+    openRegistro= ()=>{
+        this.setState({registro:true})
+    };
 
 
     saveSearch = (e) => {
@@ -84,9 +94,10 @@ export default class home extends Component {
                     </a>
                     <form className="form-inline">
                         <button className="btn initialBtns" type="submit">Inicia sesión</button>
-                        <Link to="/register">
-                            <button className="btn initialBtns" type="submit">Registrate</button>
-                        </Link>
+                        
+                        <button className="btn initialBtns" type="submit" data-toggle="modal" onClick={this.openRegistro}>Registrat </button>
+                        <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
+                        
                         
                     </form>
                 </nav>

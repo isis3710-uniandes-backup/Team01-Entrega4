@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/navbar.css';
 import LogIn from './logIn';
+import Register from './registro';
 import { Link } from "react-router-dom";
 const Swal = require('sweetalert2');
 
@@ -93,13 +94,10 @@ export default class navbar extends Component{
                             <li className="menu__item"><div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
                                 <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </div></li>
-                            <li className="menu_movil__item">
-                                <Link  className="menu__link"  to="/register">
-                                    <i className="fas fa-sign-in-alt" ></i>
-                                    Registrarse
-                                </Link>
-                                
-                            </li>
+                            <li className="menu_movil__item"><div className="menu__link" onClick={this.openLogIn}> 
+                                <i className="fas fa-sign-in-alt" ></i> Registrarse
+                                <Register mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
+                                </div></li>
                             <li className="menu_movil__item">
                                 <Link  className="menu__link"  to="/">
                                     <i className="fas fa-sign-out-alt"></i>
