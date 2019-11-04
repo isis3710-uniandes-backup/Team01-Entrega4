@@ -1,6 +1,13 @@
 #homeContainer{
     min-height: 100vh;
+    flex-direction: column;
 }
 #searchBar{
-    
+    border-radius: 0.3em ;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 0.1em solid black;
+    width: 500px; 
+
 }

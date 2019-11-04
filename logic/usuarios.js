@@ -80,13 +80,17 @@ class Usuarios{
                 {
                    let newToken = jwt.sign({username : username },secretKey, {expiresIn : '3h'} );
                    //necesito investigar si desde aqui la cookie queda para el navegador del cliente
-                   res.cookie('SESSIONID', newToken, {httpOnly : true, secure : true});
+                   res.cookie('JSESSIONID', newToken, {httpOnly : true, secure : true});
                    res.send('Login existoso');
                 }
                 else
                 {
                     res.status(400).send('Contraseña incorrecta');
                 }
+            }
+            else
+            {
+                res.status(400).send('El usuario no existe');
             }
            });
         })

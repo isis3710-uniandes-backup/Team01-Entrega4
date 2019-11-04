@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/home.css';
-import { Container, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+
+import { Container } from 'react-bootstrap';
 import Cookies from 'js-cookie'
 
 export default class home extends Component {
@@ -13,38 +15,42 @@ export default class home extends Component {
         valueSearched: ""
     }
 
-    handleSearchChange = (e, { value }) => {
-
+    
+    saveSearch = (e) => {
+        document.getElementById('searchButton').classList.add("disabled");
         this.setState({
-            isLoading: true,
-            valueSearched: e.target.value
+            valueSearched : e.target.value
         }, () => {
-            let temporal = [...this.state.programsByArea];
-            temporal.map(element => {
-                let backupElement = element;
-                let newPrograms = backupElement.results.filter(program => {
-                    return program.title.includes(this.state.valueSearched.toUpperCase());
-                })
-                backupElement.results = newPrograms;
-                return backupElement;
-            });
-            this.setState({
-                resultsSearched: temporal
-            });
-            //falta tomar los nuevos resultados y dividirlos en categorias
+            let esta = false;
+            let programs = this.state.programsByArea;
+            for (let index = 0; index < programs.length && !esta; index++) 
+            {
+                let titles = programs[index].results;
+                for (let j = 0; j < titles.length && !esta; j++) 
+                {
+                    const element = titles[j];
+                    if(element.title === this.state.valueSearched)
+                    {
+                        esta = true;
+                        document.getElementById('searchButton').classList.remove("disabled");
+                    }
+                }
+            }
         });
+
+        
     }
-    search() {
+    search = () => {
+        console.log("...");
 
     }
 
     componentDidMount() {
-        console.log("Mounting")
         //let token = Cookies.get('SESSIONID');
         fetch("http://localhost:3001/programas/area", {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyMzYyNjgxLCJleHAiOjE1NzIzNzM0ODF9.kjuLfblG8PyQu-OamiE3I1Ekz_KMqZnA4hUs8Mey_y8'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyODI5ODEyLCJleHAiOjE1NzI4NDA2MTJ9.K7--rxWPpC8CmrXKI_Svjjtx5Lmqe2mAMIPwehjG3rM'
             })
         })
             .then(res => res.json())
@@ -71,25 +77,27 @@ export default class home extends Component {
     }
 
     render() {
+     //   let history = useHistory();
         return (
-            <div>
-                <Container className="justify-content-center align-items-center text-center h-100">
-                    <div id="homeContainer"  >
-                        <h1>Decide lo mejor para tu futuro</h1>
-                        <form onSubmit={this.search}>
+            <div role="main">
+
+                    <div id="homeContainer"  className="d-flex justify-content-center align-items-center flex-wrap" >
+                        <h1>Decide lo mejor para tu futuro.</h1>
+                        <form>
                             <div className="form-group">
-                                <input type="text" id="searchBar" placeholder="Busca por universidad o programa" list="options"></input>
-                                 
+                                <input type="text" id="searchBar" placeholder="Busca tu programa de interés" list="options" onChange={this.saveSearch} aria-label="Barra de busqueda de programas"></input>
                                 <datalist id="options">
                                     {this.state.programsByArea.map((e, i) =>
                                         e.results.map((element, i) => <option key={i} value={element.title}>{e.name}</option>)
                                     )}
                                 </datalist>
                             </div>
+                            <Link className="btn btn-dark disabled" id="searchButton" aria-disabled="true" onClick={this.search} to={{
+                                pathname : `/programa/${this.state.valueSearched}`,
+                                state : {}
+                            }}>Buscar</Link>
                         </form>
                     </div>
-
-                </Container>
             </div>
         )
     }
