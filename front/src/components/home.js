@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/imgs/FutureGuide.png";
 import LogIn from './logIn';
 
-<<<<<<< HEAD
 import { Container } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 
-=======
->>>>>>> 7732cd24f5fa29b2d010934b570dca3acb9e4403
 export default class home extends Component {
 
     state = {
