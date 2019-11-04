@@ -1,0 +1,24 @@
+.img-Little{
+    width : 30px; 
+
+}
+.atributosCareer{
+    font-weight: 450;
+    font-size: 1.8vw;
+}
+.videos{
+    margin-top : 2em;
+}
+#videosColumn{
+    padding: 3rem;
+}
+.infoDetail{
+    padding: 3rem;
+}
+.overflow{
+    overflow-y: scroll;
+    height: 300px;
+}
+.row{
+    padding: 0.9em;
+}

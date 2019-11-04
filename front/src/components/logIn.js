@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
-import Cookies from 'js-cookie';
-//const md5 = require("md5");
+const md5 = require("md5");
 const url = "https://futureguide.herokuapp.com";
 
 class LogIn extends Component {
@@ -26,7 +25,7 @@ class LogIn extends Component {
     logIn() {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
-            var data = { _id: this.state.usuario, password: this.state.password };
+            var data = { _id: this.state.usuario, password: md5(this.state.password) };
             console.log(data);
 
             fetch("http://localhost:3001" + "/login", {
@@ -39,8 +38,6 @@ class LogIn extends Component {
                 credentials: 'include'
 
             }).then(res => {
-                console.log(res)
-                //res.json()
                 if (res.status === 200) {
                     Swal.fire({
                         type: 'success',
