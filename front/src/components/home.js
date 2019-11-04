@@ -3,9 +3,6 @@ import '../styles/home.css';
 import { Link } from "react-router-dom";
 import logo from "../assets/imgs/FutureGuide.png"
 
-import { Container } from 'react-bootstrap';
-import Cookies from 'js-cookie'
-
 export default class home extends Component {
 
     state = {
