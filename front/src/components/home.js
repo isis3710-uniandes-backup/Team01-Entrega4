@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import '../styles/home.css';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import logo from "../assets/imgs/FutureGuide.png"
+import Cookies from 'js-cookie'
+
 
 export default class home extends Component {
 
@@ -40,39 +42,45 @@ export default class home extends Component {
 
     }
 
-    componentDidMount() {
-        //let token = Cookies.get('SESSIONID');
-        fetch("http://localhost:3001/programas/area", {
-            method: 'GET',
-            headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyODQ0ODc0LCJleHAiOjE1NzI4NTU2NzR9.7HlIqEWCt0Lp4NW0OrcYlhGKlzX__L6qNvnWHdXUu1g'
+    componentDidMount() 
+    {
+        let token = Cookies.get("JSESSIONID");
+        if (!token) {
+
+            fetch("http://localhost:3001/programas/area", {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
             })
-        })
-            .then(res => res.json())
-            .then(json => {
-                if (json.success === false) {
-                    console.log(json);
-                    //enrutar hacia el home 
-                }
-                else {
-                    let objectFinal = [];
-                    json.forEach(element => {
-                        objectFinal.push({
-                            name: element._id,
-                            results: element.programs
-                        })
-                    });
-                    this.setState({
-                        programsByArea: objectFinal,
-                        programsBackUp: objectFinal
-                    });
-                    console.log(this.state.programsByArea);
-                }
-            })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success === false) {
+                        
+                    }
+                    else {
+                        let objectFinal = [];
+                        json.forEach(element => {
+                            objectFinal.push({
+                                name: element._id,
+                                results: element.programs
+                            })
+                        });
+                        this.setState({
+                            programsByArea: objectFinal,
+                            programsBackUp: objectFinal
+                        });
+                        console.log(this.state.programsByArea);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
 
     render() {
-        //   let history = useHistory();
+
         return (
             <div role="main" id="homecontainer" className="container">
                 <nav className="navbar sticky-top navbar-light bg-light">

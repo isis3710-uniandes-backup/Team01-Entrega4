@@ -28,6 +28,7 @@ export default class futureguide extends Component {
                                 <Register logueado={this.state.logueado}/>
                             </Route>
                             <Route exact path="/perfil" component={Perfil} />
+                            <Route  path="/universidad/:nombre/programa/:name" component={DetailCareer}/>
                         </Route>
                         </Switch>
                     </div>
