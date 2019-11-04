@@ -70,26 +70,23 @@ export default class navbar extends Component{
 
     render() {
         return(
-            <div className="container">
+            <div className="container" role="main">
                 <nav id="menu" className="menu d-none d-md-block">
                     <div className="logo"><img src="LogoCompleto.png" alt="Logo de FutureGuide"></img></div>
-                    <div className="menu_section section_1">Navegación</div>
+                    <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-                            <Link to="/">
-                                <li className="menu__item"><div className="menu__link"><i className="fas fa-home"></i>Home</div></li>
-                            </Link>
+                            
+                            <li className="menu__item"><a  className="menu__link" href="/"><i className="fas fa-home"></i> Home</a></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
                         </ul>
                     </div>
 
-                    <div className="menu_section section_2">Configuración</div>
+                    <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <Link to="/perfil">
-                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-user-tie"></i>Perfil</div></li>
-                            </Link>
+                                <li className="menu__item"><a className="menu__link" href="perfil/"><i className="fas fa-user-tie"></i>Perfil</a></li>
                             <li className="menu__item"><div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
                                 <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </div></li>
