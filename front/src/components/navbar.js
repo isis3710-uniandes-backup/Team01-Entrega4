@@ -3,13 +3,15 @@ import '../styles/navbar.css';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
+import Programa from './programa';
 const Swal = require('sweetalert2');
 
 
 export default class navbar extends Component {
     state = {
         logIn: false,
-        alredyLogged: false
+        alredyLogged: false,
+        universidades:[]
     };
 
     reseña() {
@@ -68,7 +70,6 @@ export default class navbar extends Component {
             this.setState({
                 alredyLogged: true
             });
-
         }
     }
 
