@@ -57,9 +57,11 @@ class Programs
     {
         let nombrePrograma = req.params.nombre;
         conn.then(client => {
-          client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma}, (err,result) => {
-              if(err){
+          client.db(databaseName).collection("programas").findOne({nombre : 'ADMINISTRACION'}, (err,result) => {
+              if(err)
+              {
                   res.status(500);
+                  throw err;
               }
               console.log(result);
             if(result.universidades.length > 0)
