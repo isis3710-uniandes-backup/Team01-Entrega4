@@ -13,7 +13,8 @@ export default class home extends Component {
         programsByArea: [],
         programsBackUp: [],
         valueSearched: "",
-        logIn:false
+        logIn: false,
+        alreadyLogged: false
     }
 
 
@@ -42,19 +43,24 @@ export default class home extends Component {
         console.log("...");
 
     }
-    closeLogIn=  ()=>{
-        this.setState({logIn: false});
+    closeSession = () => {
+        Cookies.remove("JSESSIONID");
+        this.setState({
+            alreadyLogged: false
+        })
+    }
+    closeLogIn = () => {
+        this.setState({ logIn: false, alreadyLogged: true });
     };
 
-    openLogIn= ()=>{
-        this.setState({logIn:true})
+    openLogIn = () => {
+        this.setState({ logIn: true })
     };
 
-    componentDidMount() 
-    {
+    componentDidMount() {
         let token = Cookies.get("JSESSIONID");
-        if (!token) {
-
+        if (token) {
+            console.log("Habemus token");
             fetch("http://localhost:3001/programas/area", {
                 method: 'GET',
                 headers: new Headers({
@@ -64,7 +70,7 @@ export default class home extends Component {
                 .then(res => res.json())
                 .then(json => {
                     if (json.success === false) {
-                        
+
                     }
                     else {
                         let objectFinal = [];
@@ -76,7 +82,8 @@ export default class home extends Component {
                         });
                         this.setState({
                             programsByArea: objectFinal,
-                            programsBackUp: objectFinal
+                            programsBackUp: objectFinal,
+                            alreadyLogged: true
                         });
                         console.log(this.state.programsByArea);
                     }
@@ -85,26 +92,38 @@ export default class home extends Component {
                     console.log(error);
                 })
         }
+        else {
+            console.log("Loguese");
+        }
     }
 
     render() {
-
         return (
             <div role="main" id="homecontainer" className="container">
                 <nav className="navbar sticky-top navbar-light bg-light">
-                    <a className="navbar-brand" href="#">
-                        <img src={logo}  height="60" className="d-inline-block align-top" alt="Futureguide logo" />
+                    <a className="navbar-brand" href="/">
+                        <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
-                    <div className="form-inline">
-                        <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
-                        <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
-                        <Link to="/register">
-                            <button className="btn initialBtns">Registrate</button>
+                    {!this.state.alreadyLogged ?
+                        <div className="form-inline">
+                            <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
+                            <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
+                            <Link to="/register">
+                                <button className="btn initialBtns">Registrate</button>
+                            </Link>
+                        </div>
+                        :
+                        <div className="form-inline">
+                             <Link to="/home">
+                            <button className="btn initialBtns">Explorar</button>
                         </Link>
-                    </div>
+                        <button className="btn initialBtns" onClick={this.closeSession}>Cerrar sesión</button>
+                        </div>
+                       
+                    }
                 </nav>
                 <div id="homeContainer" className="d-flex justify-content-center align-items-center flex-wrap" >
- 
+
                     <h1 id="slogan">Decide lo mejor para tu futuro.</h1>
                     <form>
                         <div className="form-group">

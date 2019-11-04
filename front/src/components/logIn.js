@@ -38,8 +38,6 @@ class LogIn extends Component {
                 credentials: 'include'
 
             }).then(res => {
-                console.log(res)
-                //res.json()
                 if (res.status === 200) {
                     Swal.fire({
                         type: 'success',
