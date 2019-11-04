@@ -9,7 +9,7 @@ export default class futureguide extends Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <Route exact path="/" component={Navbar} />
+                        <Route exact path="/" component={Home} />
                         <div>
                         </div>
                     </div>

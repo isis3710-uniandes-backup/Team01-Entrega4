@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
 import Cookies from 'js-cookie';
-const md5 = require("md5");
+//const md5 = require("md5");
 const url = "https://futureguide.herokuapp.com";
 
 class LogIn extends Component {
