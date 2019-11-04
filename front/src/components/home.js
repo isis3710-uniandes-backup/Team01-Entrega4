@@ -77,10 +77,10 @@ export default class home extends Component {
     render() {
         //   let history = useHistory();
         return (
-            <div role="main">
+            <div role="main" id="homecontainer" className="container">
                 <nav className="navbar sticky-top navbar-light bg-light">
                     <a class="navbar-brand" href="#">
-                        <img src="../assets/imgs/FutureGuide.png" width="30" height="30" class="d-inline-block align-top" alt="Futureguide logo" />
+                        <img src={logo}  height="60" class="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
                     <form className="form-inline">
                         <button className="btn initialBtns" type="submit">Inicia sesión</button>

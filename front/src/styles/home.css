@@ -9,7 +9,7 @@
     border-right: none;
     border-left: none;
     border-bottom: 0.1em solid #464655;
-    width: 700px; 
+    width: 200px; 
     background-color: #edf7f6;
 }
 .initialBtns{
@@ -23,4 +23,8 @@
     font-size: 5vw;
     font-weight: bolder;
     padding-bottom: 0.2em;
+}
+#homecontainer{
+    min-width: 100%;
+    padding: 0;
 }

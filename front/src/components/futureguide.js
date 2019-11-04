@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from './navbar';
 import Register from './registro';
-import { BrowserRouter, Route } from "react-router-dom";
 import Home from './home';
-import Navbar from './navbar';
 
 export default class futureguide extends Component {
 
