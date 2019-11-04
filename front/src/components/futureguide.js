@@ -24,9 +24,6 @@ export default class futureguide extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="*">
                             <Navbar/>
-                            <Route exact path="/register">
-                                <Register logueado={this.state.logueado}/>
-                            </Route>
                             <Route exact path="/perfil" component={Perfil} />
                             <Route  path="/universidad/:nombre/programa/:name" component={DetailCareer}/>
                         </Route>

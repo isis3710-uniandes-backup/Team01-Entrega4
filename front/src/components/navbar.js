@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/navbar.css';
 import LogIn from './logIn';
+<<<<<<< HEAD
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
+=======
+import Register from './registro';
+import { Link } from "react-router-dom";
+>>>>>>> b9a58cd0313e465d6271b33d14fcfafdc80f0e32
 const Swal = require('sweetalert2');
 
 

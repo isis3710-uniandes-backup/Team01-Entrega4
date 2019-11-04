@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import '../styles/home.css';
 import { Link } from "react-router-dom";
 import logo from "../assets/imgs/FutureGuide.png";
+import Register from './registro';
+import { Container } from 'react-bootstrap';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 
@@ -13,9 +15,18 @@ export default class home extends Component {
         programsByArea: [],
         programsBackUp: [],
         valueSearched: "",
+        registro: false,
         logIn: false,
         alreadyLogged: false
     }
+
+    closeRegistro=  ()=>{
+        this.setState({registro: false});
+    };
+
+    openRegistro= ()=>{
+        this.setState({registro:true})
+    };
 
 
     saveSearch = (e) => {
@@ -110,13 +121,20 @@ export default class home extends Component {
                     <a className="navbar-brand" href="/">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
+                    <form className="form-inline">
+                        <button className="btn initialBtns" type="submit">Inicia sesión</button>
+                        
+                        <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
+                        <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
+                        
+                        
+                    </form>
                     {!this.state.alreadyLogged ?
                         <div className="form-inline">
                             <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
                             <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                            <Link to="/register">
-                                <button className="btn initialBtns">Registrate</button>
-                            </Link>
+                            <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
+                            <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
                         </div>
                         :
                         <div className="form-inline">
