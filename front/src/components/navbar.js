@@ -8,24 +8,55 @@ export default class navbar extends Component{
         logIn:false
     };
 
-    mostrar(){
-        Swal.fire({
-            title: 'Reseña',
-            input: 'textarea',
-            inputPlaceholder: 'Escribe tu reseña aquí...',
-            inputAttributes: {
-                'aria-label': 'Type your message here'
-            },
+    reseña(){
+        Swal.mixin({
+            input: 'text',
+            confirmButtonText: 'Siguiente &rarr;',
             showCancelButton: true,
-            confirmButtonText: 'Publicar',
             confirmButtonColor: '#00c0be',
             cancelButtonColor: '#464655',
             cancelButtonText: 'Cancelar',
-            background: '#fff'
-            })
-            .then((value)=>{
-                console.log(value['value'])
-            })
+            background: '#fff',
+            progressSteps: ['1', '2', '3']
+        }).queue([
+            {
+                title: 'Titulo',
+                input: 'text',
+                inputPlaceholder: 'Escribe el titulo de la reseña...',
+                inputAttributes: {
+                    'aria-label': 'Type your message here'
+                }
+            },
+            {
+                title: 'Reseña',
+                input: 'textarea',
+                inputPlaceholder: 'Escribe tu reseña aquí...',
+                inputAttributes: {
+                    'aria-label': 'Type your message here'
+                }
+            },
+            {
+                title: 'La Recomienda?',
+                input: 'checkbox',
+                inputValue: 0,
+                inputPlaceholder:
+                    'Seleccione si es así',
+                confirmButtonText: 'Publicar'
+            }
+        ]).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Publicado Exitosamente',
+                    toast: true,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                /*let titulo = result.value[0]
+                let descripcion = result.value[1]
+                let recomendada = result.value[2]*/
+            }
+        })
     }
 
     closeLogIn=  ()=>{
@@ -45,7 +76,7 @@ export default class navbar extends Component{
                     <div className="menu_section section_1">Navegación</div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><div className="menu__link" onClick={this.mostrar}><i className="fas fa-home"></i>Home</div></li>
+                            <li className="menu__item"><div className="menu__link" onClick={this.reseña}><i className="fas fa-home"></i>Home</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
                         </ul>
