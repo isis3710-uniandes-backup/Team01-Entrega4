@@ -58,6 +58,12 @@ export default class home extends Component {
     };
 
     componentDidMount() {
+
+        if(this.props.location.state)
+        {
+            this.closeSession();
+        }
+
         let token = Cookies.get("JSESSIONID");
         if (token) {
             console.log("Habemus token");
