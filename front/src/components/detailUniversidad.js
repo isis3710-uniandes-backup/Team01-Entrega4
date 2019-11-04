@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card} from 'react-bootstrap';
+import {Card, Button, Image} from 'react-bootstrap';
 import "../styles/detailUniversidad.css"
 
 export default class universidad extends Component {
@@ -23,7 +23,7 @@ export default class universidad extends Component {
                     <Card.Title>
                     <div className="row">
                         <div className="col-4" >
-
+                         <Image id="LogoUniversidad" src={this.state.imagen}></Image>
                         </div>
                         <div className="col-8">
                             <h3 id="nombreuniversidad" ><strong>Nombre: {this.state.nombre}</strong></h3>
@@ -35,8 +35,7 @@ export default class universidad extends Component {
                         <h5>{this.direccion}</h5>
                         <h5>{this.ciudad}</h5>
                 </Card.Body>
-            </Card>
-                  
+            </Card>    
         )
     }
 }

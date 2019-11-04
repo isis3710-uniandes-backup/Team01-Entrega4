@@ -12,6 +12,10 @@
 #nombreUniversidad{
     color: #007dc6;
 }
+#LogoUniversidad{
+    width: 80px;
+    height: 80px;
+}
 @media only screen and (max-width: 500px) {
     .universidad {
       width: 99% !important;

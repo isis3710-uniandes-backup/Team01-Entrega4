@@ -5,7 +5,10 @@ import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
 import Programa from './programa';
+import Register from './registro';
 const Swal = require('sweetalert2');
+
+
 
 
 export default class navbar extends Component {
@@ -82,6 +85,14 @@ export default class navbar extends Component {
         this.setState({ logIn: true })
     };
 
+    closeRegistro=  ()=>{
+        this.setState({registro: false});
+    };
+
+    openRegistro= ()=>{
+        this.setState({registro:true})
+    };
+
     render() {
         let token = Cookies.get("JSESSIONID");
         if (!token) {
@@ -118,10 +129,9 @@ export default class navbar extends Component {
                                     </div>
                                 </li>
                                 <li className="menu_movil__item">
-                                    <Link className="menu__link" to="/register">
-                                        <i className="fas fa-sign-in-alt" />
-                                        Registrarse
-                                    </Link>
+                                    <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
+                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
+                                </div>   
                                 </li>
                                 </> : <li className="menu_movil__item">
                                     <Link className="menu__link" to={{
@@ -191,12 +201,12 @@ export default class navbar extends Component {
                                     <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
                                 </div>
                                 <div className="col-6">
-                                    <li className="menu_movil__item">
-                                        <Link className="menu_movil__link" to="/register">
-                                            <i className="fas fa-sign-out-alt"></i>
-                                        </Link>
-
-                                    </li>
+                                <li className="menu_movil__item">
+                                    <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
+                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
+                                </div>   
+                                </li>
+                                    
                                 </div>
                             </div>
                         </div>
