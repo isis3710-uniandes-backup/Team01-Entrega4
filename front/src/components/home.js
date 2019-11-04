@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import '../styles/home.css';
-import { Link, Redirect } from "react-router-dom";
-import logo from "../assets/imgs/FutureGuide.png"
-import Cookies from 'js-cookie'
-
+import { Link } from "react-router-dom";
+import logo from "../assets/imgs/FutureGuide.png";
+import LogIn from './logIn';
+import Cookies from 'js-cookie';
 
 export default class home extends Component {
 
@@ -12,7 +12,8 @@ export default class home extends Component {
         resultsSearched: [],
         programsByArea: [],
         programsBackUp: [],
-        valueSearched: ""
+        valueSearched: "",
+        logIn:false
     }
 
 
@@ -41,6 +42,13 @@ export default class home extends Component {
         console.log("...");
 
     }
+    closeLogIn=  ()=>{
+        this.setState({logIn: false});
+    };
+
+    openLogIn= ()=>{
+        this.setState({logIn:true})
+    };
 
     componentDidMount() 
     {
@@ -87,15 +95,16 @@ export default class home extends Component {
                     <a className="navbar-brand" href="#">
                         <img src={logo}  height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
-                    <form className="form-inline">
-                        <button className="btn initialBtns" type="submit">Inicia sesión</button>
+                    <div className="form-inline">
+                        <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
+                        <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                         <Link to="/register">
-                            <button className="btn initialBtns" type="submit">Registrate</button>
+                            <button className="btn initialBtns">Registrate</button>
                         </Link>
-                        
-                    </form>
+                    </div>
                 </nav>
                 <div id="homeContainer" className="d-flex justify-content-center align-items-center flex-wrap" >
+ 
                     <h1 id="slogan">Decide lo mejor para tu futuro.</h1>
                     <form>
                         <div className="form-group">
