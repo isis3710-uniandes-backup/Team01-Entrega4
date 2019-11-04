@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
+import Cookies from 'js-cookie';
 const md5 = require("md5");
 const url = "https://futureguide.herokuapp.com";
 
@@ -18,9 +19,7 @@ class LogIn extends Component {
         this.hide = this.hide.bind(this);
     }
     componentDidUpdate(prevProps)
-    {    
-        console.log("actual: "+this.props.mostrar);
-        console.log("anterior: "+prevProps.mostrar)
+    {          
         if (this.props.mostrar !== prevProps.mostrar) {
             this.setState({show:this.props.mostrar});
           }
@@ -52,10 +51,16 @@ class LogIn extends Component {
                         text: '¡Diviértete en nuestra plataforma!',
                         timer: 2000
                     })
+                ).then(
+                    this.hide()
                 );
-
         } else {
-            console.error("Falta info")
+            Swal.fire({
+                type: 'error',
+                title: 'Falta Info',
+                text: 'Completa todos los campos para seguir',
+                timer: 1500
+            })
         }
     }
     hide() {
@@ -99,7 +104,7 @@ class LogIn extends Component {
                         <Button variant="secondary" onClick={this.hide}>
                             Cerrar
                         </Button>
-                        <Button variant="primary" onClick={this.hide}>
+                        <Button variant="primary" onClick={this.logIn}>
                             Loguearme
                         </Button>
                     </Modal.Footer>
