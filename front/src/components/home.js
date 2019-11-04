@@ -48,7 +48,7 @@ export default class home extends Component {
         fetch("http://localhost:3001/programas/area", {
             method: 'GET',
             headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyODI5ODEyLCJleHAiOjE1NzI4NDA2MTJ9.K7--rxWPpC8CmrXKI_Svjjtx5Lmqe2mAMIPwehjG3rM'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyODQ0ODc0LCJleHAiOjE1NzI4NTU2NzR9.7HlIqEWCt0Lp4NW0OrcYlhGKlzX__L6qNvnWHdXUu1g'
             })
         })
             .then(res => res.json())
@@ -79,8 +79,8 @@ export default class home extends Component {
         return (
             <div role="main" id="homecontainer" className="container">
                 <nav className="navbar sticky-top navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                        <img src={logo}  height="60" class="d-inline-block align-top" alt="Futureguide logo" />
+                    <a className="navbar-brand" href="#">
+                        <img src={logo}  height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
                     <form className="form-inline">
                         <button className="btn initialBtns" type="submit">Inicia sesión</button>
@@ -98,7 +98,7 @@ export default class home extends Component {
                                 )}
                             </datalist>
                         </div>
-                        <Link className="btn btn-dark disabled" id="searchButton" aria-disabled="true" onClick={this.search} to={{
+                        <Link className="btn disabled" id="searchButton" aria-disabled="true" onClick={this.search} to={{
                             pathname: `/programa/${this.state.valueSearched}`,
                             state: {}
                         }}>Buscar</Link>

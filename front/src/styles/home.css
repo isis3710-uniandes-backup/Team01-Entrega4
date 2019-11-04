@@ -9,8 +9,24 @@
     border-right: none;
     border-left: none;
     border-bottom: 0.1em solid #464655;
-    width: 200px; 
+    width: 20vw; 
     background-color: #edf7f6;
+    
+}
+
+#searchButton{
+    border-radius: 8px;
+    border-style: 0.5rem solid #da2f2f;
+    background-color: #024972;
+    color : #edf7f6;
+    font-weight: bolder;
+}
+
+.disabled{
+    background-color: #a1b6b5 !important;
+    color: black !important;
+    font-weight:bold ;
+
 }
 .initialBtns{
     border-radius: 17px;
