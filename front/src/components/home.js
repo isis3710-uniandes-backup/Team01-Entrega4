@@ -121,14 +121,7 @@ export default class home extends Component {
                     <a className="navbar-brand" href="/">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
-                    <form className="form-inline">
-                        <button className="btn initialBtns" type="submit">Inicia sesión</button>
-                        
-                        <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
-                        <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
-                        
-                        
-                    </form>
+     
                     {!this.state.alreadyLogged ?
                         <div className="form-inline">
                             <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
