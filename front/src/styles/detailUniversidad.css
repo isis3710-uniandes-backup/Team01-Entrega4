@@ -1,0 +1,19 @@
+#universidad{
+    margin-bottom: 1em;
+    height : 11em;
+    transition: all .8s;
+    background: #edf7f6;
+}   
+.universidad:hover{
+    box-shadow: 0 6px 6px #007dc6;
+    transform: scale(0.9) translateZ(0);
+
+}
+#nombreUniversidad{
+    color: #007dc6;
+}
+@media only screen and (max-width: 500px) {
+    .universidad {
+      width: 99% !important;
+    }
+  }

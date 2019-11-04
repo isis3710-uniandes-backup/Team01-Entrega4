@@ -95,14 +95,26 @@ export default class register extends Component{
             checkPassword = true;
         if(checkUsername && checkPassword && checkEmail && checkName)
             this.signUp();
-        this.forceUpdate ()
+
+            return <Redirect to={{
+                pathname : '/',
+            }} />;
     }
 
     signUp(){
+
+        let token = Cookies.get("JSESSIONID");
         var userFind;
-            fetch(url+'/usuarios/' + this.state.username)
-                .then(res => res.json())
-                .then(data => userFind = data[0]);
+        if (token) {
+            console.log("Habemus token");
+            fetch(url+'/usuarios/' + this.state.username, {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
+            })
+            .then(res => res.json())
+            .then(data => userFind = data[0]);
             console.log(userFind);
 
             if (userFind === undefined) {
@@ -115,11 +127,11 @@ export default class register extends Component{
                                 email: this.state.email,
                                 password: this.state.password
                             }),
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
+                            headers: new Headers({
+                                'Authorization': token
+                            })
                         })
-                            .then(res => {
+                        .then(res => {
                                 res.json()
                                 if (res.status === 200) {
                                     Swal.fire({
@@ -146,17 +158,10 @@ export default class register extends Component{
  
                 }
             }
+        }
     }
 
     render() {
-        if (this.state.logueado) {
-            return <Redirect to={{
-                pathname : '/',
-                state : {
-                    user : this.state.username
-                }
-            }} />;
-        }
         return (
 
             <div>
@@ -164,34 +169,36 @@ export default class register extends Component{
                 <Modal.Header closeButton>
                     <Modal.Title>Registrarse</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body id="Register" >
                     <Form>
                         <Form.Group >
                             <Form.Label>Username</Form.Label>
                             <Form.Control id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
                                 onChange={this.changeValue} title="Completa este campo.">
-                                
                             </Form.Control>
+                            {checkUsername ? <div/>:<strong className="validation">*Rellena este campo</strong>}
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control id="name" required type="text" className="form-control" placeholder="Nombre "
                                 onChange={this.changeValue} title="Completa este campo.">
-                               
                             </Form.Control>
+                            {checkName ? <div/>:<strong className="validation">*Rellena este campo</strong>}
                         </Form.Group>
                         <Form.Group >
                             <Form.Label>Correo</Form.Label>
                             <Form.Control id="email" required type="text" className="form-control" placeholder="Correo "
                                 onChange={this.changeValue} title="Completa este campo.">
                             </Form.Control>
+                            {checkEmail ? <div/>:<strong className="validation">*Rellena este campo</strong>}
                         </Form.Group>
                         <Form.Group >
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control id="password" required type="password" className="form-control" placeholder="Contraseña "
                                 onChange={this.changeValue} title="Completa este campo.">
                             </Form.Control>
+                            {checkPassword ? <div/>:<strong className="validation">*Rellena este campo</strong>}
                         </Form.Group>
 
                     </Form>
