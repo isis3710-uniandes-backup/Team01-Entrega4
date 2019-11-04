@@ -5,6 +5,8 @@ import logo from "../assets/imgs/FutureGuide.png";
 import Register from './registro';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
+import { ToastContainer } from 'react-toastify';
+
 
 export default class home extends Component {
 
@@ -60,8 +62,12 @@ export default class home extends Component {
         })
     }
     closeLogIn = () => {
-        this.setState({ logIn: false, alreadyLogged: true });
+        this.setState({ logIn: false, alreadyLogged: false });
     };
+    cierreExitoso = () => {
+        this.setState({ logIn: false, alreadyLogged: true });
+
+    }
 
     openLogIn = () => {
         this.setState({ logIn: true })
@@ -116,6 +122,18 @@ export default class home extends Component {
     render() {
         return (
             <div role="main" id="homecontainer" className="container">
+                      <ToastContainer
+                containerId ={'A'}
+                    position="bottom-right"
+                    autoClose={2400}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                />
                 <nav className="navbar sticky-top navbar-light bg-light">
                     <a className="navbar-brand" href="/">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
@@ -124,7 +142,7 @@ export default class home extends Component {
                     {!this.state.alreadyLogged ?
                         <div className="form-inline">
                             <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
-                            <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
+                            <LogIn mostrar={this.state.logIn} cierreExitoso={this.cierreExitoso} cerrar={this.closeLogIn} />
                             <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
                             <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
                         </div>
