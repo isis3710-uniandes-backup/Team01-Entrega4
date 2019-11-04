@@ -76,7 +76,9 @@ export default class navbar extends Component{
                     <div className="menu_section section_1">Navegación</div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><div className="menu__link" onClick={this.reseña}><i className="fas fa-home"></i>Home</div></li>
+                            <Link to="/">
+                                <li className="menu__item"><div className="menu__link"><i className="fas fa-home"></i>Home</div></li>
+                            </Link>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
                         </ul>
@@ -85,16 +87,25 @@ export default class navbar extends Component{
                     <div className="menu_section section_2">Configuración</div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-user-tie"></i>Perfil</div></li>
+                            <Link to="/perfil">
+                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-user-tie"></i>Perfil</div></li>
+                            </Link>
                             <li className="menu__item"><div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
                                 <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </div></li>
                             <li className="menu_movil__item">
                                 <Link  className="menu__link"  to="/register">
-                                    <i className="fas fa-sign-out-alt"></i>
+                                    <i className="fas fa-sign-in-alt" ></i>
                                     Registrarse
                                 </Link>
                                 
+                            </li>
+                            <li className="menu_movil__item">
+                                <Link  className="menu__link"  to="/">
+                                    <i className="fas fa-sign-out-alt"></i>
+                                    Salir
+                                </Link>
+
                             </li>
                         </ul>
                     </div>
@@ -124,9 +135,9 @@ export default class navbar extends Component{
                                 </div>
                                 <div className="col-6">
                                 <li className="menu_movil__item">
-                                        <Link className="menu__link" to="/register">
+                                        <Link className="menu_movil__link" to="/">
                                             <i className="fas fa-sign-out-alt"></i>
-                                            Registrarse
+                                            Salir
                                         </Link>
                                         
                                     </li>
@@ -156,9 +167,8 @@ export default class navbar extends Component{
                                 </div>
                                 <div className="col-6">
                                 <li className="menu_movil__item">
-                                        <Link className="menu__link" to="/register">
+                                        <Link className="menu_movil__link" to="/register">
                                             <i className="fas fa-sign-out-alt"></i>
-                                            Registrarse
                                         </Link>
                                         
                                 </li>
