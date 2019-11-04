@@ -14,6 +14,7 @@
     position: absolute;
 }
 
+.logo:hover{cursor:pointer;}
 .logo img{width: 100%;}
 
 .menu_section{
@@ -88,6 +89,7 @@
     text-align: center;
 }
 
+.logo_movil:hover{cursor:pointer;}
 .logo_movil img{width: 60%;}
 
 .menu_movil__link {

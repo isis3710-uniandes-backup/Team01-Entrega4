@@ -18,8 +18,10 @@ export default class navbar extends Component{
             },
             showCancelButton: true,
             confirmButtonText: 'Publicar',
+            confirmButtonColor: '#00c0be',
+            cancelButtonColor: '#464655',
             cancelButtonText: 'Cancelar',
-            background: '#edf7f6'
+            background: '#fff'
             })
             .then((value)=>{
                 console.log(value['value'])
@@ -43,7 +45,7 @@ export default class navbar extends Component{
                     <div className="menu_section section_1">Navegación</div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-home"></i>Home</div></li>
+                            <li className="menu__item"><div className="menu__link" onClick={this.mostrar}><i className="fas fa-home"></i>Home</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
                         </ul>
