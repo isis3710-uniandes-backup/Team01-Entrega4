@@ -1,0 +1,50 @@
+.perfil{
+    position: fixed;
+    top: 10%;
+    left: 26%;
+}
+
+.perfil_card{width: 61vw;}
+.perfil_img{width: 12vw;padding: 10% 0% 10%;}
+.perfil_body{padding: 2rem}
+.perfil_title{font-size: 4vw}
+.perfil_text{margin: 0;font-size: 1vw}
+
+
+
+.comentarios{margin-top: 3%;}
+.scrollspy-example{
+    width:50vw;
+    height:22.4vw;
+    overflow-y: scroll;
+    padding-left: 2%;
+}
+
+.scrollspy-example h4{font-size: 1.5vw;}
+.scrollspy-example p{font-size: 1vw;}
+
+.list-group{width: 11vw; overflow-y: scroll; height: 22.4vw;}
+.list-group-item-action{padding: 1vw 1.25vw; font-size: 1vw}
+
+
+@media (max-width: 768px) {
+    .perfil{left: 11%;}
+    .perfil_card{width: 75vw;}
+    .perfil_img{width: 18vw;}
+    .perfil_body{padding: 1.5rem}
+    .perfil_title{font-size: 5vw}
+    .perfil_text{font-size: 1.5vw}
+
+    .scrollspy-example{
+        width:58vw;
+        height:32vw;
+        padding-left: 2%;
+    }
+
+    .scrollspy-example h4{font-size: 2.5vw;}
+    .scrollspy-example p{font-size: 1.8vw;}
+
+    .list-group{width: 17vw;height: 32vw;}
+    .list-group-item-action{padding: 1.5vw 1.25vw; font-size: 1.5vw}
+}
+

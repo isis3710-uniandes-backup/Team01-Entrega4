@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from './navbar';
+import Perfil from './perfil';
 import Register from './registro';
 import Home from './home';
+import DetailCareer from './detailCareer';
 
 export default class futureguide extends Component {
 
@@ -19,10 +21,14 @@ export default class futureguide extends Component {
                 <BrowserRouter>
                     <div>
                         <Switch>
-                        <Route exact path="/register">
-                            <Register logueado={this.state.logueado}/>
-                        </Route>
                         <Route exact path="/" component={Home} />
+                        <Route path="*">
+                            <Navbar/>
+                            <Route exact path="/register">
+                                <Register logueado={this.state.logueado}/>
+                            </Route>
+                            <Route exact path="/perfil" component={Perfil} />
+                        </Route>
                         </Switch>
                     </div>
                 </BrowserRouter>

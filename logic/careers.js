@@ -17,16 +17,30 @@ class Careers {
      */
     getCareer(req,res)
     {
-        let university = req.params.university;
-        let program = req.params.program;
+        let universidad = req.params.nombreUniversidad;
+        let programa = req.params.nombrePrograma;
         conn.then(client => {
-            let university = new ObjectId(university);
-            let program = new ObjectId(program);
-           let career = client.db(databaseName).collection("carreraUniversidad").findOne({ $and : [{universidad : university},{programa : program}]});
-           res.send(career);
+            client.db(databaseName).collection("universidades").findOne({$or: [{nombre : universidad}, {nickname : universidad}]}, (err,result) => {
+                if(err){
+                    res.status(400);
+                }
+                let universityId = result._id;
+                client.db(databaseName).collection("programas").findOne({nombre : programa}, (err, resultPro) => {
+                    if(err){
+                        res.status(400);
+                    }
+                    console.log(resultPro);
+                    let programId = resultPro._id;
+                    client.db(databaseName).collection("carreraUniversidad").findOne({ $and : [{universidad : universityId},{programa : programId}]}, (err, result) => {
+                        res.send(result);
+                    });
+
+                });
+
+            });
         })
         .catch(e => {
-            res.status(500).send('Ocurrio un error');
+            res.status(500).send('Ocurrió un error en el servidor.');
             throw e;
         })
     }
