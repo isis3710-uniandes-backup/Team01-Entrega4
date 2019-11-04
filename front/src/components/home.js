@@ -3,7 +3,6 @@ import '../styles/home.css';
 import { Link } from "react-router-dom";
 import logo from "../assets/imgs/FutureGuide.png";
 import Register from './registro';
-import { Container } from 'react-bootstrap';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 

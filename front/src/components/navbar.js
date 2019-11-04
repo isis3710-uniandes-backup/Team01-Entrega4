@@ -3,6 +3,11 @@ import '../styles/navbar.css';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
+import LogoCompleto from '../assets/imgs/LogoCompleto.png';
+import Perfil from './perfil';
+import DetailCareer from './detailCareer';
+import { Route, Switch } from "react-router-dom";
+
 const Swal = require('sweetalert2');
 
 
@@ -87,9 +92,13 @@ export default class navbar extends Component {
         }
 
         return (
-            <div className="container" role="main">
+
+
+
+            <div>
+                    
                 <nav id="menu" className="menu d-none d-md-block">
-                    <div className="logo"><img src="LogoCompleto.png" alt="Logo de FutureGuide"></img></div>
+                    <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
@@ -103,7 +112,7 @@ export default class navbar extends Component {
                     <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><a className="menu__link" href="perfil/"><i className="fas fa-user-tie"></i>Perfil</a></li>
+                            <li className="menu__item"><a className="menu__link" href="/perfil/"><i className="fas fa-user-tie"></i>Perfil</a></li>
                             {!this.state.alredyLogged ?
                             <>
                                 <li className="menu__item">

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import {
-    Link,
     Redirect
 } from "react-router-dom";
 import Cookies from 'js-cookie'
 import timeImage from "../assets/imgs/alarm-clock.png"
 import cashImage from "../assets/imgs/cash.png"
 import acreditacionInternacionalImg from "../assets/imgs/global-marketing.png"
-
 import "../styles/detailCareer.css";
 export default class detailCareer extends Component {
     state = {
@@ -57,33 +55,33 @@ export default class detailCareer extends Component {
             return <Redirect to='/' />
         }
         return (
-            <div className="container-fluid" role="main">
+            <div className="container-fluid adaptative" role="main">
                 <div className="row">
                     <div className="col-lg-7 col-xl-7 col-md-7 col-12 infoDetail">
                         <div className="row">
                             <div className="col-lg-6 col-xl-6 col-md-6 col-12">
-                                <h1>{this.state.programa}</h1>
-                                <h2>{this.state.universidad}</h2>
-                                {this.state.altaCalidad ? <span className="badge badge-primary">Alta calidad</span> : false}
+                                <h1 id="programName">{this.state.programa}</h1>
+                                <h2 id="universityyName">{this.state.universidad}</h2>
+                                {this.state.altaCalidad ? <span className="badge badge-calite">Alta calidad</span> : false}
                                 <br />
                                 <strong>Costo semestre </strong>
                                 <strong className="atributosCareer">${this.state.costo}</strong>
 
                             </div>
-                            <div className="col-lg-6 col-xl-6 col-md-6 col-12x   list-group list-group-flush">
-                                <a className="list-group-item  d-flex justify-content-between align-items-center">
+                            <li className="col-lg-6 col-xl-6 col-md-6 col-12x   list-group list-group-flush">
+                                <ul className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={timeImage} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
-                                    <p className="atributosCareer">{this.state.duracion} semestres.</p>
-                                </a>
-                                <a className="list-group-item  d-flex justify-content-between align-items-center">
+                                    <strong className="atributosCareer">{this.state.duracion} </strong> <strong className=" cursiveAnotation text-right">semestres.</strong>
+                                </ul>
+                                <ul className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={cashImage} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
-                                    <p className="atributosCareer">{this.state.salario} en promedio.</p>
-                                </a>
-                                {this.state.acreditacionInternacional ? <a className="list-group-item  d-flex justify-content-between align-items-center">
+                                    <p className="atributosCareer">{this.state.salario}</p> <strong className=" cursiveAnotation text-right">en promedio.</strong>
+                                </ul>
+                                {this.state.acreditacionInternacional ? <ul className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={acreditacionInternacionalImg} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
-                                    {this.state.acreditacionInternacional}
-                                </a> : false}
-                            </div>
+                                    <p className="atributosCareer">{this.state.acreditacionInternacional}</p>
+                                </ul> : false}
+                            </li>
                         </div>
                         <div className="row d-flex justify-content-center">
                             <div className="col-12 overflow">
@@ -91,12 +89,12 @@ export default class detailCareer extends Component {
 
                                     <div  key={index} className="card">
                                         <div className="card-header">
-                                            <h3>{element.titulo}</h3>
+                                            <h3 id="tituloComentario">{element.titulo}</h3>
                                         </div>
                                         <div className="card-body">
                                             <blockquote className="blockquote mb-0">
-                                                <p>{element.descripcion}</p>
-                                               {element.recomendada ? <span className="badge badge-success">Recomendada</span> : <span className="badge badge-success">No recomendada</span>  } 
+                                                <p id="comentarioDescripcion">"{element.descripcion}"</p>
+                                               {element.recomendada ? <span className="badge badge-style badge-recomendada">Recomendada</span> : <span className="badge badge-style badge-nrecomendada">No recomendada</span>  } 
                                             </blockquote>
                                         </div>
                                     </div>
@@ -108,7 +106,7 @@ export default class detailCareer extends Component {
                         <h2>Videos</h2>
                         {this.state.videos.map((element, index) =>
                             <div key={index} className="embed-responsive embed-responsive-16by9 videos">
-                                <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" aria-label={`Video${index}`} allowFullScreen></iframe>
+                                <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>
                             </div>
                         )}
                     </div>
