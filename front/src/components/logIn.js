@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
 import Cookies from 'js-cookie';
-const md5 = require("md5");
+//const md5 = require("md5");
 const url = "https://futureguide.herokuapp.com";
 
 class LogIn extends Component {
@@ -18,42 +18,63 @@ class LogIn extends Component {
         this.logIn = this.logIn.bind(this);
         this.hide = this.hide.bind(this);
     }
-    componentDidUpdate(prevProps)
-    {          
+    componentDidUpdate(prevProps) {
         if (this.props.mostrar !== prevProps.mostrar) {
-            this.setState({show:this.props.mostrar});
-          }
+            this.setState({ show: this.props.mostrar });
+        }
     }
     logIn() {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
-            var data = { _id: this.state.usuario, password: md5(this.state.password) };
+            var data = { _id: this.state.usuario, password: this.state.password };
+            console.log(data);
 
-            fetch(url + "/login", {
+            fetch("http://localhost:3001" + "/login", {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                }
-            }).then(res => res.json())
-                .catch(
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Usuario o Contraseña incorrecta',
-                        text: 'Vuelve a intentarlo',
-                        timer: 1500
-                    })
-                )
-                .then(
+                },
+                credentials: 'include'
+
+            }).then(res => {
+                console.log(res)
+                //res.json()
+                if (res.status === 200) {
                     Swal.fire({
                         type: 'success',
                         title: 'Bienvenido de nuevo ' + this.state.usuario,
                         text: '¡Diviértete en nuestra plataforma!',
                         timer: 2000
-                    })
-                ).then(
-                    this.hide()
-                );
+                    });
+                    this.hide();
+                } else if (res.status === 500) {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Error en el servidor',
+                        text: 'Vuelve a intentarlo',
+                        timer: 1500
+                    });
+                }
+                else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Usuario o contraseña incorrecta',
+                        text: 'Vuelve a intentarlo',
+                        timer: 1500
+                    });
+                }
+            }
+            ).catch(error => {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Usuario o contraseña incorrecta',
+                    text: 'Vuelve a intentarlo',
+                    timer: 1500
+                });
+            }
+            );
         } else {
             Swal.fire({
                 type: 'error',
@@ -71,7 +92,6 @@ class LogIn extends Component {
             this.setState({
                 usuario: e.target.value
             });
-            console.log(e.target.value);
         } else {
             this.setState({
                 password: e.target.value

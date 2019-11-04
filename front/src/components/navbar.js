@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/navbar.css';
 import LogIn from './logIn';
+import { Link } from "react-router-dom";
 const Swal = require('sweetalert2');
 
 export default class navbar extends Component{
@@ -61,7 +62,6 @@ export default class navbar extends Component{
 
     closeLogIn=  ()=>{
         this.setState({logIn: false});
-        console.log("me voy "+ this.state.logIn);
     };
 
     openLogIn= ()=>{
@@ -89,7 +89,13 @@ export default class navbar extends Component{
                             <li className="menu__item"><div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
                                 <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                             </div></li>
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-sign-out-alt"></i>Registrarse</div></li>
+                            <li className="menu_movil__item">
+                                <Link  className="menu__link"  to="/register">
+                                    <i className="fas fa-sign-out-alt"></i>
+                                    Registrarse
+                                </Link>
+                                
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -117,7 +123,13 @@ export default class navbar extends Component{
                                     </div></li>
                                 </div>
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-sign-out-alt"></i>Registrarse</div></li>
+                                <li className="menu_movil__item">
+                                        <Link className="menu__link" to="/register">
+                                            <i className="fas fa-sign-out-alt"></i>
+                                            Registrarse
+                                        </Link>
+                                        
+                                    </li>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +155,13 @@ export default class navbar extends Component{
                                     <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn}/>
                                 </div>
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-sign-out-alt"></i></div></li>
+                                <li className="menu_movil__item">
+                                        <Link className="menu__link" to="/register">
+                                            <i className="fas fa-sign-out-alt"></i>
+                                            Registrarse
+                                        </Link>
+                                        
+                                </li>
                                 </div>
                             </div>
                         </div>

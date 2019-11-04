@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {Button} from 'react-bootstrap';
 import '../styles/registro.css';
-//import Swal from "sweetalert2";
-import {Link} from "react-router-dom";
+import Cookies from 'js-cookie';
+import Swal from "sweetalert2";
+const url = "";
+
 
 let check = false;
 let checkUsername = true;
@@ -22,7 +24,7 @@ export default class register extends Component{
             password: "",
             changeLogInStatus: this.props.changeLogInStatus,
             //logFunc: this.props.logFunc,
-            //logueado: this.props.logueado
+            logueado: this.props.logueado
             };
         this.changeValue = this.changeValue.bind(this);
         this.signUp = this.signUp.bind(this);
@@ -34,17 +36,6 @@ export default class register extends Component{
             this.setState({
                 username: e.target.value
             });
-            if(e.target.id !== "")
-                checkUsername = true;
-            let intro = document.getElementsByClassName('register-form-control-username');
-            if(intro!=null && this.usernameCheck(e.target.value)) {
-                intro.username.style.color = '#ff0054';
-                check = true;
-            }
-            else if(intro!=null && check) {
-                intro.username.style.color = '#000';
-                check = false;
-            }
         }
         else if(e.target.id === "name") {
             this.setState({
@@ -93,35 +84,53 @@ export default class register extends Component{
     }
 
     signUp(){
-        //let userFind = Users.findOne({username: this.state.username});
-        /*if(userFind==null) {
-            let user = {
-                username: this.state.username,
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password,
-                eventsOffered: [],
-                subscribedEvents: []
-            };*/
-            /*let id = Users.insert(user);
-            user._id = id;
-            this.setState({logueado: true})
-            this.state.logFunc(user)*/
-        /*    Swal.fire({
-                type: 'success',
-                title: 'Registro exitoso ' + user.username,
-                text: 'Disfruta nuestros servicios!',
-                timer: 3000
-            });
-        }
-        else
-            Swal.fire({
-                type: 'error',
-                title: 'Ya esta en uso el nombre de usuario: ' + userFind.username,
-                text: 'Vuelve a intentarlo',
-                timer: 2000
-            });*/
-       /* }*/
+        var userFind;
+            fetch(url+'/usuarios/' + this.state.username)
+                .then(res => res.json())
+                .then(data => userFind = data[0]);
+            console.log(userFind);
+
+            if (userFind === undefined) {
+                try {
+                        fetch(url+'/register', {
+                            method: 'POST', // or 'PUT'
+                            body: JSON.stringify({
+                                username: this.state.username,
+                                name: this.state.name,
+                                email: this.state.email,
+                                password: this.state.password
+                            }),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                            .then(res => {
+                                res.json()
+                                if (res.status === 200) {
+                                    Swal.fire({
+                                        type: 'success',
+                                        title: 'Registro exitoso',
+                                        text: '¡Diviértete en nuestra plataforma!',
+                                        timer: 2000
+                                    });
+                                    this.hide();
+                                } else if (res.status === 500) {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Error en el servidor',
+                                        text: 'Vuelve a intentarlo',
+                                        timer: 1500
+                                    });
+                                }
+                            }
+
+                            ).catch(error => console.error('Error:', error));
+                    
+                } catch (e) {
+                    console.log(e);
+ 
+                }
+            }
     }
 
     render() {
@@ -145,25 +154,27 @@ export default class register extends Component{
                                     <input id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
                                            onChange={this.changeValue} title="Completa este campo."></input>
                                     {checkUsername ? check === true ? <p id="validation">Ya esta en uso este usuario, intenta con otro.</p> : <div/> :
-                                    <p id="validation">*Rellena este campo</p>}
+                                    <p className="validation">*Este campo es obligatorio</p>}
                                 </div>
                                     <div className="form-group">
                                         <input id="name" required type="text" className="form-control" placeholder="Nombre "
                                                onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkName ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                        {checkName ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
                                     </div>
                                     <div className="form-group">
                                         <input id="email" required type="text" className="form-control" placeholder="Correo "
                                                onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkEmail ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                        {checkEmail ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
                                     </div>
                                     <div className="form-group">
                                         <input id="password" required type="password" className="form-control" placeholder="Contraseña "
                                                onChange={this.changeValue} title="Completa este campo."/>
-                                        {checkPassword ? <div/>:<p id="validation">*Rellena este campo</p>}
+                                        {checkPassword ? <div/>:<p className="validation">*Este campo es obligatorio</p>}
                                     </div>
                                     <div className="form-group">
-                                        <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}>Registrarse</Button>
+                                        <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}>
+                                           <strong>Registrarse</strong> 
+                                        </Button>
                                         
                                     </div>
                             </div>

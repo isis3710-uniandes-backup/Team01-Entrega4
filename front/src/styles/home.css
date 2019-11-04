@@ -1,6 +1,46 @@
 #homeContainer{
     min-height: 100vh;
+    flex-direction: column;
+    background-color: #edf7f6;
 }
 #searchBar{
+    border-radius: 0.3em ;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 0.1em solid #464655;
+    width: 20vw; 
+    background-color: #edf7f6;
     
+}
+
+#searchButton{
+    border-radius: 8px;
+    border-style: 0.5rem solid #da2f2f;
+    background-color: #024972;
+    color : #edf7f6;
+    font-weight: bolder;
+}
+
+.disabled{
+    background-color: #a1b6b5 !important;
+    color: black !important;
+    font-weight:bold ;
+
+}
+.initialBtns{
+    border-radius: 17px;
+    background-color: #dfeef7;
+    border: 0.1em solid #ffffff;
+    color : #024972;
+    margin: 0.3rem;
+}
+#slogan{
+    font-size: 5vw;
+    font-weight: bolder;
+    padding-bottom: 0.2em;
+}
+#homecontainer{
+    min-width: 100%;
+    padding: 0;
 }
