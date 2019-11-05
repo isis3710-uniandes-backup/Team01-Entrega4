@@ -99,6 +99,7 @@ Ingresar el comando heroku open para abrir la página en el browser.
 * [NodeJs](https://nodejs.org/es/) - Entorno de ejecución
 * [Mongo Atlas](https://www.mongodb.com/cloud/atlas) - Herramienta usada para centralizar la base de datos en la nube.
 * [Mongodb](https://www.mongodb.com/es) - Sistema Manejador de Bases de Datos NOSQL.
+* [GoogleFonts](https://fonts.google.com) - Fuentes utilizadas: Titillium Web & Karla
 
 ## Autores ✒️
 
