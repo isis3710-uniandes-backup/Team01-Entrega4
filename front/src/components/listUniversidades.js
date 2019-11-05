@@ -5,7 +5,8 @@ export default class ListUniversidades extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            universidades: this.props.universidades
+            universidades: this.props.universidades,
+            programa: this.props.programa
         }
     }
 
@@ -19,7 +20,7 @@ export default class ListUniversidades extends React.Component {
         return (
             <div>
                 <div className="row">
-                    {this.state.universidades.map((e, i) => <Universidad key={i} universidad={e} />)}
+                    {this.state.universidades.map((e, i) => <  Universidad  programa={this.props.programa}  key={i} universidad={e} />)}
                 </div>
             </div>
         )

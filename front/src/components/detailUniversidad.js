@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Card, Button, Image} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import "../styles/detailUniversidad.css"
+import { program } from 'babel-types';
 
 export default class universidad extends Component {
     constructor(props) {
@@ -13,13 +14,14 @@ export default class universidad extends Component {
             puestoNacional: this.props.universidad.puestoNacional,
             puestoInternacional: this.props.puestoInternacional,
             imagen: this.props.universidad.logo,
-            ciudad: this.props.ciudad
-
+            ciudad: this.props.ciudad,
+            programa: this.props.programa
         }
     }
     render() {
         return (
-            <Link to ="/" >
+            <Link to ={{
+                pathname: `/universidad/+${this.state.nombre}+/programa/${this.state.programa}`}} >
             <Card id="Universidad" >
                 <Card.Body >
                     <Card.Title>

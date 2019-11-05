@@ -10,7 +10,8 @@ export default class Listas extends Component {
         super(props);
         this.state = {
             programas: [],
-            universidades: []
+            universidades: [],
+            nombrePrograma:""
         }
     }
     
@@ -30,10 +31,11 @@ export default class Listas extends Component {
         }    
     }
 
-    actualizarUniversidades(pUniversidades)
+    actualizarUniversidades(pUniversidades,pNombrePrograma)
     {
         this.setState({
-            universidades: pUniversidades
+            universidades: pUniversidades,
+            nombrePrograma: pNombrePrograma
         })
     }
 
@@ -44,7 +46,7 @@ export default class Listas extends Component {
                     <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                 </Col>
                 <Col id="ListaUniversidades">
-                    <ListUniversidades universidades={this.state.universidades}></ListUniversidades>
+                    <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
                 </Col>
             </Row>
         )

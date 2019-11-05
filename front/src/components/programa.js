@@ -14,7 +14,7 @@ export default class Programa extends Component {
         this.cambiarUniversidades = this.cambiarUniversidades.bind(this);
     }
     cambiarUniversidades(){
-        this.state.funcionUniversidades(this.state.universidades);
+        this.state.funcionUniversidades(this.state.universidades, this.state.nombre);
     }
 
     render() {
