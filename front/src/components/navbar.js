@@ -99,7 +99,9 @@ export default class navbar extends Component {
         return (
             <div>
                 <nav id="menu" className="menu d-none d-md-block">
-                    <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
+                    <Link to="/">
+                        <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
+                    </Link>
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
