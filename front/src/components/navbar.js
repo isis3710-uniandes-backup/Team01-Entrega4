@@ -12,7 +12,7 @@ export default class navbar extends Component {
     state = {
         logIn: false,
         alredyLogged: false,
-        universidades:[]
+        universidades: []
     };
 
     reseña() {
@@ -82,12 +82,12 @@ export default class navbar extends Component {
         this.setState({ logIn: true })
     };
 
-    closeRegistro=  ()=>{
-        this.setState({registro: false});
+    closeRegistro = () => {
+        this.setState({ registro: false });
     };
 
-    openRegistro= ()=>{
-        this.setState({registro:true})
+    openRegistro = () => {
+        this.setState({ registro: true })
     };
 
     render() {
@@ -117,21 +117,21 @@ export default class navbar extends Component {
                         <ul data-menu="main" className="menu__level">
                             <li className="menu__item"><a className="menu__link" href="/perfil/"><i className="fas fa-user-tie"></i>Perfil</a></li>
                             {!this.state.alredyLogged ?
-                            <>
-                                <li className="menu__item">
-                                    <div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
+                                <>
+                                    <li className="menu__item">
+                                        <div className="menu__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt" ></i>Ingresar
                                 <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                                    </div>
-                                </li>
-                                <li className="menu_movil__item">
-                                    <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
-                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
-                                </div>   
-                                </li>
+                                        </div>
+                                    </li>
+                                    <li className="menu_movil__item">
+                                        <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
+                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro} />
+                                        </div>
+                                    </li>
                                 </> : <li className="menu_movil__item">
                                     <Link className="menu__link" to={{
-                                        pathname : '/',
-                                        state :  true
+                                        pathname: '/',
+                                        state: true
                                     }}>
                                         <i className="fas fa-sign-out-alt"></i>
                                         Salir
@@ -145,11 +145,10 @@ export default class navbar extends Component {
                     <div className="row">
                         <div className="col-5 d-none d-sm-block col_izq">
                             <div className="row">
-                                <div className="col-7">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-university"></i>Universidades</div></li>
-                                </div>
-                                <div className="col-5">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                                <div className="col-12">
+                                    <Link to="/carreras">
+                                        <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -178,11 +177,10 @@ export default class navbar extends Component {
 
                         <div className="col-5 d-block d-sm-none col_izq">
                             <div className="row">
-                                <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link"><i className="fas fa-university"></i></div></li>
-                                </div>
-                                <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></li>
+                                <div className="col-12">
+                                <Link aria-label="Vamos a ver los programas..." to="/carreras">
+                                    <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
+                                </Link>
                                 </div>
                             </div>
                         </div>
@@ -192,14 +190,14 @@ export default class navbar extends Component {
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></li>
+                                    <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></div>
                                     <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
                                 </div>
                                 <div className="col-6">
-                                <li className="menu_movil__item">
-                                    <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
-                                </li>
-                                    
+                                    <div className="menu_movil__item">
+                                        <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
