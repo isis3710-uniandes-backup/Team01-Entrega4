@@ -79,7 +79,7 @@ export default class home extends Component {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             console.log("Habemus token");
-            fetch("http://futureguide.herokuapp.com/programas/area", {
+            fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token
@@ -144,7 +144,7 @@ export default class home extends Component {
                         </div>
                         :
                         <div className="form-inline">
-                             <Link to="/home">
+                        <Link to="/carreras">
                             <button className="btn initialBtns">Explorar</button>
                         </Link>
                         <button className="btn initialBtns" onClick={this.closeSession}>Cerrar sesión</button>

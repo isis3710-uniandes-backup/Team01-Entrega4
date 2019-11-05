@@ -19,7 +19,7 @@ export default class Listas extends Component {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             console.log("Habemus token");
-            fetch('http://futureguide.herokuapp.com/programas',
+            fetch('https://futureguide.herokuapp.com/programas',
             {
                     method: 'GET',
                     headers: new Headers({

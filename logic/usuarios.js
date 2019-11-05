@@ -75,7 +75,6 @@ class Usuarios {
     login(req, res) {
         let username = req.body._id;
         let password = req.body.password;
-
         conn.then(client => {
             client.db(databaseName).collection("usuarios").findOne({ _id: username }, (err, data) => {
                 if (err) {
