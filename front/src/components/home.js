@@ -62,6 +62,42 @@ export default class home extends Component {
     };
     cierreExitoso = () => {
         this.setState({ logIn: false, alreadyLogged: true });
+        let token = Cookies.get("JSESSIONID");
+        if (token) {
+            fetch("https://futureguide.herokuapp.com/programas/area", {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
+            })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success === false) {
+
+                    }
+                    else {
+                        let objectFinal = [];
+                        json.forEach(element => {
+                            objectFinal.push({
+                                name: element._id,
+                                results: element.programs
+                            })
+                        });
+                        this.setState({
+                            programsByArea: objectFinal,
+                            programsBackUp: objectFinal,
+                            alreadyLogged: true
+                        });
+                        console.log(this.state.programsByArea);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            console.log("Loguese");
+        }
 
     }
 
@@ -70,15 +106,12 @@ export default class home extends Component {
     };
 
     componentDidMount() {
-
         if(this.props.location.state)
         {
             this.closeSession();
         }
-
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            console.log("Habemus token");
             fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({

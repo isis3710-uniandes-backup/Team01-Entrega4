@@ -18,7 +18,6 @@ export default class Listas extends Component {
     componentDidMount(){
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            console.log("Habemus token");
             fetch('https://futureguide.herokuapp.com/programas',
             {
                     method: 'GET',
@@ -26,8 +25,13 @@ export default class Listas extends Component {
                         'Authorization': token
                     })
             }).then(
-                resp=>{this.setState({programas:resp.json()})}
+                resp=> resp.json()
             )
+            .then(json => {
+                this.setState({programas:json}, () => {
+                    console.log(this.state);
+                })
+            })
         }   
     }
 
@@ -40,6 +44,7 @@ export default class Listas extends Component {
     }
 
     render() {
+        
         return (
             <Row>
                 <Col id="ListaProgramas">

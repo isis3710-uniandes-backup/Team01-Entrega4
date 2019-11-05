@@ -8,6 +8,16 @@ export default class ListProgramas extends React.Component {
             programas: this.props.programas
         }
     }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.programas !== this.props.programas)
+        {
+            console.log("Caramaba");
+            this.setState({
+                programas : this.props.programas
+            })
+        }
+    }
     /*filtering = e => {
         let criteria = e.target.value;
         let filtered = this.state.univFilt;
@@ -28,6 +38,7 @@ export default class ListProgramas extends React.Component {
     }*/
 
     render() {
+        console.log(this.state);
         return (
             <div>
                 <div className="row">
