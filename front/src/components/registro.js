@@ -60,7 +60,7 @@ export default class register extends Component {
                         })
                     }
                 }
-                fetch('http://localhost:3001/usuarios/' + this.state.username, {
+                fetch('https://futureguide.herokuapp.com/usuarios/' + this.state.username, {
                     method: 'GET'
                 })
                     .then(res => res.status === 200 ? res.json() : null)
@@ -143,7 +143,7 @@ export default class register extends Component {
                 };
                 let boddy = JSON.stringify(json);
                 console.log(boddy);
-                fetch('http://localhost:3001/register', {
+                fetch('https://futureguide.herokuapp.com/register', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
