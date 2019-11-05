@@ -31,8 +31,6 @@ export default class ListProgramas extends React.Component {
         return (
             <div>
                 <div className="row">
-                    {console.log(this.state.programas)}
-                    {console.log(this.props.programas)}
                     {this.state.programas.map((e, i) => <Programa funcionUniversidades={this.props.funcionUniversidades} key={i} programa={e} />)}
                 </div>
             </div>
