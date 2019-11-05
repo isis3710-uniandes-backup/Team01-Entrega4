@@ -3,12 +3,10 @@ import '../styles/navbar.css';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
+import Logo from '../assets/imgs/Logo.png';
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
 import Register from './registro';
 const Swal = require('sweetalert2');
-
-
-
 
 export default class navbar extends Component {
     state = {
@@ -156,7 +154,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-none d-sm-block col_med">
-                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide1"></img></div>
+                            <div className="logo_movil"><img src={Logo} alt="Logo de FutureGuide"></img></div>
                         </div>
                         <div className="col-5 d-none d-sm-block col_der">
                             <div className="row">
@@ -189,7 +187,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-block d-sm-none col_med">
-                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide"></img></div>
+                            <div className="logo_movil"><img src={Logo} alt="Logo de FutureGuide"></img></div>
                         </div>
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">

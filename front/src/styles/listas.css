@@ -1,0 +1,9 @@
+.listas{
+    position: fixed;
+    left: 15%;
+    padding: 0;
+}
+
+#ListaProgramas{
+    flex-grow: 0.6;
+}

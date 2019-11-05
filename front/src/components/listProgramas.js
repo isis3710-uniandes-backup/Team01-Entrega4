@@ -40,7 +40,7 @@ export default class ListProgramas extends React.Component {
         console.log(this.state);
         return (
             <div>
-                <div className="row" id="macheting">
+                <div id="macheting">
                     {this.state.programas.map((e, i) => <Programa funcionUniversidades={this.props.funcionUniversidades} key={i} programa={e} />)}
                 </div>
             </div>
