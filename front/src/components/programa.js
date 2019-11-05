@@ -20,13 +20,13 @@ export default class Programa extends Component {
     render() {
         return (
             <div className="col-12 marginBottom">
-                <Card onClick={this.cambiarUniversidades} id="Programa">
+                <Card onClick={this.cambiarUniversidades} className="Programa">
                     <Card.Body >
                         <Card.Title className="programa-title">
                             <br></br>
-                            <h3 id="nombreprograma" >{this.state.nombre}</h3>
+                            <h1 className="nombreprograma" >{this.state.nombre}</h1>
                         </Card.Title>
-                        <h5 id="area">Área: {this.state.area}</h5>
+                        <h2 className="area">Área: {this.state.area}</h2>
                     </Card.Body>
                 </Card>
             </div>
