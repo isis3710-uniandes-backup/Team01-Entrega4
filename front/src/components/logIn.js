@@ -54,6 +54,7 @@ class LogIn extends Component {
                         draggable: true
                     });
                     this.hideSuccess();
+                    
                 } else if (res.status === 500) {
                     toast.error('Error en el servidor', {
                         containerId : 'A',

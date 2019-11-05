@@ -142,6 +142,7 @@ export default class register extends Component {
                     password: md5(this.state.password)
                 };
                 let boddy = JSON.stringify(json);
+                console.log(boddy);
                 fetch('http://localhost:3001/register', {
                     method: 'POST',
                     headers: {
