@@ -58,10 +58,24 @@ export default class home extends Component {
         })
     }
     closeLogIn = () => {
+        let botones = document.getElementsByClassName("initialBtns");
+        for (let index = 0; index < botones.length; index++) {
+            const element = botones[index];
+            console.log(element);
+            element.classList.remove("hidde");
+        }
         this.setState({ logIn: false, alreadyLogged: false });
     };
     cierreExitoso = () => {
-        this.setState({ logIn: false, alreadyLogged: true });
+
+        this.setState({ logIn: false, alreadyLogged: true }, () => {
+            let botones = document.getElementsByClassName("initialBtns");
+            for (let index = 0; index < botones.length; index++) {
+                const element = botones[index];
+                console.log(element);
+                element.classList.remove("hidde");
+            }
+        });
         let token = Cookies.get("JSESSIONID");
         if (token) {
             fetch("https://futureguide.herokuapp.com/programas/area", {
@@ -102,7 +116,14 @@ export default class home extends Component {
     }
 
     openLogIn = () => {
-        this.setState({ logIn: true })
+        this.setState({ logIn: true });
+       let botones = document.getElementsByClassName("initialBtns");
+       for (let index = 0; index < botones.length; index++) {
+           const element = botones[index];
+           console.log(element);
+           element.classList.add("hidde");
+       }
+       
     };
 
     componentDidMount() {

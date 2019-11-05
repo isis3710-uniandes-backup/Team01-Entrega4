@@ -50,14 +50,17 @@
 }
 
 .menu__level{padding: 0;}
-.menu__item {display: block; background-color: transparent;}
+.menu__item {
+    display: block; 
+    }
 
 .menu__link {
     font-weight: 600;
-    position: relative;
+   /* position: relative;*/
     display: block;
     padding: 1vw 2.5vw 1vw 1.5vw;
     color: #edf7f6 ;
+    background-color: transparent;
     -webkit-transition: color 0.1s;
     transition: color 0.1s;
     font-size: 1vw;

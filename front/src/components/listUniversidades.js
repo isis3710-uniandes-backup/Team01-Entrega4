@@ -1,5 +1,6 @@
 import React from 'react';
-import Universidad from './universidad';
+import Universidad from './detailUniversidad';
+import '../styles/listUniversidades.css'
 
 export default class ListUniversidades extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class ListUniversidades extends React.Component {
         return (
             <div>
                 {this.state.universidades ?
-                    <div className="row">
+                    <div className="row" id="list">
                         {this.state.universidades.map((e, i) => <  Universidad programa={this.state.programa} key={i} universidad={e} />)}
                     </div> : false}
             </div>

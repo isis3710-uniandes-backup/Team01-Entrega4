@@ -197,7 +197,7 @@ export default class register extends Component {
                                 <Form.Label>Usuario</Form.Label>
 
                                 <Form.Control id="username" required type="text" className={`form-control ${this.state.usernameError ? 'is-invalid register-form-control-username ' : 'register-form-control-username'}`} placeholder="Dinos como quieres que te llamemos... "
-                                    onChange={this.changeValue} title="Username">
+                                    onChange={this.changeValue} title="Username"  aria-label="Username">
                                 </Form.Control>
                                 <div className='invalid-feedback'>{this.state.usernameError}</div>
                                 {checkUsername ? <div /> : <strong className="`valid`ation">*Rellena este campo</strong>}
@@ -206,14 +206,14 @@ export default class register extends Component {
                             <Form.Group >
                                 <Form.Label>Nombre</Form.Label>
                                 <Form.Control id="name" required type="text" className="form-control" placeholder="Nombre "
-                                    onChange={this.changeValue} title="Nombre">
+                                    onChange={this.changeValue} title="Nombre" aria-label="Nombre">
                                 </Form.Control>
                                 {checkName ? <div /> : <strong className="validation">*Rellena este campo</strong>}
                             </Form.Group>
                             <Form.Group >
                                 <Form.Label>Correo</Form.Label>
                                 <Form.Control id="email" required type="text" className={`form-control ${this.state.emailError ? 'is-invalid ' : ''}`} placeholder="Brindanos tu correo... "
-                                    onChange={this.changeValue} title="Correo">
+                                    onChange={this.changeValue} title="Correo" aria-label="Correo">
                                 </Form.Control>
                                 <div className='invalid-feedback'>{this.state.emailError}</div>
                                 {checkEmail ? <div /> : <strong className="validation">*Rellena este campo</strong>}
@@ -221,7 +221,7 @@ export default class register extends Component {
                             <Form.Group >
                                 <Form.Label>Contraseña</Form.Label>
                                 <Form.Control id="password" required type="password" className={`form-control ${this.state.passwordError ? 'is-invalid ' : ''}`} placeholder="Contraseña "
-                                    onChange={this.changeValue} title="Completa este campo.">
+                                    onChange={this.changeValue} title="Completa este campo." aria-label="Contrasenia usada">
                                 </Form.Control>
                                 <div className='invalid-feedback'>{this.state.passwordError}</div>
                                 {checkPassword ? <div /> : <strong className="validation">*Rellena este campo</strong>}

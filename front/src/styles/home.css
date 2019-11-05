@@ -18,6 +18,10 @@ body{
     
 }
 
+.hidde{
+    display: none;
+}
+
 #searchButton{
     border-radius: 8px;
     border-style: 0.5rem solid #da2f2f;
