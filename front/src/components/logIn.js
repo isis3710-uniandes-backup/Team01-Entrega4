@@ -24,14 +24,14 @@ class LogIn extends Component {
         if (this.props.mostrar !== prevProps.mostrar) {
             this.setState({ show: this.props.mostrar });
         }
-    }
+    } 
     logIn() {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
             console.log(data);
 
-            fetch("http://futureguide.herokuapp.com" + "/login", {
+            fetch("http://localhost:3001" + "/login", {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: {
