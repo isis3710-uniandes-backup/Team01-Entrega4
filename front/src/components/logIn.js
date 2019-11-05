@@ -128,7 +128,7 @@ class LogIn extends Component {
 
                 <Modal show={this.state.show} onHide={this.hide}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Iniciar Sesion</Modal.Title>
+                        <Modal.Title >¡Vamos de nuevo!</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>

@@ -33,10 +33,21 @@ class Usuarios {
      * @param {*} res 
      */
     getUser(req, res) {
+
         let username = req.params.username;
         conn.then(client => {
-            let user = client.db(databaseName).collection("usuarios").findOne({ _id: username });
-            res.send(user);
+            client.db(databaseName).collection("usuarios").findOne({ _id: username }, (err, result)=> {
+                if(err){
+                    throw err
+                }
+                if(result === null){
+                    res.status(400);
+
+                }
+                else{
+                    res.send(result);
+                }
+            });
         })
     }
     /**
