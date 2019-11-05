@@ -13,7 +13,14 @@ export default class futureguide extends Component {
         super(props);
         this.state = {
             logueado: false,
+            usuario: ""
         }
+    }
+
+    loguear(usuario){
+        this.setState({
+            usuario: usuario
+        });
     }
 
     render() {
@@ -21,14 +28,18 @@ export default class futureguide extends Component {
                 <BrowserRouter>
                     <div>
                         <Switch>
-                        <Route exact path="/" component={Home} />
+                        <Route exact path="/">
+                            <Home logFunc={this.loguear}/>
+                        </Route>
                         <Route exact path="/register">
                             <Register logueado={this.state.logueado}/>
                         </Route>
                         <Route path="*">
                             <Navbar/>
                             <Switch>
-                                <Route exact path="/perfil" component={Perfil} />
+                                <Route exact path="/perfil" >
+                                    <Perfil username={this.state.usuario} />
+                                </Route>
                                 <Route exact path="/carreras" component={Listas} />
                                 <Route exact path="/universidad/:nombre/programa/:name" component={DetailCareer}/>
                             </Switch>

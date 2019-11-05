@@ -201,7 +201,7 @@ export default class home extends Component {
                     {!this.state.alreadyLogged ?
                         <div className="form-inline">
                             <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
-                            <LogIn mostrar={this.state.logIn} cierreExitoso={this.cierreExitoso} cerrar={this.closeLogIn} />
+                            <LogIn mostrar={this.state.logIn} cierreExitoso={this.cierreExitoso} cerrar={this.closeLogIn} logFunc={this.props.logFunc}/>
                             <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
                             <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
                         </div>

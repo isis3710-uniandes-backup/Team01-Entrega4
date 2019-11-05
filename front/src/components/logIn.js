@@ -13,7 +13,8 @@ class LogIn extends Component {
         this.state = {
             usuario: "",
             password: "",
-            show: this.props.mostrar
+            show: this.props.mostrar,
+            logFunc: this.props.logFunc
         };
         this.changeValue = this.changeValue.bind(this);
         this.logIn = this.logIn.bind(this);
@@ -28,8 +29,8 @@ class LogIn extends Component {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
-          //  let urlServer = "http://futureguide.herokuapp.com"
-          let urlServer = "http://localhost:3001"
+            let urlServer = "http://futureguide.herokuapp.com"
+          //let urlServer = "http://localhost:3001"
             fetch(urlServer + "/login", {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(data), // data can be `string` or {object}!
@@ -51,7 +52,7 @@ class LogIn extends Component {
                         draggable: true
                     });
                     this.hideSuccess();
-                    
+                    this.state.logFunc(this.state.usuario);
                 } 
                 else {
                     toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {
