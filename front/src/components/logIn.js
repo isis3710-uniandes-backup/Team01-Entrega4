@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const md5 = require("md5");
@@ -52,7 +51,6 @@ class LogIn extends Component {
                         pauseOnHover: true,
                         draggable: true
                     });
-
                     this.hideSuccess();
                 } else if (res.status === 500) {
                     toast.error('Error en el servidor', {

@@ -87,7 +87,7 @@ class Usuarios {
                         let newToken = jwt.sign({ username: username }, secretKey, { expiresIn: '3h' });
                         //necesito investigar si desde aqui la cookie queda para el navegador del cliente
                         res.cookie('JSESSIONID', newToken, { httpOnly: false});
-                        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+                        res.header('Access-Control-Allow-Origin', 'http://futureguide.herokuapp.com');
                         res.header('Access-Control-Allow-Credentials', 'true');
                         res.send('Login existoso');
                     }
