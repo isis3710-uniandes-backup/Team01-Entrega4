@@ -5,6 +5,7 @@ import Perfil from './perfil';
 import Register from './registro';
 import Home from './home';
 import DetailCareer from './detailCareer';
+import Listas from './listas'
 
 export default class futureguide extends Component {
 
@@ -28,6 +29,7 @@ export default class futureguide extends Component {
                             <Navbar/>
                             <Switch>
                                 <Route exact path="/perfil" component={Perfil} />
+                                <Route exact path="/carreras" component={Listas} />
                                 <Route exact path="/universidad/:nombre/programa/:name" component={DetailCareer}/>
                             </Switch>
                         </Route>

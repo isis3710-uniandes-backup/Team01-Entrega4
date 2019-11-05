@@ -106,10 +106,13 @@ export default class navbar extends Component {
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-
-                            <li className="menu__item"><a className="menu__link" href="/"><i className="fas fa-home"></i> Home</a></li>
+                            <Link to="/">
+                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-home"></i>Home</div></li>
+                            </Link>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                            <Link to="/carreras">
+                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                            </Link>
                         </ul>
                     </div>
 

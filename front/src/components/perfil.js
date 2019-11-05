@@ -31,7 +31,6 @@ export default class perfil extends Component{
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            console.log("Habemus token");
             fetch("http://localhost:3001/usuarios/fg", {
                 method: 'GET',
                 headers: new Headers({
@@ -40,7 +39,6 @@ export default class perfil extends Component{
             })
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
                     this.setState({
                         username: json['_id'],
                         name: json['nombre'],
