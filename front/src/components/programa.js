@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card, Button, Image} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import "../styles/detailUniversidad.css"
 
 export default class Programa extends Component {
@@ -13,24 +13,22 @@ export default class Programa extends Component {
         }
         this.cambiarUniversidades = this.cambiarUniversidades.bind(this);
     }
-    cambiarUniversidades(){
+    cambiarUniversidades() {
         this.state.funcionUniversidades(this.state.universidades, this.state.nombre);
     }
 
     render() {
         return (
-            <Card onClick={this.cambiarUniversidades} id="Programa">
-                <Card.Body >
-                    <Card.Title>
-                    <div className="row">
-                        <div className="col">
-                            <h3 id="nombreprograma" ><strong>Nombre: {this.state.nombre}</strong></h3>
-                        </div>
-                    </div>
-                    </Card.Title>
-                        <h5>Area: {this.area}</h5>
-                </Card.Body>
-            </Card>    
+            <div className="col-12 marginBottom">
+                <Card onClick={this.cambiarUniversidades} id="Programa">
+                    <Card.Body >
+                        <Card.Title>
+                            <h3 id="nombreprograma" >{this.state.nombre}</h3>
+                        </Card.Title>
+                        <h5 id="area">Área: {this.state.area}</h5>
+                    </Card.Body>
+                </Card>
+            </div>
         )
     }
 }

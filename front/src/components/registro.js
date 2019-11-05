@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../styles/registro.css';
 import Swal from "sweetalert2";
@@ -7,7 +6,6 @@ const md5 = require("md5");
 
 
 
-let check = false;
 let checkUsername = true;
 let checkName = true;
 let checkEmail = true;
@@ -60,7 +58,7 @@ export default class register extends Component {
                         })
                     }
                 }
-                fetch('http://localhost:3001/usuarios/' + this.state.username, {
+                fetch('https://futureguide.herokuapp.com/usuarios/' + this.state.username, {
                     method: 'GET'
                 })
                     .then(res => res.status === 200 ? res.json() : null)
@@ -143,7 +141,7 @@ export default class register extends Component {
                 };
                 let boddy = JSON.stringify(json);
                 console.log(boddy);
-                fetch('http://localhost:3001/register', {
+                fetch('https://futureguide.herokuapp.com/register', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

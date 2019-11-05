@@ -62,24 +62,8 @@ export default class home extends Component {
     };
     cierreExitoso = () => {
         this.setState({ logIn: false, alreadyLogged: true });
-
-    }
-
-    openLogIn = () => {
-        this.setState({ logIn: true })
-    };
-
-    componentDidMount() {
-
-        if(this.props.location.state)
-        {
-            this.closeSession();
-        }
-
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            console.log("Habemus token");
-
             fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
@@ -114,6 +98,53 @@ export default class home extends Component {
         else {
             console.log("Loguese");
         }
+
+    }
+
+    openLogIn = () => {
+        this.setState({ logIn: true })
+    };
+
+    componentDidMount() {
+        if(this.props.location.state)
+        {
+            this.closeSession();
+        }
+        let token = Cookies.get("JSESSIONID");
+        if (token) {
+            fetch("https://futureguide.herokuapp.com/programas/area", {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
+            })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success === false) {
+
+                    }
+                    else {
+                        let objectFinal = [];
+                        json.forEach(element => {
+                            objectFinal.push({
+                                name: element._id,
+                                results: element.programs
+                            })
+                        });
+                        this.setState({
+                            programsByArea: objectFinal,
+                            programsBackUp: objectFinal,
+                            alreadyLogged: true
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            console.log("Loguese");
+        }
     }
 
     render() {
@@ -132,7 +163,7 @@ export default class home extends Component {
                     pauseOnHover
                 />
                 <nav className="navbar sticky-top navbar-light bg-light">
-                    <a className="navbar-brand" href="/">
+                    <a className="navbar-brand" href="/" tabIndex="-1">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
      
@@ -165,7 +196,7 @@ export default class home extends Component {
                                 )}
                             </datalist>
                         </div>
-                        <Link className="btn disabled" id="searchButton" aria-disabled="true" onClick={this.search} to={{
+                        <Link className="btn disabled" id="searchButton" aria-disabled="true" tabIndex="-1" onClick={this.search} to={{
                             pathname: `/programa/${this.state.valueSearched}`,
                             state: {}
                         }}>Buscar</Link>

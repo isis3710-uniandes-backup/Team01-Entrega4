@@ -6,22 +6,30 @@ export default class ListUniversidades extends React.Component {
         super(props);
         this.state = {
             universidades: this.props.universidades,
-            programa: this.props.programa
+            programa: this.props.nombrePrograma
         }
     }
 
-    componentDidUpdate( prevProps){
-        if (this.props.universidades !== prevProps.universidades) {
-            this.setState({ universidades: this.props.universidades });
+    componentDidUpdate(prevProps) {
+        if (this.props.universidades !== prevProps.universidades) 
+        {
+            this.setState(
+                {
+                    universidades: this.props.universidades,
+                    programa: this.props.nombrePrograma
+                }
+            );
         }
     }
 
     render() {
+        console.log()
         return (
             <div>
-                <div className="row">
-                    {this.state.universidades.map((e, i) => <  Universidad  programa={this.props.programa}  key={i} universidad={e} />)}
-                </div>
+                {this.state.universidades ?
+                    <div className="row">
+                        {this.state.universidades.map((e, i) => <  Universidad programa={this.state.programa} key={i} universidad={e} />)}
+                    </div> : false}
             </div>
         )
     };
