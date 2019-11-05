@@ -71,13 +71,13 @@ export default class perfil extends Component{
                     <div className="row">
                         <div id="list-example" className="list-group">
                             {this.state.comentarios.map((e,index) =>
-                                <a key={index} className="list-group-item list-group-item-action" href={"#list-item-"+(index+1)}>Reseña {index+1}</a>
+                                <a key={index} className="list-group-item list-group-item-action" href={"#list-item-"+(index)}>Reseña {index+1}</a>
                             )}
                         </div>
-                        <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
+                        <div data-target="#list-example" data-offset="0" className="scrollspy-example">
                             {this.state.comentarios.map((e,i)=>
-                                <div key={i+1}>
-                                    <h4 id={"list-item-"+(i+1)}>{e['titulo']}</h4>
+                                <div key={i}>
+                                    <h4 id={"list-item-"+(i)}>{e['titulo']}</h4>
                                     <p>{e['descripcion']}</p>
                                     <hr></hr>
                                 </div>
