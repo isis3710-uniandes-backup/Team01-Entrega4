@@ -18,7 +18,8 @@ export default class home extends Component {
         valueSearched: "",
         registro: false,
         logIn: false,
-        alreadyLogged: false
+        alreadyLogged: false,
+        vToken : false
     }
 
     closeRegistro=  ()=>{
@@ -115,6 +116,12 @@ export default class home extends Component {
 
     }
 
+    showToken = () => {
+        this.setState({
+            vToken : !this.state.vToken
+        })
+    }
+
     openLogIn = () => {
         this.setState({ logIn: true });
        let botones = document.getElementsByClassName("initialBtns");
@@ -133,6 +140,9 @@ export default class home extends Component {
         }
         let token = Cookies.get("JSESSIONID");
         if (token) {
+            this.setState({
+                alreadyLogged : true
+            })
             fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
@@ -187,7 +197,8 @@ export default class home extends Component {
                     <a className="navbar-brand" href="/" tabIndex="-1">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
-     
+
+                    {this.state.vToken ? <h1 id="token">{Cookies.get('JSESSIONID')}</h1> : false}
                     {!this.state.alreadyLogged ?
                         <div className="form-inline">
                             <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
@@ -197,6 +208,7 @@ export default class home extends Component {
                         </div>
                         :
                         <div className="form-inline">
+                            <button className="btn initialBtns" onClick={this.showToken}>Backend</button>
                         <Link to="/carreras">
                             <button className="btn initialBtns">Explorar</button>
                         </Link>

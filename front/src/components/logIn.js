@@ -40,7 +40,7 @@ class LogIn extends Component {
             .then(json => {
                 Cookies.set('JSESSIONID', json.token );
                 if (json) {
-                    toast.success('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
+                    toast('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
                         containerId : 'A',
                         position: "bottom-right",
                         autoClose: 2000,
@@ -77,7 +77,7 @@ class LogIn extends Component {
             }
             );
         } else {
-            toast.info('Debes llenar todos los campos.', {
+            toast('Debes llenar todos los campos.', {
                 containerId : 'A',
                 position: "top-center",
                 autoClose: 1000,
