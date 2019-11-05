@@ -16,17 +16,18 @@ export default class futureguide extends Component {
 
     render() {
         return (
-            
                 <BrowserRouter>
                     <div>
                         <Switch>
                         <Route exact path="/" component={Home} />
+                        <Route exact path="/register">
+                            <Register logueado={this.state.logueado}/>
+                        </Route>
                         <Route path="*">
                             <Navbar/>
-                            <Route exact path="/register">
-                                <Register logueado={this.state.logueado}/>
-                            </Route>
-                            <Route exact path="/perfil" component={Perfil} />
+                            <Switch>
+                                <Route exact path="/perfil" component={Perfil} />
+                            </Switch>
                         </Route>
                         </Switch>
                     </div>
