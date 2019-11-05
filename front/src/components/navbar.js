@@ -153,7 +153,7 @@ export default class navbar extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <Link to="/carreras">
-                                        <li className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                                        <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></div>
                                     </Link>
                                 </div>
                             </div>
@@ -164,18 +164,22 @@ export default class navbar extends Component {
                         <div className="col-5 d-none d-sm-block col_der">
                             <div className="row">
                                 <div className="col-6">
-                                    <li className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
-                                        <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                                    </div></li>
+                                {!this.state.alredyLogged ? 
+                                                  <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
+                                                  <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
+                                              </div>
+                                              </div> :    <div className="menu_movil__item"><a className="menu_movil__link" href="/perfil/"><i className="fas fa-user-tie"></i>Perfil</a></div>
+ }
+                  
                                 </div>
                                 <div className="col-6">
-                                    <li className="menu_movil__item">
+                                    <div className="menu_movil__item">
                                         <Link className="menu_movil__link" to="/">
                                             <i className="fas fa-sign-out-alt"></i>
                                             Salir
                                         </Link>
 
-                                    </li>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -195,10 +199,13 @@ export default class navbar extends Component {
                         </div>
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">
+                                {!this.state.alredyLogged ? 
                                 <div className="col-6">
                                     <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></div>
                                     <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                                </div>
+                                </div> : <div className="col-6">
+                                    <div className="menu_movil__item"><Link to="/perfil/" className="menu_movil__link"><i className="fas fa-user-tie"></i></Link></div>
+                                </div> }
                                 <div className="col-6">
                                     <div className="menu_movil__item">
                                         <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
