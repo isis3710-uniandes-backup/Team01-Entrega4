@@ -28,7 +28,7 @@ export default class Listas extends Component {
             }).then(
                 resp=>{this.setState({programas:resp.json()})}
             )
-        }   
+        }
     }
 
     actualizarUniversidades(pUniversidades,pNombrePrograma)

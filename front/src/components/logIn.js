@@ -29,7 +29,6 @@ class LogIn extends Component {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
-            console.log(data['password']);
 
             fetch("https://futureguide.herokuapp.com" + "/login", {
                 method: 'POST', // or 'PUT'
