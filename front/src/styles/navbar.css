@@ -56,7 +56,7 @@
 
 .menu__link {
     font-weight: 600;
-   /* position: relative;*/
+    position: relative;
     display: block;
     padding: 1vw 2.5vw 1vw 1.5vw;
     color: #edf7f6 ;

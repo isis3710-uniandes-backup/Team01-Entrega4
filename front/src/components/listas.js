@@ -67,10 +67,10 @@ export default class Listas extends Component {
         }
         return (
             <Row className="container-fluid listas">
-                <Col id="ListaProgramas">
+                <Col className="col-6" id="ListaProgramas">
                     <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                 </Col>
-                <Col id="ListaUniversidades">
+                <Col className="col-6" id="ListaUniversidades">
                     <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
                 </Col>
             </Row>
