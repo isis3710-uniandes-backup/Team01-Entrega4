@@ -26,7 +26,7 @@ p{
 
 .card-body h5{font-size: 1vw;font-style: italic}
 .programa-title h3{font-size: 2vw}
-#Programa:hover{background-color: #00c0be;cursor:pointer}
+#Universidad:hover{background-color: #00c0be;cursor:pointer}
 
 @media only screen and (max-width: 500px) {
     .Universidad {
