@@ -56,7 +56,7 @@
 
 .menu__link {
     font-weight: 600;
-   /* position: relative;*/
+    position: relative;
     display: block;
     padding: 1vw 2.5vw 1vw 1.5vw;
     color: #edf7f6 ;
@@ -96,7 +96,7 @@
 .logo_movil img{width: 60%;}
 
 .menu_movil__link {
-    top: 6%;
+    top: 35%;
     font-weight: 600;
     position: relative;
     display: block;

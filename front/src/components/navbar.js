@@ -187,7 +187,7 @@ export default class navbar extends Component {
 
                         <div className="col-5 d-block d-sm-none col_izq">
                             <div className="row">
-                                <div className="col-12">
+                                <div className="col-12 text-center">
                                     <Link aria-label="Vamos a ver los programas..." to="/carreras">
                                         <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
                                     </Link>

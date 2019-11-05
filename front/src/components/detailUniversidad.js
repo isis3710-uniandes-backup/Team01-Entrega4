@@ -33,7 +33,7 @@ export default class universidad extends Component {
                                 <br></br>
                                 <Image id="LogoUniversidad" src={this.state.imagen}></Image>
                                 </div>
-                                <div className="col-9">
+                                <div className="col-9 detailUniversidad-info">
                                     <p>Puesto a nivel nacional: {this.state.puestoNacional}</p>
                                     <p>Puesto a nivel internacional: {this.state.puestoInternacional}</p>
                                     <p>{this.state.direccion}</p>
