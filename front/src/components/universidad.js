@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from "react-router-dom";
+import '../styles/universidad.css'
 
 export default class universidad extends Component {
     constructor(props) {
@@ -29,15 +30,15 @@ export default class universidad extends Component {
             }}/>
         }
         return (
-            <div className="col-12">
-                <div className="card" onClick={this.detail}>
-                <div className="card-header">{this.state.nombre}</div>
+            <div className="col-12 universidad-col">
+                <div className="card universidad-card" onClick={this.detail}>
+                <div className="card-header universidad-header">{this.state.nombre}</div>
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-md-4">
-                            <img className="lib-img-show img-fluid" alt="logo universidad" height="100" width="100" src={this.state.imagen} />
+                        <div className="col-4">
+                            <img className="lib-img-show img-fluid universidad-img" alt="logo universidad" src={this.state.imagen} />
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-8 universidad-info">
                             <h5>{this.state.direccion}</h5>
                             <p>Puesto nacional : <strong>{this.state.puesto}</strong></p>
                         </div>

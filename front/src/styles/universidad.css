@@ -1,0 +1,18 @@
+.universidad-col{margin-bottom: 10px}
+.universidad-header{font-size: 1vw}
+.universidad-img{
+   height: 8vw;
+    width: 8vw;
+}
+.universidad-info h5{font-size: 1.2vw}
+.universidad-info p{font-size: 1.5vw}
+.universidad-card:hover{background-color: #00c0be;cursor:pointer}
+
+@media (max-width: 768px) {
+    .universidad-header{font-size: 2vw}
+    .universidad-info h5{font-size: 1.7vw}
+    .universidad-info p{font-size: 2vw}
+    .universidad-img{
+        height: 8vw;
+    }
+}

@@ -23,7 +23,6 @@ export default class ListUniversidades extends React.Component {
     }
 
     render() {
-        console.log()
         return (
             <div>
                 {this.state.universidades ?

@@ -16,8 +16,19 @@
     width: 80px;
     height: 80px;
 }
+
+.card-body h5{font-size: 1vw;font-style: italic}
+.programa-title h3{font-size: 2vw}
+#Programa:hover{background-color: #00c0be;cursor:pointer}
+
 @media only screen and (max-width: 500px) {
     .universidad {
       width: 99% !important;
     }
   }
+
+@media (max-width: 768px) {
+    .card-body h5{font-size: 1.5vw;font-style: italic}
+    .programa-title h3{font-size: 2.8vw}
+}
+

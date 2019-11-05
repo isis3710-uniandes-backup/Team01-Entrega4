@@ -22,7 +22,7 @@ export default class Programa extends Component {
             <div className="col-12 marginBottom">
                 <Card onClick={this.cambiarUniversidades} id="Programa">
                     <Card.Body >
-                        <Card.Title>
+                        <Card.Title className="programa-title">
                             <h3 id="nombreprograma" >{this.state.nombre}</h3>
                         </Card.Title>
                         <h5 id="area">Área: {this.state.area}</h5>

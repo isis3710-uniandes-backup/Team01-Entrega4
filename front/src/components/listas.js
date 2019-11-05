@@ -60,6 +60,10 @@ export default class Listas extends Component {
     }
 
     render() {
+        let token = Cookies.get("JSESSIONID");
+        if (!token) {
+            return <Redirect to='/' />
+        }
         return (
             <Row className="container-fluid listas">
                 <Col id="ListaProgramas">
