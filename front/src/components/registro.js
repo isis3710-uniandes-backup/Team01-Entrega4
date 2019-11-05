@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { Modal, Button, Form, FormControl } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import '../styles/registro.css';
-import Cookies from 'js-cookie';
 import Swal from "sweetalert2";
-const url = "";
+const md5 = require("md5");
+
 
 
 let check = false;
@@ -13,7 +13,7 @@ let checkName = true;
 let checkEmail = true;
 let checkPassword = true;
 
-export default class register extends Component{
+export default class register extends Component {
 
     constructor(props) {
         super(props);
@@ -23,13 +23,14 @@ export default class register extends Component{
             email: "",
             password: "",
             changeLogInStatus: this.props.changeLogInStatus,
-            //logFunc: this.props.logFunc,
             logueado: this.props.logueado,
-            show:false
-            };
+            show: false,
+            usernameError: null,
+            emailError: null,
+            passwordError: null
+        };
         this.changeValue = this.changeValue.bind(this);
         this.signUp = this.signUp.bind(this);
-        this.validate = this.validate.bind(this);
         this.hide = this.hide.bind(this);
 
     }
@@ -49,170 +50,196 @@ export default class register extends Component{
     changeValue(e) {
         if (e.target.id === "username") {
             this.setState({
+                usernameError: null,
                 username: e.target.value
+            }, () => {
+                if (this.state.usernameError === null) {
+                    if (this.state.username.length < 6) {
+                        this.setState({
+                            usernameError: 'Su nombre de usuario debe tener más de 6 caracteres'
+                        })
+                    }
+                }
+                fetch('http://localhost:3001/usuarios/' + this.state.username, {
+                    method: 'GET'
+                })
+                    .then(res => res.status === 200 ? res.json() : null)
+                    .then(json => {
+                        if (json) {
+                            if (json._id === this.state.username) {
+                                console.log("Ya existe");
+                                this.setState({
+                                    usernameError: 'El usuario ya existe, intente otro'
+                                })
+                            }
+                        }
+                    })
             });
         }
-        else if(e.target.id === "name") {
+        else if (e.target.id === "name") {
             this.setState({
                 name: e.target.value
             });
-            if(e.target.id !== "")
+            if (e.target.id !== "")
                 checkName = true;
         }
-        else if(e.target.id === "email") {
+        else if (e.target.id === "email") {
             this.setState({
-                email: e.target.value
+                email: e.target.value,
+                emailError: null
+            }, () => {
+                if (this.state.emailError === null) {
+                    if (!this.state.email.includes("@")) {
+                        this.setState({
+                            emailError: 'Correo inválido.'
+                        })
+                    }
+                }
             });
-            if(e.target.id !== "")
+            if (e.target.id !== "")
                 checkEmail = true;
         }
-        else if(e.target.id === "password") {
+        else if (e.target.id === "password") {
             this.setState({
-                password: e.target.value
+                password: e.target.value,
+                passwordError: null
+            }, () => {
+                if (this.state.passwordError === null) {
+                    if (!(/\d/.test(this.state.password) && /[A-Z]/.test(this.state.password))) {
+                        this.setState({
+                            passwordError: 'Tu contraseña debe contener por lo menos un caracter numérico y una mayúscula.'
+                        })
+                    }
+
+
+                }
             });
-            if(e.target.id !== "")
+            if (e.target.id !== "")
                 checkPassword = true;
         }
     }
+    signUp() {
 
-    //usernameCheck(username){
-    //  let user = Users.findOne({username: username});
-    //  return user==null ? false:true;
-    //}
+        try {
+          let checkUsername = false;
+           let checkEmail = false;
+            let checkName = false;
+            let checkPassword = false;
+            if (this.state.username !== "" && this.state.usernameError === null)
+                checkUsername = true;
+            if (this.state.name !== "")
+                checkName = true;
+            if (this.state.email !== "" && this.state.emailError === null)
+                checkEmail = true;
+            if (this.state.password !== "" && this.state.passwordError === null)
+                checkPassword = true;
 
-    validate(){
-        checkUsername = false;
-        checkEmail = false;
-        checkName = false;
-        checkPassword = false;
-        if(this.state.username !== "")
-            checkUsername = true;
-        if(this.state.name !== "")
-            checkName = true;
-        if(this.state.email !== "")
-            checkEmail = true;
-        if(this.state.password !== "")
-            checkPassword = true;
-        if(checkUsername && checkPassword && checkEmail && checkName)
-            this.signUp();
+            if (checkEmail && checkName && checkPassword && checkUsername) {
+                let json = {
+                    _id: this.state.username,
+                    nombre: this.state.name,
+                    correo: this.state.email,
+                    password: md5(this.state.password)
+                };
+                let boddy = JSON.stringify(json);
+                fetch('http://localhost:3001/register', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                      },
+                    body: boddy,
 
-            return <Redirect to={{
-                pathname : '/',
-            }} />;
-    }
-
-    signUp(){
-
-        let token = Cookies.get("JSESSIONID");
-        var userFind;
-        if (token) {
-            console.log("Habemus token");
-            fetch(url+'/usuarios/' + this.state.username, {
-                method: 'GET',
-                headers: new Headers({
-                    'Authorization': token
                 })
-            })
-            .then(res => res.json())
-            .then(data => userFind = data[0]);
-            console.log(userFind);
-
-            if (userFind === undefined) {
-                try {
-                        fetch(url+'/register', {
-                            method: 'POST', // or 'PUT'
-                            body: JSON.stringify({
-                                username: this.state.username,
-                                name: this.state.name,
-                                email: this.state.email,
-                                password: this.state.password
-                            }),
-                            headers: new Headers({
-                                'Authorization': token
-                            })
-                        })
-                        .then(res => {
-                                res.json()
-                                if (res.status === 200) {
-                                    Swal.fire({
-                                        type: 'success',
-                                        title: 'Registro exitoso',
-                                        text: '¡Diviértete en nuestra plataforma!',
-                                        timer: 2000
-                                    });
-                                    this.hide();
-                                } else if (res.status === 500) {
-                                    Swal.fire({
-                                        type: 'error',
-                                        title: 'Error en el servidor',
-                                        text: 'Vuelve a intentarlo',
-                                        timer: 1500
-                                    });
-                                }
-                            }
-
-                            ).catch(error => console.error('Error:', error));
-                    
-                } catch (e) {
-                    console.log(e);
- 
-                }
+                .then(res => {
+                        res.json()
+                        if (res.status === 200) {
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Registro exitoso',
+                                text: '¡Diviértete en nuestra plataforma!',
+                                timer: 2000
+                            });
+                            this.hide();
+                        } else if (res.status === 500) {
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Error en el servidor',
+                                text: 'Vuelve a intentarlo',
+                                timer: 1500
+                            });
+                        }
+                    }
+                    )
+                    .catch(error => console.error('Error:', error));
             }
+            else {
+                console.error("XD");
+            }
+
+        } catch (e) {
+            console.log(e);
+
         }
     }
+
 
     render() {
         return (
 
             <div>
-            <Modal show={this.state.show} onHide={this.hide}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Registrarse</Modal.Title>
-                </Modal.Header>
-                <Modal.Body id="Register" >
-                    <Form>
-                        <Form.Group >
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control id="username" required type="text" className="form-control register-form-control-username" placeholder="Username "
-                                onChange={this.changeValue} title="Completa este campo.">
-                            </Form.Control>
-                            {checkUsername ? <div/>:<strong className="validation">*Rellena este campo</strong>}
-                        </Form.Group>
+                <Modal show={this.state.show} onHide={this.hide}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>¡Únete a nuestra comunidad!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body id="Register" >
+                        <Form>
+                            <Form.Group >
+                                <Form.Label>Usuario</Form.Label>
 
-                        <Form.Group >
-                            <Form.Label>Nombre</Form.Label>
-                            <Form.Control id="name" required type="text" className="form-control" placeholder="Nombre "
-                                onChange={this.changeValue} title="Completa este campo.">
-                            </Form.Control>
-                            {checkName ? <div/>:<strong className="validation">*Rellena este campo</strong>}
-                        </Form.Group>
-                        <Form.Group >
-                            <Form.Label>Correo</Form.Label>
-                            <Form.Control id="email" required type="text" className="form-control" placeholder="Correo "
-                                onChange={this.changeValue} title="Completa este campo.">
-                            </Form.Control>
-                            {checkEmail ? <div/>:<strong className="validation">*Rellena este campo</strong>}
-                        </Form.Group>
-                        <Form.Group >
-                            <Form.Label>Contraseña</Form.Label>
-                            <Form.Control id="password" required type="password" className="form-control" placeholder="Contraseña "
-                                onChange={this.changeValue} title="Completa este campo.">
-                            </Form.Control>
-                            {checkPassword ? <div/>:<strong className="validation">*Rellena este campo</strong>}
-                        </Form.Group>
+                                <Form.Control id="username" required type="text" className={`form-control ${this.state.usernameError ? 'is-invalid register-form-control-username ' : 'register-form-control-username'}`} placeholder="Dinos como quieres que te llamemos... "
+                                    onChange={this.changeValue} title="Username">
+                                </Form.Control>
+                                <div className='invalid-feedback'>{this.state.usernameError}</div>
+                                {checkUsername ? <div /> : <strong className="`valid`ation">*Rellena este campo</strong>}
+                            </Form.Group>
 
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.hide}>
-                        Cerrar
+                            <Form.Group >
+                                <Form.Label>Nombre</Form.Label>
+                                <Form.Control id="name" required type="text" className="form-control" placeholder="Nombre "
+                                    onChange={this.changeValue} title="Nombre">
+                                </Form.Control>
+                                {checkName ? <div /> : <strong className="validation">*Rellena este campo</strong>}
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Correo</Form.Label>
+                                <Form.Control id="email" required type="text" className={`form-control ${this.state.emailError ? 'is-invalid ' : ''}`} placeholder="Brindanos tu correo... "
+                                    onChange={this.changeValue} title="Correo">
+                                </Form.Control>
+                                <div className='invalid-feedback'>{this.state.emailError}</div>
+                                {checkEmail ? <div /> : <strong className="validation">*Rellena este campo</strong>}
+                            </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Contraseña</Form.Label>
+                                <Form.Control id="password" required type="password" className={`form-control ${this.state.passwordError ? 'is-invalid ' : ''}`} placeholder="Contraseña "
+                                    onChange={this.changeValue} title="Completa este campo.">
+                                </Form.Control>
+                                <div className='invalid-feedback'>{this.state.passwordError}</div>
+                                {checkPassword ? <div /> : <strong className="validation">*Rellena este campo</strong>}
+                            </Form.Group>
+
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.hide}>
+                            Cerrar
                     </Button>
-                    <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.validate}>
-                        <strong>Registrarse</strong> 
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </div>
+                        <Button id="but" type="button" className="btnSubmit" value="Registrarse" onClick={this.signUp}>
+                            <strong>Registrarse</strong>
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
         )
     }
 }

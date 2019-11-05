@@ -21,7 +21,7 @@ router.get('/programas/:nombre/universidades', middleware.checkToken, Programs.g
 //router for usuarios
 Usuarios = new Usuarios();
 router.get('/usuarios', middleware.checkToken, Usuarios.getUsers);
-router.get('/usuarios/:username', middleware.checkToken, Usuarios.getUser);
+router.get('/usuarios/:username', Usuarios.getUser);
 //router for careers
 Careers = new Careers();
 router.get('/carrera/:nombreUniversidad/:nombrePrograma/comentarios', middleware.checkToken, Careers.getComments);

@@ -51,10 +51,6 @@ export default class home extends Component {
 
 
     }
-    search = () => {
-        console.log("...");
-
-    }
     closeSession = () => {
         Cookies.remove("JSESSIONID");
         this.setState({
