@@ -28,7 +28,6 @@ class LogIn extends Component {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
-
             let urlServer = "http://futureguide.herokuapp.com"
             fetch(urlServer + "/login", {
                 method: 'POST', // or 'PUT'
@@ -39,7 +38,6 @@ class LogIn extends Component {
                 }
             }).then(res => res.json())
             .then(json => {
-                console.log(json);
                 Cookies.set('JSESSIONID', json.token );
                 if (json) {
                     toast.success('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
