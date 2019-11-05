@@ -98,20 +98,24 @@ export default class navbar extends Component {
 
         return (
             <div>
-                <nav id="menu" className="menu d-none d-md-block">
+                <nav className="menu d-none d-md-block">
                     <Link to="/">
                         <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
                     </Link>
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
-                        <ul data-menu="main" className="menu__level">
+                        <div data-menu="main" className="menu__level">
                             <Link to="/">
-                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-home"></i>Home</div></li>
+                                <div className="menu__item">
+                                    <div className="menu__link" >
+                                        <i className="fas fa-home"></i>Home
+                                    </div>
+                                </div>
                             </Link>
                             <Link to="/carreras">
-                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                                <div className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></div>
                             </Link>
-                        </ul>
+                        </div>
                     </div>
 
                     <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
@@ -180,9 +184,9 @@ export default class navbar extends Component {
                         <div className="col-5 d-block d-sm-none col_izq">
                             <div className="row">
                                 <div className="col-12">
-                                <Link aria-label="Vamos a ver los programas..." to="/carreras">
-                                    <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
-                                </Link>
+                                    <Link aria-label="Vamos a ver los programas..." to="/carreras">
+                                        <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
