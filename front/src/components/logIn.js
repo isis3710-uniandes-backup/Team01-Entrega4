@@ -13,8 +13,7 @@ class LogIn extends Component {
         this.state = {
             usuario: "",
             password: "",
-            show: this.props.mostrar,
-            logFunc: this.props.logFunc
+            show: this.props.mostrar
         };
         this.changeValue = this.changeValue.bind(this);
         this.logIn = this.logIn.bind(this);
@@ -52,7 +51,6 @@ class LogIn extends Component {
                         draggable: true
                     });
                     this.hideSuccess();
-                    this.state.logFunc(this.state.usuario);
                 } 
                 else {
                     toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {

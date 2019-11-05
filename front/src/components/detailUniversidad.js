@@ -18,7 +18,6 @@ export default class universidad extends Component {
         }
     }
     render() {
-        console.log(this.state.nombre);
         return (
             <div  className="col-12 marginBottom">
                  <Link className="linkuniversidad" to ={{
@@ -40,8 +39,6 @@ export default class universidad extends Component {
                                     <p>{this.state.ciudad}</p>
                                 </div>
                             </div>
-                               
-
                                 
                         </Card.Body>
                     </Card>

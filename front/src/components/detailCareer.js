@@ -7,6 +7,7 @@ import timeImage from "../assets/imgs/alarm-clock.png"
 import cashImage from "../assets/imgs/cash.png"
 import acreditacionInternacionalImg from "../assets/imgs/global-marketing.png"
 import "../styles/detailCareer.css";
+import Swal from "sweetalert2";
 export default class detailCareer extends Component {
     state = {
         universidad: "",
@@ -23,13 +24,11 @@ export default class detailCareer extends Component {
     }
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
-        console.log(token);
         if (token) {
             let { nombre, name } = this.props.match.params;
              nombre = nombre.replace("+","");
              nombre = nombre.replace("+","");
 
-             console.log(nombre)
             fetch(`http://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
@@ -48,6 +47,71 @@ export default class detailCareer extends Component {
                     })
                 })
         }
+    }
+
+    reseña(){
+        Swal.mixin({
+            input: 'text',
+            confirmButtonText: 'Siguiente &rarr;',
+            showCancelButton: true,
+            confirmButtonColor: '#00c0be',
+            cancelButtonColor: '#464655',
+            cancelButtonText: 'Cancelar',
+            background: '#fff',
+            progressSteps: ['1', '2', '3']
+        }).queue([
+            {
+                title: 'Titulo',
+                input: 'text',
+                inputPlaceholder: 'Escribe el titulo de la reseña...',
+                inputAttributes: {
+                    'aria-label': 'Type your message here'
+                }
+            },
+            {
+                title: 'Reseña',
+                input: 'textarea',
+                inputPlaceholder: 'Escribe tu reseña aquí...',
+                inputAttributes: {
+                    'aria-label': 'Type your message here'
+                }
+            },
+            {
+                title: 'La Recomienda?',
+                input: 'checkbox',
+                inputValue: 0,
+                inputPlaceholder:
+                    'Seleccione si es así',
+                confirmButtonText: 'Publicar'
+            }
+        ]).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Publicado Exitosamente',
+                    toast: true,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+                let json = {
+                    titulo : result.value[0],
+                    descripcion : result.value[1],
+                    recomendada : result.value[2]
+                };
+                /*
+                let boddy = JSON.stringify(json);
+                let { nombre, name } = this.props.match.params;
+                nombre = nombre.replace("+","");
+                nombre = nombre.replace("+","");
+                fetch(`http://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}/${"comentarios"}`, {
+                    method: 'POST',
+                    body: boddy
+                }).then(()=>{
+                    console.log("TODO BIEN")
+                })*/
+            }
+        })
     }
     render() {
         let token = Cookies.get("JSESSIONID");
@@ -99,6 +163,11 @@ export default class detailCareer extends Component {
                                         </div>
                                     </div>
                             )}
+                            </div>
+                        </div>
+                        <div className="row boton">
+                            <div className="col-12 text-center">
+                                <button type="button" className="btn btn-success" onClick={this.reseña}>Agregar</button>
                             </div>
                         </div>
                     </div>

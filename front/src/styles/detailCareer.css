@@ -80,6 +80,10 @@
     font-family: 'Karla', sans-serif;
 
 }
+
+.boton{
+    margin-top: 10px;
+}
 body{
     background-color: transparent !important;
 }

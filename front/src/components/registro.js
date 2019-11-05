@@ -140,7 +140,6 @@ export default class register extends Component {
                     password: md5(this.state.password)
                 };
                 let boddy = JSON.stringify(json);
-                console.log(boddy);
                 fetch('https://futureguide.herokuapp.com/register', {
                     method: 'POST',
                     headers: {

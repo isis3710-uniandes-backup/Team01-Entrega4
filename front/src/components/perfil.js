@@ -28,20 +28,10 @@ export default class perfil extends Component{
         }
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.username !== this.props.username)
-        {
-            console.log("AQUI")
-            this.setState({
-                username : this.props.username
-            })
-        }
-    }
-
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            fetch("https://futureguide.herokuapp.com/usuarios/"+this.state.username, {
+            fetch("https://futureguide.herokuapp.com/usuarios/fg", {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token
@@ -72,13 +62,13 @@ export default class perfil extends Component{
                         <div className="col-8">
                             <div className="card-body perfil_body">
                                 <h5 className="card-title perfil_title">{this.state.username}</h5>
-                                <p className="card-text perfil_text"><b>Nombre:</b>{this.state.name}</p>
-                                <p className="card-text perfil_text"><b>Correo:</b>{this.state.email}</p>
-                                <p className="card-text perfil_text"><b>Contraseña:</b> {this.state.password}</p>
+                                <p className="card-text perfil_text"><b>Nombre:</b>{" " + this.state.name}</p>
+                                <p className="card-text perfil_text"><b>Correo:</b>{" " + this.state.email}</p>
+                                <p className="card-text perfil_text"><b>Contraseña:</b> {" " + this.state.password}</p>
                             </div>
                         </div>
                         <div className="col-4 text-center">
-                            <img src="http://img3.wikia.nocookie.net/__cb20130223054608/onepiece/es/images/4/44/Roronoa_Zoro_portrait.png" className="card-img rounded-circle perfil_img"alt="..."></img>
+                            <img src="http://lorempixel.com/350/350/" className="card-img rounded-circle perfil_img"alt="..."></img>
                         </div>
                     </div>
                 </div>

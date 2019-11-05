@@ -17,20 +17,12 @@ export default class futureguide extends Component {
         }
     }
 
-    loguear(usuario){
-        this.setState({
-            usuario: usuario
-        });
-    }
-
     render() {
         return (
                 <BrowserRouter>
                     <div>
                         <Switch>
-                        <Route exact path="/">
-                            <Home logFunc={this.loguear}/>
-                        </Route>
+                        <Route exact path="/" component={Home}/>
                         <Route exact path="/register">
                             <Register logueado={this.state.logueado}/>
                         </Route>
