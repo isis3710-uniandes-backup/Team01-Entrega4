@@ -155,7 +155,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-none d-sm-block col_med">
-                            <div className="logo_movil"><img src="Logo.png" alt="Logo de FutureGuide"></img></div>
+                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide1"></img></div>
                         </div>
                         <div className="col-5 d-none d-sm-block col_der">
                             <div className="row">
@@ -188,7 +188,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-block d-sm-none col_med">
-                            <div className="logo_movil"><img src="Logo.png" alt="Logo de FutureGuide"></img></div>
+                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide"></img></div>
                         </div>
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">
@@ -198,9 +198,7 @@ export default class navbar extends Component {
                                 </div>
                                 <div className="col-6">
                                 <li className="menu_movil__item">
-                                    <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
-                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
-                                </div>   
+                                    <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
                                 </li>
                                     
                                 </div>
