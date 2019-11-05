@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap';
-import "../styles/detailUniversidad.css"
+import "../styles/programa.css"
 
 export default class Programa extends Component {
     constructor(props) {
@@ -23,6 +23,7 @@ export default class Programa extends Component {
                 <Card onClick={this.cambiarUniversidades} id="Programa">
                     <Card.Body >
                         <Card.Title>
+                            <br></br>
                             <h3 id="nombreprograma" >{this.state.nombre}</h3>
                         </Card.Title>
                         <h5 id="area">Área: {this.state.area}</h5>
