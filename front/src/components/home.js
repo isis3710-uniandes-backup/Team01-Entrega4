@@ -229,7 +229,8 @@ export default class home extends Component {
                             </datalist>
                         </div>
                         <Link className="btn disabled" id="searchButton" aria-disabled="true" tabIndex="-1" onClick={this.search} to={{
-                            pathname: `/programa/${this.state.valueSearched}`,
+                          //  pathname: `/programas/${this.state.valueSearched}`,
+                          pathname : `carreras/`,
                             state: {}
                         }}>Buscar</Link>
                     </form>
