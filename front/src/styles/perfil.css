@@ -7,8 +7,9 @@
 .perfil_card{width: 61vw;}
 .perfil_img{width: 12vw;padding: 10% 0% 10%;}
 .perfil_body{padding: 2rem}
-.perfil_title{font-size: 4vw}
-.perfil_text{margin: 0;font-size: 1vw}
+.perfil_title{font-size: 4vw;
+}
+.perfil_text{margin: 0;font-size: 1vw; font-family: 'Karla', sans-serif}
 
 
 
@@ -20,8 +21,8 @@
     padding-left: 2%;
 }
 
-.scrollspy-example h4{font-size: 1.5vw;}
-.scrollspy-example p{font-size: 1vw;}
+.scrollspy-example h4{font-size: 1.5vw; font-family: 'Karla', sans-serif}
+.scrollspy-example p{font-size: 1vw; font-family: 'Karla', sans-serif}
 
 .list-group{width: 11vw; overflow-y: scroll; height: 22.4vw;}
 .list-group-item-action{padding: 1vw 1.25vw; font-size: 1vw}
