@@ -123,13 +123,13 @@ class LogIn extends Component {
                         <Form>
                             <Form.Group >
                                 <Form.Label>Usuario</Form.Label>
-                                <Form.Control id="usuario" type="text" placeholder="Usuario" onChange={this.changeValue} />
+                                <Form.Control id="usuario" type="text" placeholder="Usuario" aria-label="Usuario" onChange={this.changeValue} />
 
                             </Form.Group>
 
                             <Form.Group >
                                 <Form.Label>Contraseña</Form.Label>
-                                <Form.Control id="password" type="password" placeholder="Contraseña" onChange={this.changeValue} />
+                                <Form.Control id="password" type="password" placeholder="Contraseña" aria-label="Contrasenia" onChange={this.changeValue} />
                             </Form.Group>
                         </Form>
                     </Modal.Body>
