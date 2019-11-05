@@ -67,7 +67,7 @@ export default class Listas extends Component {
             return <Redirect to='/' />
         }
         return (
-            <Row className="container-fluid listas">
+            <Row className="container-fluid listas" role="main">
                 <Col className="col-6" id="ListaProgramas">
                     <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                 </Col>

@@ -68,20 +68,20 @@ export default class detailCareer extends Component {
                                 <strong className="atributosCareer">${this.state.costo}</strong>
 
                             </div>
-                            <li className="col-lg-6 col-xl-6 col-md-6 col-12x   list-group list-group-flush">
-                                <ul className="list-group-item  d-flex justify-content-between align-items-center">
+                            <ul className="col-lg-6 col-xl-6 col-md-6 col-12x   list-group list-group-flush">
+                                <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={timeImage} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
                                     <strong className="atributosCareer">{this.state.duracion} </strong> <strong className=" cursiveAnotation text-right">semestres.</strong>
-                                </ul>
-                                <ul className="list-group-item  d-flex justify-content-between align-items-center">
+                                </li>
+                                <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={cashImage} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
                                     <p className="atributosCareer">{this.state.salario}</p> <strong className=" cursiveAnotation text-right">en promedio.</strong>
-                                </ul>
-                                {this.state.acreditacionInternacional ? <ul className="list-group-item  d-flex justify-content-between align-items-center">
+                                </li>
+                                {this.state.acreditacionInternacional ? <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={acreditacionInternacionalImg} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
                                     <p className="atributosCareer">{this.state.acreditacionInternacional}</p>
-                                </ul> : false}
-                            </li>
+                                </li> : false}
+                            </ul>
                         </div>
                         <div className="row d-flex justify-content-center">
                             <div className="col-12 overflow">
