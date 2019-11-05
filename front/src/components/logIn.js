@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
 import {toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 import 'react-toastify/dist/ReactToastify.css';
 
 const md5 = require("md5");
@@ -31,19 +32,19 @@ class LogIn extends Component {
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
             console.log(data['password']);
 
-            let url = "http://localhost:3001";
-          //  let urlServer = "http://futureguide.herokuapp.com"
-            fetch(url + "/login", {
+            let urlServer = "http://futureguide.herokuapp.com"
+            fetch(urlServer + "/login", {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                },
-                credentials: 'include'
-
-            }).then(res => {
-                if (res.status === 200) {
+                }
+            }).then(res => res.json())
+            .then(json => {
+                console.log(json);
+                Cookies.set('JSESSIONID', json.token );
+                if (json) {
                     toast.success('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
                         containerId : 'A',
                         position: "bottom-right",
@@ -55,17 +56,7 @@ class LogIn extends Component {
                     });
                     this.hideSuccess();
                     
-                } else if (res.status === 500) {
-                    toast.error('Error en el servidor', {
-                        containerId : 'A',
-                        position: "bottom-right",
-                        autoClose: 1200,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true
-                    });
-                }
+                } 
                 else {
                     toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {
                         containerId : 'A',
@@ -77,8 +68,8 @@ class LogIn extends Component {
                         draggable: true
                     });
                 }
-            }
-            ).catch(error => {
+            })
+            .catch(error => {
                 toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {
                     containerId : 'A',
                     position: "top-center",

@@ -84,13 +84,9 @@ class Usuarios {
                 if (data) {
                     if (data.password === password) {
                         let newToken = jwt.sign({ username: username }, secretKey, { expiresIn: '3h' });
-                        //necesito investigar si desde aqui la cookie queda para el navegador del cliente
-                        res.cookie('JSESSIONID', newToken, { httpOnly: false});
-                        let url = "http://localhost:3000";
-                   //     let urlServer = "http://futureguide.herokuapp.com";
-                        res.header('Access-Control-Allow-Origin', url);
-                        res.header('Access-Control-Allow-Credentials', 'true');
-                        res.send('Login existoso');
+                        res.send({
+                            token : newToken
+                        });
                     }
                     else {
                         res.status(400).send('Contraseña incorrecta');
