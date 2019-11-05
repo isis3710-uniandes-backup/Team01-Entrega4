@@ -79,6 +79,7 @@ export default class home extends Component {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             console.log("Habemus token");
+
             fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
