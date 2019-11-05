@@ -142,7 +142,7 @@ export default class home extends Component {
             this.setState({
                 alreadyLogged : true
             })
-            fetch("https://futureguide.herokuapp.com/programas/area", {
+            fetch("http://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token
