@@ -32,7 +32,7 @@ class LogIn extends Component {
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
             console.log(data);
 
-            fetch("http://localhost:3001" + "/login", {
+            fetch("http://futureguide.herokuapp.com" + "/login", {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(data), // data can be `string` or {object}!
                 headers: {

@@ -1,43 +1,36 @@
-import React from 'react';
-import Universidad from './universidad';
+import React, { Component } from 'react'
+import {Card, Button, Image} from 'react-bootstrap';
+import "../styles/detailUniversidad.css"
 
-export default class Programa extends React.Component {
+export default class Programa extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            universidades: this.props.universidades,
-            univFilt : this.props.universidades,
-            criteria: ""
+            nombre: this.props.programa.nombre,
+            area: this.props.programa.area,
+            universidades: this.props.programa.universidades,
+            funcionUniversidades: this.props.funcionUniversidades
         }
+        this.cambiarUniversidades = this.cambiarUniversidades.bind(this);
     }
-    filtering = e => {
-        let criteria = e.target.value;
-        let filtered = this.state.univFilt;
-        let filtr = filtered.filter(
-            element => {
-                console.log(element.name.includes(criteria));
-                return element.name.includes(criteria);
-            }
-        );
-        if(criteria === '')
-        {
-            filtr = this.state.univFilt;
-        }
-        this.setState({
-            universidades: filtr,
-            criteria : criteria
-        });
+    cambiarUniversidades(){
+        this.state.funcionUniversidades(this.state.universidades, this.state.nombre);
     }
 
     render() {
         return (
-            <div>
-                <input className="form-control" type="text" id="myInput" onChange={this.filtering} value={this.state.criteria} placeholder="Busca por el nombre del evento deportivo.." />
-                <div className="row">
-                    {this.state.universidades.map((e, i) => <Universidad key={i} universidad={e} />)}
-                </div>
-            </div>
+            <Card onClick={this.cambiarUniversidades} id="Programa">
+                <Card.Body >
+                    <Card.Title>
+                    <div className="row">
+                        <div className="col">
+                            <h3 id="nombreprograma" ><strong>Nombre: {this.state.nombre}</strong></h3>
+                        </div>
+                    </div>
+                    </Card.Title>
+                        <h5>Area: {this.area}</h5>
+                </Card.Body>
+            </Card>    
         )
-    };
-
+    }
 }

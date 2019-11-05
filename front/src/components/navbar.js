@@ -4,7 +4,7 @@ import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
-import Programa from './programa';
+//import Programa from './programa';
 import Register from './registro';
 const Swal = require('sweetalert2');
 
@@ -100,20 +100,19 @@ export default class navbar extends Component {
         }
 
         return (
-
-
-
             <div>
-                    
                 <nav id="menu" className="menu d-none d-md-block">
                     <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
                     <div className="menu__wrap_1">
                         <ul data-menu="main" className="menu__level">
-
-                            <li className="menu__item"><a className="menu__link" href="/"><i className="fas fa-home"></i> Home</a></li>
+                            <Link to="/">
+                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-home"></i>Home</div></li>
+                            </Link>
                             <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                            <Link to="/carreras">
+                                <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
+                            </Link>
                         </ul>
                     </div>
 
@@ -159,7 +158,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-none d-sm-block col_med">
-                            <div className="logo_movil"><img src="Logo.png" alt="Logo de FutureGuide"></img></div>
+                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide1"></img></div>
                         </div>
                         <div className="col-5 d-none d-sm-block col_der">
                             <div className="row">
@@ -192,7 +191,7 @@ export default class navbar extends Component {
                             </div>
                         </div>
                         <div className="col-2 d-block d-sm-none col_med">
-                            <div className="logo_movil"><img src="Logo.png" alt="Logo de FutureGuide"></img></div>
+                            <div className="logo_movil"><img src="../Logo.png" alt="Logo de FutureGuide"></img></div>
                         </div>
                         <div className="col-5 d-block d-sm-none col_der">
                             <div className="row">
@@ -202,9 +201,7 @@ export default class navbar extends Component {
                                 </div>
                                 <div className="col-6">
                                 <li className="menu_movil__item">
-                                    <div className="menu__link" onClick={this.openRegistro}><i className="fas fa-sign-in-alt" />Registrarse
-                                    <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
-                                </div>   
+                                    <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
                                 </li>
                                     
                                 </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/perfil.css';
+import Cookies from "js-cookie";
 
 export default class perfil extends Component{
     constructor(props) {
@@ -27,6 +28,26 @@ export default class perfil extends Component{
         }
     }
 
+    componentDidMount() {
+        let token = Cookies.get("JSESSIONID");
+        if (token) {
+            fetch("http://localhost:3001/usuarios/fg", {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
+            })
+                .then(res => res.json())
+                .then(json => {
+                    this.setState({
+                        username: json['_id'],
+                        name: json['nombre'],
+                        email: json['correo']
+                    })
+                });
+        }
+    }
+
     render(){
         return(
             <div className="container-fluid perfil">
@@ -34,9 +55,9 @@ export default class perfil extends Component{
                     <div className="row no-gutters">
                         <div className="col-8">
                             <div className="card-body perfil_body">
-                                <h5 className="card-title perfil_title">Usuario 1</h5>
-                                <p className="card-text perfil_text"><b>Nombre:</b> Mateo Salcedo</p>
-                                <p className="card-text perfil_text"><b>Correo:</b> msalcedo@correo.com</p>
+                                <h5 className="card-title perfil_title">{this.state.username}</h5>
+                                <p className="card-text perfil_text"><b>Nombre:</b>{this.state.name}</p>
+                                <p className="card-text perfil_text"><b>Correo:</b>{this.state.email}</p>
                                 <p className="card-text perfil_text"><b>Contraseña:</b> {this.state.password}</p>
                             </div>
                         </div>
@@ -55,7 +76,7 @@ export default class perfil extends Component{
                         </div>
                         <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
                             {this.state.comentarios.map((e,i)=>
-                                <div key={i}>
+                                <div key={i+1}>
                                     <h4 id={"list-item-"+(i+1)}>{e['titulo']}</h4>
                                     <p>{e['descripcion']}</p>
                                     <hr></hr>
