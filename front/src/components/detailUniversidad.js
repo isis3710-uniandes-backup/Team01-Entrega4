@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Card, Button, Image} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import "../styles/detailUniversidad.css"
 
 export default class universidad extends Component {
@@ -18,6 +19,7 @@ export default class universidad extends Component {
     }
     render() {
         return (
+            <Link to ="/" >
             <Card id="Universidad" >
                 <Card.Body >
                     <Card.Title>
@@ -35,7 +37,8 @@ export default class universidad extends Component {
                         <h5>{this.direccion}</h5>
                         <h5>{this.ciudad}</h5>
                 </Card.Body>
-            </Card>    
+            </Card>
+            </Link>    
         )
     }
 }
