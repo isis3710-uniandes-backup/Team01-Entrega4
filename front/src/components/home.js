@@ -136,7 +136,6 @@ export default class home extends Component {
                             programsBackUp: objectFinal,
                             alreadyLogged: true
                         });
-                        console.log(this.state.programsByArea);
                     }
                 })
                 .catch(error => {

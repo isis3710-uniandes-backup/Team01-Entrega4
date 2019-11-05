@@ -28,23 +28,38 @@ export default class Listas extends Component {
                 resp=> resp.json()
             )
             .then(json => {
-                this.setState({programas:json}, () => {
-                    console.log(this.state);
-                })
+                this.setState({programas:json})
             })
         }   
     }
 
-    actualizarUniversidades(pUniversidades,pNombrePrograma)
-    {
+    actualizarUniversidades = (pUniversidades,pNombrePrograma)   =>  {
+        let token = Cookies.get("JSESSIONID");
+        let universidadesNuevas;
+        if (token) {
+        let urlServer = "https://futureguide.herokuapp.com";
+        fetch(urlServer+ `/programas/${pNombrePrograma}/universidades`, {
+            method: 'GET',
+            headers: new Headers({
+                'Authorization': token
+            })
+    })
+    .then(res => res.json())
+    .then(json => {
+        universidadesNuevas = json;
         this.setState({
-            universidades: pUniversidades,
+            universidades: universidadesNuevas,
             nombrePrograma: pNombrePrograma
+        }, () => {
+            console.log(this.state.universidades);
         })
+    })
+
+     
+    }
     }
 
     render() {
-        
         return (
             <Row>
                 <Col id="ListaProgramas">

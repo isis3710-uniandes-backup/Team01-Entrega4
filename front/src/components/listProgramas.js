@@ -1,6 +1,6 @@
 import React from 'react';
 import Programa from './programa';
-
+import '../styles/listPrograms.css';
 export default class ListProgramas extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +12,6 @@ export default class ListProgramas extends React.Component {
     componentDidUpdate(prevProps){
         if(prevProps.programas !== this.props.programas)
         {
-            console.log("Caramaba");
             this.setState({
                 programas : this.props.programas
             })
@@ -41,7 +40,7 @@ export default class ListProgramas extends React.Component {
         console.log(this.state);
         return (
             <div>
-                <div className="row">
+                <div className="row" id="macheting">
                     {this.state.programas.map((e, i) => <Programa funcionUniversidades={this.props.funcionUniversidades} key={i} programa={e} />)}
                 </div>
             </div>

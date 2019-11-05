@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from "react-router-dom";
 
 export default class universidad extends Component {
     constructor(props) {
@@ -7,26 +8,44 @@ export default class universidad extends Component {
             nombre: this.props.universidad.nombre,
             direccion: this.props.universidad.direccion,
             puesto: this.props.universidad.puestoNacional,
-            imagen: this.props.universidad.logo
+            imagen: this.props.universidad.logo,
+            goDetail : false,
+            programa : this.props.programa
 
         }
     }
+    detail= () => {
+        this.setState({
+            goDetail : true
+        })
+    }
     render() {
+        if(this.state.goDetail){
+            this.setState({
+                goDetail : false
+            })
+            return <Redirect to={{
+                pathname:  `/universidad/${this.state.nombre}/programa/${this.state.programa}`
+            }}/>
+        }
         return (
-            <div class="card">
-                <div class="card-header">{this.state.nombre}</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="lib-img-show" alt="logo universidad" height="100" width="100" src={this.state.logo} />
+            <div className="col-12">
+                <div className="card" onClick={this.detail}>
+                <div className="card-header">{this.state.nombre}</div>
+                <div className="card-body">
+                    <div className="row">
+                        <div className="col-md-4">
+                            <img className="lib-img-show img-fluid" alt="logo universidad" height="100" width="100" src={this.state.imagen} />
                         </div>
-                        <div class="col-md-8">
+                        <div className="col-md-8">
                             <h5>{this.state.direccion}</h5>
-                            <h5>{this.state.puesto}</h5>
+                            <p>Puesto nacional : <strong>{this.state.puesto}</strong></p>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
+            
         )
     }
 }

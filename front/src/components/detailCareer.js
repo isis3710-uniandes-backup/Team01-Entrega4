@@ -27,7 +27,7 @@ export default class detailCareer extends Component {
         if (token) {
             let { nombre, name } = this.props.match.params;
 
-            fetch(`http://localhost:3001/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
+            fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token

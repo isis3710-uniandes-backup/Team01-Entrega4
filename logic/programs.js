@@ -57,7 +57,7 @@ class Programs
     {
         let nombrePrograma = req.params.nombre;
         conn.then(client => {
-          client.db(databaseName).collection("programas").findOne({nombre : 'ADMINISTRACION'}, (err,result) => {
+          client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma}, (err,result) => {
               if(err)
               {
                   res.status(500);
