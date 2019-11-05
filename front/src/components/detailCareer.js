@@ -26,12 +26,12 @@ export default class detailCareer extends Component {
         console.log(token);
         if (token) {
             let { nombre, name } = this.props.match.params;
+             nombre = nombre.replace("+","");
+             nombre = nombre.replace("+","");
 
-            fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
-                method: 'GET',
-                headers: new Headers({
-                    'Authorization': token
-                })
+             console.log(nombre)
+            fetch(`http://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
+                method: 'GET'
             })
                 .then(res => res.json())
                 .then(json => {
