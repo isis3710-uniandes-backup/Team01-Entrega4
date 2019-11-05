@@ -3,10 +3,8 @@ import { Modal, Button, Form } from 'react-bootstrap'
 import {toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import 'react-toastify/dist/ReactToastify.css';
-
+import '../styles/login.css';
 const md5 = require("md5");
-
-const url = "https://futureguide.herokuapp.com";
 
 class LogIn extends Component {
 
@@ -139,7 +137,7 @@ class LogIn extends Component {
                         <Button variant="secondary" onClick={this.hide}>
                             Cerrar
                         </Button>
-                        <Button variant="primary" onClick={this.logIn}>
+                        <Button id="loguearme" onClick={this.logIn}>
                             Loguearme
                         </Button>
                     </Modal.Footer>

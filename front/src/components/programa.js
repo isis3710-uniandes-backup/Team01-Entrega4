@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button, Image } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import "../styles/detailUniversidad.css"
 
 export default class Programa extends Component {

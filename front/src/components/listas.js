@@ -61,7 +61,7 @@ export default class Listas extends Component {
 
     render() {
         return (
-            <Row>
+            <Row className="adaptative">
                 <Col id="ListaProgramas">
                     <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                 </Col>

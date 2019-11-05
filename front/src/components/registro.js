@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../styles/registro.css';
 import Swal from "sweetalert2";
@@ -7,7 +6,6 @@ const md5 = require("md5");
 
 
 
-let check = false;
 let checkUsername = true;
 let checkName = true;
 let checkEmail = true;

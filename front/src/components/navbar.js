@@ -4,7 +4,6 @@ import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
-//import Programa from './programa';
 import Register from './registro';
 const Swal = require('sweetalert2');
 
@@ -109,7 +108,6 @@ export default class navbar extends Component {
                             <Link to="/">
                                 <li className="menu__item"><div className="menu__link" ><i className="fas fa-home"></i>Home</div></li>
                             </Link>
-                            <li className="menu__item"><div className="menu__link" ><i className="fas fa-university"></i>Universidades</div></li>
                             <Link to="/carreras">
                                 <li className="menu__item"><div className="menu__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></li>
                             </Link>

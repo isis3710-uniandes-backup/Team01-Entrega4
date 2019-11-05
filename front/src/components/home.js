@@ -163,7 +163,7 @@ export default class home extends Component {
                     pauseOnHover
                 />
                 <nav className="navbar sticky-top navbar-light bg-light">
-                    <a className="navbar-brand" href="/">
+                    <a className="navbar-brand" href="/" tabIndex="-1">
                         <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
      
@@ -196,7 +196,7 @@ export default class home extends Component {
                                 )}
                             </datalist>
                         </div>
-                        <Link className="btn disabled" id="searchButton" aria-disabled="true" onClick={this.search} to={{
+                        <Link className="btn disabled" id="searchButton" aria-disabled="true" tabIndex="-1" onClick={this.search} to={{
                             pathname: `/programa/${this.state.valueSearched}`,
                             state: {}
                         }}>Buscar</Link>
