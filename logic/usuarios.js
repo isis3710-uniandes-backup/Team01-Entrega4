@@ -35,8 +35,9 @@ class Usuarios {
     getUser(req, res) {
         let username = req.params.username;
         conn.then(client => {
-            let user = client.db(databaseName).collection("usuarios").findOne({ _id: username });
-            res.send(user);
+            client.db(databaseName).collection("usuarios").find({ _id: username }).toArray((err,data)=>{
+                res.send(data[0]);
+            });
         })
     }
     /**

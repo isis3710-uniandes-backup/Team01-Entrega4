@@ -4,7 +4,7 @@ import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
-import Programa from './programa';
+//import Programa from './programa';
 import Register from './registro';
 const Swal = require('sweetalert2');
 
@@ -100,11 +100,7 @@ export default class navbar extends Component {
         }
 
         return (
-
-
-
             <div>
-                    
                 <nav id="menu" className="menu d-none d-md-block">
                     <div className="logo"><img src={LogoCompleto} alt="Logo de FutureGuide"></img></div>
                     <div className="menu_section section_1"><h1 className="onlyForAxe">Navegación</h1></div>
