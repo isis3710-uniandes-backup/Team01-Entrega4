@@ -3,7 +3,7 @@ import { Row, Col} from 'react-bootstrap';
 import ListProgramas from './listProgramas';
 import ListUniversidades from './listUniversidades';
 import Cookies from 'js-cookie';
-
+import '../styles/listas.css';
 
 export default class Listas extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export default class Listas extends Component {
             .then(json => {
                 this.setState({programas:json})
             })
-        }   
+        }
     }
 
     actualizarUniversidades = (pUniversidades,pNombrePrograma)   =>  {
@@ -61,7 +61,7 @@ export default class Listas extends Component {
 
     render() {
         return (
-            <Row className="adaptative">
+            <Row className="container-fluid listas">
                 <Col id="ListaProgramas">
                     <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                 </Col>

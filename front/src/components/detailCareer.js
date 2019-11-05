@@ -55,7 +55,7 @@ export default class detailCareer extends Component {
             return <Redirect to='/' />
         }
         return (
-            <div className="container-fluid adaptative" role="main">
+            <div className="container-fluid detailCareer" role="main">
                 <div className="row">
                     <div className="col-lg-7 col-xl-7 col-md-7 col-12 infoDetail">
                         <div className="row">
