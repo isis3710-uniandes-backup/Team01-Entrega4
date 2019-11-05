@@ -21,7 +21,7 @@ export default class universidad extends Component {
         return (
             <div id="card" className="col-12 marginBottom">
                  <Link id="link" to ={{
-                    pathname: `/universidad/+${this.state.nombre}+/programa/${this.state.programa}`}} >
+                    pathname: `/universidad/+${this.state.nombre.toUpperCase()}+/programa/${this.state.programa.toUpperCase()}`}} >
                     <Card id="Universidad" >
                             <Card.Header>
                              <h5 id="nombreuniversidad" ><strong>{this.state.nombre}</strong></h5>  
