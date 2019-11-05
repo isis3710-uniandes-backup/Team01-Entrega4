@@ -4,6 +4,7 @@ import ListProgramas from './listProgramas';
 import ListUniversidades from './listUniversidades';
 import Cookies from 'js-cookie';
 import '../styles/listas.css';
+import { Redirect } from "react-router-dom";
 
 export default class Listas extends Component {
     constructor(props) {

@@ -22,7 +22,6 @@ class Universities
             .toArray((err,data) => {
                 if(err) {
                     res.status(500).send('El servidor está caído, intente más tarde.');
-                    throw err;
                 }
                 res.send(data);
             })
@@ -42,7 +41,6 @@ class Universities
             .toArray((err,data)=> {
                 if(err) {
                     res.status(500).send('El servidor está caído, intente más tarde.');
-                    throw err;
                 }
                 res.send(data);
             })
@@ -62,7 +60,6 @@ class Universities
             .toArray((err,data)=> {
                 if(err) {
                     res.status(500).send('El servidor está caído, intente más tarde.');
-                    throw err;
                 }
                 else if(data.lenght > 0)
                 {
@@ -70,7 +67,6 @@ class Universities
                     .toArray((err,data) => {
                         if(err) {
                             res.status(500).send('El servidor está caído, intente más tarde.');
-                            throw err;
                         }
                         res.send(data);
                     })

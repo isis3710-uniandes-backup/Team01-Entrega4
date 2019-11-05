@@ -61,7 +61,6 @@ class Usuarios {
             client.db(databaseName).collection("usuarios").insertOne(newUser, (err, data) => {
                 if (err) {
                     res.status(400).send('Inserción invalida. Revise los datos suministrados');
-                    throw err;
                 }
                 res.send(data);
             })
@@ -79,7 +78,6 @@ class Usuarios {
             client.db(databaseName).collection("usuarios").findOne({ _id: username }, (err, data) => {
                 if (err) {
                     res.status(500).send('El servidor está caído, intente más tarde.');
-                    throw err;
                 }
                 if (data) {
                     if (data.password === password) {

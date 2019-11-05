@@ -41,7 +41,6 @@ class Careers {
         })
         .catch(e => {
             res.status(500).send('Ocurrió un error en el servidor.');
-            throw e;
         })
     }
     /**
@@ -60,7 +59,6 @@ class Careers {
         })
         .catch(e => {
             res.status(500).send('Ocurrio un error');
-            throw e;
         })
     }
     /**
@@ -78,7 +76,6 @@ class Careers {
                 if(err)
                 {
                     res.status(400).send('No se pudo añadir su comentario');
-                    throw err;
                 }
                 else{
                     res.send(data);
