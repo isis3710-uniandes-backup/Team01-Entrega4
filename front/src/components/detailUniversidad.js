@@ -20,18 +20,18 @@ export default class universidad extends Component {
     render() {
         console.log(this.state.nombre);
         return (
-            <div id="card" className="col-12 marginBottom">
-                 <Link id="link" to ={{
+            <div  className="col-12 marginBottom">
+                 <Link className="linkuniversidad" to ={{
                     pathname: `/universidad/+${this.state.nombre.toUpperCase()}+/programa/${this.state.programa.toUpperCase()}`}} >
-                    <Card id="Universidad" >
+                    <Card className="cUniversidad" >
                             <Card.Header>
-                             <h5 id="nombreuniversidad" ><strong>{this.state.nombre}</strong></h5>  
+                             <h1 className="nombreuniversidad" ><strong>{this.state.nombre}</strong></h1>  
                             </Card.Header>
                             <Card.Body >
-                            <div className="row" id="info">
+                            <div className="row info" >
                                 <div className="col-3" >
                                 <br></br>
-                                <Image id="LogoUniversidad" src={this.state.imagen}></Image>
+                                <Image className="LogoUniversidad" aria-label={`Logo ${this.state.nombre}`}src={this.state.imagen}></Image>
                                 </div>
                                 <div className="col-9 detailUniversidad-info">
                                     <p>Puesto a nivel nacional: {this.state.puestoNacional}</p>
