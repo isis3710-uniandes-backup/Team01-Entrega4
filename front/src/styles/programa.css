@@ -1,14 +1,23 @@
-#Programa{
+.Programa{
     margin-bottom: 1em;
     transition: all .8s;
     background: #edf7f6;
+}   
+.nombreprograma{
+    font-size: 0.8em;
+    font-weight: 500;
 }
 
-#Programa:hover{background-color: #00c0be;cursor:pointer}
 .programa-title h3{font-size: 2vw}
-#area{font-size: 1vw}
+
+.Programa:hover{background-color: #00c0be;cursor:pointer}
+.area{
+    font-family: 'Karla', 'sans-serif';
+    font-size: 0.6em;
+}
 
 @media (max-width: 768px) {
     .programa-title h3{font-size: 2.5vw}
-    #area{font-size: 1.5vw;font-style: italic}
+    .area{font-size: 1.5vw;font-style: italic}
 }
+

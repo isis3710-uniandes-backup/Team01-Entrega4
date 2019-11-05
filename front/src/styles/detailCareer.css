@@ -80,6 +80,9 @@
     font-family: 'Karla', sans-serif;
 
 }
+body{
+    background-color: transparent !important;
+}
 @media (max-width: 885px) {
     #programName{
         font-size: 2vw;
