@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import { Modal, Button, Form } from 'react-bootstrap'
-import Cookies from 'js-cookie';
-//const md5 = require("md5");
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const md5 = require("md5");
+
 const url = "https://futureguide.herokuapp.com";
 
 class LogIn extends Component {
@@ -26,7 +29,7 @@ class LogIn extends Component {
     logIn() {
         if (this.state.usuario !== "" && this.state.password !== "") {
 
-            var data = { _id: this.state.usuario, password: this.state.password };
+            var data = { _id: this.state.usuario, password: md5(this.state.password) };
             console.log(data);
 
             fetch("http://localhost:3001" + "/login", {
@@ -39,55 +42,73 @@ class LogIn extends Component {
                 credentials: 'include'
 
             }).then(res => {
-                console.log(res)
-                //res.json()
                 if (res.status === 200) {
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Bienvenido de nuevo ' + this.state.usuario,
-                        text: '¡Diviértete en nuestra plataforma!',
-                        timer: 2000
+                    toast.success('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
+                        containerId : 'A',
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
                     });
-                    this.hide();
+
+                    this.hideSuccess();
                 } else if (res.status === 500) {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Error en el servidor',
-                        text: 'Vuelve a intentarlo',
-                        timer: 1500
+                    toast.error('Error en el servidor', {
+                        containerId : 'A',
+                        position: "bottom-right",
+                        autoClose: 1200,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
                     });
                 }
                 else {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Usuario o contraseña incorrecta',
-                        text: 'Vuelve a intentarlo',
-                        timer: 1500
+                    toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {
+                        containerId : 'A',
+                        position: "top-center",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
                     });
                 }
             }
             ).catch(error => {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Usuario o contraseña incorrecta',
-                    text: 'Vuelve a intentarlo',
-                    timer: 1500
+                toast.error('Usuario o contraseña incorrecta. Vuelva a intentarlo', {
+                    containerId : 'A',
+                    position: "top-center",
+                    autoClose: 1200,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true
                 });
             }
             );
         } else {
-            Swal.fire({
-                type: 'error',
-                title: 'Falta Info',
-                text: 'Completa todos los campos para seguir',
-                timer: 1500
-            })
+            toast.info('Debes llenar todos los campos.', {
+                containerId : 'A',
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+            });
         }
     }
     hide() {
         this.props.cerrar();
     }
+    hideSuccess() {
+        this.props.cierreExitoso();
+    }
     changeValue(e) {
+
         if (e.target.id === "usuario") {
             this.setState({
                 usuario: e.target.value
@@ -101,7 +122,10 @@ class LogIn extends Component {
     render() {
         return (
 
+
             <div>
+          
+
                 <Modal show={this.state.show} onHide={this.hide}>
                     <Modal.Header closeButton>
                         <Modal.Title>Iniciar Sesion</Modal.Title>

@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="558b7715-6f73-461e-a5b9-8038667e443f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/assets/imgs/alarm-clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/assets/imgs/cash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/assets/imgs/global-marketing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/detailCareer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/detailUniversidad.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/programa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/universidad.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/styles/detailCareer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/styles/detailUniversidad.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/futureguide.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/futureguide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/logIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/logIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/registro.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/registro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/styles/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/styles/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/styles/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/styles/registro.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/styles/registro.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/careers.js" beforeDir="false" afterPath="$PROJECT_DIR$/logic/careers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/programs.js" beforeDir="false" afterPath="$PROJECT_DIR$/logic/programs.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/src/components/futureguide.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="233">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -35,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/components/navbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2278">
-              <caret line="137" column="80" selection-start-line="137" selection-start-column="80" selection-end-line="137" selection-end-column="80" />
+            <state relative-caret-position="2873">
+              <caret line="172" column="80" selection-start-line="172" selection-start-column="80" selection-end-line="172" selection-end-column="80" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -44,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/components/perfil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="48" column="52" lean-forward="true" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+            <state relative-caret-position="624">
+              <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -83,8 +99,8 @@
         <option value="$PROJECT_DIR$/front/package.json" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/front/src/components/futureguide.js" />
         <option value="$PROJECT_DIR$/../deploy_heroku/front/src/components/futureguide.js" />
+        <option value="$PROJECT_DIR$/front/src/components/futureguide.js" />
       </list>
     </option>
   </component>
@@ -102,7 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,6 +147,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,14 +197,16 @@
       <workItem from="1572833070176" duration="3748000" />
       <workItem from="1572837175796" duration="15224000" />
       <workItem from="1572905671129" duration="369000" />
+      <workItem from="1572912177713" duration="356000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48776000" />
+    <option name="totallyTimeSpent" value="49132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
@@ -401,30 +419,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/components/navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2278">
-          <caret line="137" column="80" selection-start-line="137" selection-start-column="80" selection-end-line="137" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../deploy_heroku/front/src/components/futureguide.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/components/futureguide.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -438,12 +436,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/components/perfil.js">
+    <entry file="file://$PROJECT_DIR$/front/src/components/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="52" lean-forward="true" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+        <state relative-caret-position="2873">
+          <caret line="172" column="80" selection-start-line="172" selection-start-column="80" selection-end-line="172" selection-end-column="80" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/components/perfil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/components/futureguide.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

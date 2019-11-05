@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import '../styles/home.css';
 import { Link } from "react-router-dom";
-import logo from "../assets/imgs/FutureGuide.png"
+import logo from "../assets/imgs/FutureGuide.png";
+import Register from './registro';
+import LogIn from './logIn';
+import Cookies from 'js-cookie';
+import { ToastContainer } from 'react-toastify';
 
-import { Container } from 'react-bootstrap';
-import Cookies from 'js-cookie'
 
 export default class home extends Component {
 
@@ -13,8 +15,19 @@ export default class home extends Component {
         resultsSearched: [],
         programsByArea: [],
         programsBackUp: [],
-        valueSearched: ""
+        valueSearched: "",
+        registro: false,
+        logIn: false,
+        alreadyLogged: false
     }
+
+    closeRegistro=  ()=>{
+        this.setState({registro: false});
+    };
+
+    openRegistro= ()=>{
+        this.setState({registro:true})
+    };
 
 
     saveSearch = (e) => {
@@ -42,55 +55,109 @@ export default class home extends Component {
         console.log("...");
 
     }
+    closeSession = () => {
+        Cookies.remove("JSESSIONID");
+        this.setState({
+            alreadyLogged: false
+        })
+    }
+    closeLogIn = () => {
+        this.setState({ logIn: false, alreadyLogged: false });
+    };
+    cierreExitoso = () => {
+        this.setState({ logIn: false, alreadyLogged: true });
+
+    }
+
+    openLogIn = () => {
+        this.setState({ logIn: true })
+    };
 
     componentDidMount() {
-        //let token = Cookies.get('SESSIONID');
-        fetch("http://localhost:3001/programas/area", {
-            method: 'GET',
-            headers: new Headers({
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZnIiwiaWF0IjoxNTcyODQ0ODc0LCJleHAiOjE1NzI4NTU2NzR9.7HlIqEWCt0Lp4NW0OrcYlhGKlzX__L6qNvnWHdXUu1g'
+
+        if(this.props.location.state)
+        {
+            this.closeSession();
+        }
+
+        let token = Cookies.get("JSESSIONID");
+        if (token) {
+            console.log("Habemus token");
+            fetch("http://localhost:3001/programas/area", {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
             })
-        })
-            .then(res => res.json())
-            .then(json => {
-                if (json.success === false) {
-                    console.log(json);
-                    //enrutar hacia el home 
-                }
-                else {
-                    let objectFinal = [];
-                    json.forEach(element => {
-                        objectFinal.push({
-                            name: element._id,
-                            results: element.programs
-                        })
-                    });
-                    this.setState({
-                        programsByArea: objectFinal,
-                        programsBackUp: objectFinal
-                    });
-                    console.log(this.state.programsByArea);
-                }
-            })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success === false) {
+
+                    }
+                    else {
+                        let objectFinal = [];
+                        json.forEach(element => {
+                            objectFinal.push({
+                                name: element._id,
+                                results: element.programs
+                            })
+                        });
+                        this.setState({
+                            programsByArea: objectFinal,
+                            programsBackUp: objectFinal,
+                            alreadyLogged: true
+                        });
+                        console.log(this.state.programsByArea);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            console.log("Loguese");
+        }
     }
 
     render() {
-        //   let history = useHistory();
         return (
             <div role="main" id="homecontainer" className="container">
+                      <ToastContainer
+                containerId ={'A'}
+                    position="bottom-right"
+                    autoClose={2400}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                />
                 <nav className="navbar sticky-top navbar-light bg-light">
-                    <a className="navbar-brand" href="#">
-                        <img src={logo}  height="60" className="d-inline-block align-top" alt="Futureguide logo" />
+                    <a className="navbar-brand" href="/">
+                        <img src={logo} height="60" className="d-inline-block align-top" alt="Futureguide logo" />
                     </a>
-                    <form className="form-inline">
-                        <button className="btn initialBtns" type="submit">Inicia sesión</button>
-                        <Link to="/register">
-                            <button className="btn initialBtns" type="submit">Registrate</button>
+     
+                    {!this.state.alreadyLogged ?
+                        <div className="form-inline">
+                            <button className="btn initialBtns" onClick={this.openLogIn}>Inicia sesión</button>
+                            <LogIn mostrar={this.state.logIn} cierreExitoso={this.cierreExitoso} cerrar={this.closeLogIn} />
+                            <button className="btn initialBtns" type="submit" onClick={this.openRegistro}>Registrarse </button>
+                            <Register mostrar={this.state.registro} cerrar={this.closeRegistro}/>
+                        </div>
+                        :
+                        <div className="form-inline">
+                             <Link to="/home">
+                            <button className="btn initialBtns">Explorar</button>
                         </Link>
-                        
-                    </form>
+                        <button className="btn initialBtns" onClick={this.closeSession}>Cerrar sesión</button>
+                        </div>
+                       
+                    }
                 </nav>
                 <div id="homeContainer" className="d-flex justify-content-center align-items-center flex-wrap" >
+
                     <h1 id="slogan">Decide lo mejor para tu futuro.</h1>
                     <form>
                         <div className="form-group">

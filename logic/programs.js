@@ -57,23 +57,31 @@ class Programs
     {
         let nombrePrograma = req.params.nombre;
         conn.then(client => {
-          let program =  client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma});
-          if(program.universidades.length > 0)
-          {
-              conn.then(client => {
-                  client.db(databaseName).collection("universidades").find({_id : {$in : program.universidades}})
-                  .toArray((err,data) => {
-                    if(err) {
-                        res.status(500).send('El servidor está caído, intente más tarde.');
-                        throw err;
-                    }
-                    res.send(data);
-                  })
-              })
-          }
-          else{
-              res.send([]);
-          }
+          client.db(databaseName).collection("programas").findOne({nombre : 'ADMINISTRACION'}, (err,result) => {
+              if(err)
+              {
+                  res.status(500);
+                  throw err;
+              }
+              console.log(result);
+            if(result.universidades.length > 0)
+            {
+                conn.then(client => {
+                    client.db(databaseName).collection("universidades").find({_id : {$in : result.universidades}})
+                    .toArray((err,data) => {
+                      if(err) {
+                          res.status(500).send('El servidor está caído, intente más tarde.');
+                          throw err;
+                      }
+                      res.send(data);
+                    })
+                })
+            }
+            else{
+                res.send([]);
+            }
+          });
+          
         })
     }
     /**

@@ -1,0 +1,114 @@
+.img-Little{
+    width : 30px; 
+
+}
+.atributosCareer{
+    font-weight: 450;
+    font-size: 1.8vw;
+    text-align: center;
+}
+.cursiveAnotation{
+    font-weight: 400;
+    font-size: 1.5vw;
+    font-style: italic;
+}
+.videos{
+    margin-top : 2em;
+}
+#videosColumn{
+    padding: 1.7rem;
+}
+.infoDetail{
+    padding: 1.7rem;
+}
+/* .overflow{
+    overflow-y: scroll;
+    height: 300px;
+} */
+.row{
+    padding: 0.65em;
+}
+.adaptative{
+    padding-left : 180px;
+}
+#programName{
+    font-size: 2em;
+    word-wrap: break-word;
+}
+#universityyName{
+    font-size: 2em;
+    word-wrap: normal;
+}
+.list-group{
+    overflow: unset !important;
+    height: 100%;
+}
+#comentarioDescripcion{
+    font-size: 0.8em;
+}
+#tituloComentario{
+    font-size: 0.9em;
+}
+.badge-style{
+    color: white;
+    font-size: 0.5em;
+}
+.badge-calite{
+    background-color: #00834c;
+    color : white;
+}
+.badge-recomendada{
+    background-color: #005383;
+}
+.badge-nrecomendada{
+    background-color: #464655;
+}
+@media (max-width: 885px) {
+    .adaptative{
+        padding-left: 120px;
+        text-align: center;
+    }
+    #programName{
+        font-size: 1.4em;
+    }
+    #universityyName{
+        font-size: 1.2em;
+    }
+    .atributosCareer{
+        font-size: 1.0em;
+    }
+    .cursiveAnotation{
+        font-size: 0.9em ;
+    }
+    .badge-style{
+        font-size: 0.6em;
+    }
+
+}
+@media (max-width: 770px) {
+    .adaptative{
+        padding: 10px;
+    }
+    #programName{
+        font-size: 2.5em;
+    }
+    #universityyName{
+        font-size: 2.2em;
+    }
+    .list-group{
+        width: 100%;
+    }
+    .atributosCareer{
+        font-size: 1em;
+    }
+    .cursiveAnotation{
+        font-size: 0.9em ;
+    }
+    #comentarioDescripcion{
+        font-size: 0.6em;
+    }
+    .badge-style{
+        font-size: 0.4em;
+    }
+
+}
