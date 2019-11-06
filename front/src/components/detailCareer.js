@@ -26,7 +26,6 @@ export default class detailCareer extends Component {
             let { nombre, name } = this.props.match.params;
              nombre = nombre.replace("+","");
              nombre = nombre.replace("+","");
-
             fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
