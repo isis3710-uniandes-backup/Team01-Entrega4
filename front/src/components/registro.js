@@ -61,7 +61,7 @@ export default class register extends Component {
                 }
                 if(this.state.username.length > 6){
 
-                    fetch('http://futureguide.herokuapp.com/usuarios/' + this.state.username, {
+                    fetch('https://futureguide.herokuapp.com/usuarios/' + this.state.username, {
                         method: 'GET'
                     })
                         .then(res => res.status === 200 ? res.json() : null)
@@ -147,7 +147,7 @@ export default class register extends Component {
                     password: md5(this.state.password)
                 };
                 let boddy = JSON.stringify(json);
-                fetch('http://futureguide.herokuapp.com/register', {
+                fetch('https://futureguide.herokuapp.com/register', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

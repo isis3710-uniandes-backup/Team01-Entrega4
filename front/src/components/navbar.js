@@ -121,7 +121,9 @@ export default class navbar extends Component {
                     <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><a className="menu__link" href="/perfil/" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</a></li>
+                            <Link to="/perfil">
+                                <li className="menu__item"><div className="menu__link" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</div></li>
+                            </Link>
                             {!this.state.alredyLogged ?
                                 <>
                                     <li className="menu__item">
@@ -153,7 +155,7 @@ export default class navbar extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <Link to="/carreras">
-                                        <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i>Carreras</div></div>
+                                        <div className="menu_movil__item"><div className="menu_movil__link carreras" ><i className="fas fa-graduation-cap"></i>Carreras</div></div>
                                     </Link>
                                 </div>
                             </div>
@@ -168,7 +170,7 @@ export default class navbar extends Component {
                                                   <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
                                                   <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
                                               </div>
-                                              </div> :    <div className="menu_movil__item"><a className="menu_movil__link" href="/perfil/" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</a></div>
+                                                  </div> :    <Link to="/perfil"> <div className="menu_movil__item"><div className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</div></div></Link>
  }
                   
                                 </div>

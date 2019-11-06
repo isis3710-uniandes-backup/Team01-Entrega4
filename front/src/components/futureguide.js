@@ -28,9 +28,7 @@ export default class futureguide extends Component {
                         <Route path="*">
                             <Navbar/>
                             <Switch>
-                                <Route exact path="/perfil" >
-                                    <Perfil />
-                                </Route>
+                                <Route exact path="/perfil" component={Perfil} />
                                 <Route exact path="/carreras" component={Listas} />
                                 <Route exact path="/universidad/:nombre/programa/:name" component={DetailCareer}/>
                             </Switch>
