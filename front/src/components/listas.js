@@ -48,7 +48,6 @@ export default class Listas extends Component {
                 .then(res => res.json())
                 .then(json => {
                     universidadesNuevas = json;
-                    console.log(universidadesNuevas);
                     this.setState({
                         universidades: universidadesNuevas,
                         nombrePrograma: pNombrePrograma

@@ -19,8 +19,6 @@ export default class detailCareer extends Component {
         salario: 0,
         videos: [],
         comentarios: []
-
-
     }
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
@@ -29,7 +27,7 @@ export default class detailCareer extends Component {
              nombre = nombre.replace("+","");
              nombre = nombre.replace("+","");
 
-            fetch(`http://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
+            fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
                 .then(res => res.json())
@@ -49,69 +47,87 @@ export default class detailCareer extends Component {
         }
     }
 
-    reseña(){
-        Swal.mixin({
-            input: 'text',
-            confirmButtonText: 'Siguiente &rarr;',
-            showCancelButton: true,
-            confirmButtonColor: '#00c0be',
-            cancelButtonColor: '#464655',
-            cancelButtonText: 'Cancelar',
-            background: '#fff',
-            progressSteps: ['1', '2', '3']
-        }).queue([
-            {
-                title: 'Titulo',
+    reseña = ()=> {
+        let token = Cookies.get("JSESSIONID");
+        if (token) {
+            Swal.mixin({
                 input: 'text',
-                inputPlaceholder: 'Escribe el titulo de la reseña...',
-                inputAttributes: {
-                    'aria-label': 'Type your message here'
+                confirmButtonText: 'Siguiente &rarr;',
+                showCancelButton: true,
+                confirmButtonColor: '#00c0be',
+                cancelButtonColor: '#464655',
+                cancelButtonText: 'Cancelar',
+                background: '#fff',
+                progressSteps: ['1', '2', '3']
+            }).queue([
+                {
+                    title: 'Titulo',
+                    input: 'text',
+                    inputPlaceholder: 'Escribe el titulo de la reseña...',
+                    inputAttributes: {
+                        'aria-label': 'Type your message here'
+                    }
+                },
+                {
+                    title: 'Reseña',
+                    input: 'textarea',
+                    inputPlaceholder: 'Escribe tu reseña aquí...',
+                    inputAttributes: {
+                        'aria-label': 'Type your message here'
+                    }
+                },
+                {
+                    title: 'La Recomienda?',
+                    input: 'checkbox',
+                    inputValue: 0,
+                    inputPlaceholder:
+                        'Seleccione si es así',
+                    confirmButtonText: 'Publicar'
                 }
-            },
-            {
-                title: 'Reseña',
-                input: 'textarea',
-                inputPlaceholder: 'Escribe tu reseña aquí...',
-                inputAttributes: {
-                    'aria-label': 'Type your message here'
-                }
-            },
-            {
-                title: 'La Recomienda?',
-                input: 'checkbox',
-                inputValue: 0,
-                inputPlaceholder:
-                    'Seleccione si es así',
-                confirmButtonText: 'Publicar'
-            }
-        ]).then((result) => {
-            if (result.value) {
-                Swal.fire({
-                    type: 'success',
-                    title: 'Publicado Exitosamente',
-                    toast: true,
-                    showConfirmButton: false,
-                    timer: 2000
-                });
+            ]).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Publicado Exitosamente',
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
 
-                let json = {
-                    titulo : result.value[0],
-                    descripcion : result.value[1],
-                    recomendada : result.value[2]
-                };
-                /*
-                let boddy = JSON.stringify(json);
-                let { nombre, name } = this.props.match.params;
-                nombre = nombre.replace("+","");
-                nombre = nombre.replace("+","");
-                fetch(`http://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}/${"comentarios"}`, {
-                    method: 'POST',
-                    body: boddy
-                }).then(()=>{
-                    console.log("TODO BIEN")
-                })*/
-            }
-        })
+                    let json = {
+                        titulo: result.value[0],
+                        descripcion: result.value[1],
+                        recomendada: result.value[2] == 0 ? false : true
+                    };
+                    let boddy = JSON.stringify(json);
+                    fetch(`https://futureguide.herokuapp.com/carrera/${this.state.universidad.toUpperCase()}/${this.state.programa.toUpperCase()}/${"comentarios"}`, {
+                        method: 'POST',
+                        headers: new Headers({
+                            'Authorization': token,
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }),
+                        body: boddy
+                    }).then(() => {
+                        fetch(`https://futureguide.herokuapp.com/usuarios/${Cookies.get("USERNAME")}/${"comentarios"}`, {
+                            method: 'POST',
+                            headers: new Headers({
+                                'Authorization': token,
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }),
+                            body: boddy
+                        }).then(()=>{
+                            let coments = this.state.comentarios;
+                            coments.push(json)
+                            this.setState({
+                                comentarios: coments
+                            })
+                        });
+                    })
+                }
+            })
+        }
     }
     render() {
         let token = Cookies.get("JSESSIONID");

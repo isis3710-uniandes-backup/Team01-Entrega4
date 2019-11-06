@@ -6,7 +6,7 @@ export default class perfil extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.username,
+            username: Cookies.get("USERNAME"),
             name: "",
             email: "",
             password: "***************",
@@ -31,7 +31,7 @@ export default class perfil extends Component{
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            fetch("https://futureguide.herokuapp.com/usuarios/fg", {
+            fetch("https://futureguide.herokuapp.com/usuarios/"+this.state.username, {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token
@@ -42,16 +42,11 @@ export default class perfil extends Component{
                     this.setState({
                         username: json['_id'],
                         name: json['nombre'],
-                        email: json['correo']
+                        email: json['correo'],
+                        comentarios: json['comentarios'] == undefined ? []:json['comentarios']
                     })
                 });
         }
-    }
-
-    login(user){
-        this.setState({
-            username: user
-        })
     }
 
     render(){

@@ -40,6 +40,7 @@ class LogIn extends Component {
             }).then(res => res.json())
             .then(json => {
                 Cookies.set('JSESSIONID', json.token );
+                Cookies.set('USERNAME', this.state.usuario );
                 if (json) {
                     toast('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {
                         containerId : 'A',

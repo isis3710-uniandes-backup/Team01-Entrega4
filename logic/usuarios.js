@@ -96,5 +96,20 @@ class Usuarios {
             });
         })
     }
+
+    postComment(req, res) {
+        let comment = req.body;
+        let username = req.params.username;
+        conn.then(client => {
+            client.db(databaseName).collection("usuarios").updateOne({ _id: username} , { $push: { comentarios: comment } }, (err, data) => {
+                if (err) {
+                    res.status(400).send('No se pudo añadir su comentario');
+                }
+                else {
+                    res.send(data);
+                }
+            });
+        });
+    }
 }
 module.exports = Usuarios;

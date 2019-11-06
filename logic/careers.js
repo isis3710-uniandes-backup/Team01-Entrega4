@@ -16,10 +16,8 @@ class Careers {
      * @param {*} res 
      */
     getCareer(req, res) {
-        console.log("hey")
         let universidad = req.params.nombreUniversidad;
         let programa = req.params.nombrePrograma;
-        console.log(req.params);
         conn.then(client => {
             client.db(databaseName).collection("universidades").findOne({ $or: [{ nombre: universidad }, { nickname: universidad }] }, (err, result) => {
                 if (err) {
@@ -31,7 +29,6 @@ class Careers {
                         if (err) {
                             res.send(err);
                         }
-                        console.log(resultPro);
                         let programId = resultPro._id;
                         client.db(databaseName).collection("carreraUniversidad").findOne({ $and: [{ universidad: universityId }, { programa: programId }] }, (err, result) => {
                             res.send(result);
@@ -73,15 +70,32 @@ class Careers {
      */
     postComment(req, res) {
         let comment = req.body;
-        let university = req.params.university;
-        let program = req.params.program;
+        let university = req.params.nombreUniversidad;
+        let program = req.params.nombrePrograma;
         conn.then(client => {
-            client.db(databaseName).collection("carreraUniversidad").updateOne({ $and: [{ universidad: university }, { programa: program }] }, { $push: { comentarios: comment } }, (err, data) => {
+            client.db(databaseName).collection("universidades").findOne({ nombre: university}, (err, result) => {
                 if (err) {
-                    res.status(400).send('No se pudo añadir su comentario');
+                    res.send(err);
+                }
+                if (result) {
+                    let universityId = result._id;
+                    client.db(databaseName).collection("programas").findOne({ nombre: program }, (err, resultPro) => {
+                        if (err) {
+                            res.send(err);
+                        }
+                        let programId = resultPro._id;
+                        client.db(databaseName).collection("carreraUniversidad").updateOne({ $and: [{ universidad: universityId }, { programa: programId }] }, { $push: { comentarios: comment } }, (err, data) => {
+                            if (err) {
+                                res.status(400).send('No se pudo añadir su comentario');
+                            }
+                            else {
+                                res.send(data);
+                            }
+                        });
+                    });
                 }
                 else {
-                    res.send(data);
+                    res.send("Sin resultados");
                 }
             });
         })

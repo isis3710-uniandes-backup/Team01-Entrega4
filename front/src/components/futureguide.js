@@ -12,8 +12,7 @@ export default class futureguide extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logueado: false,
-            usuario: ""
+            logueado: false
         }
     }
 
@@ -30,7 +29,7 @@ export default class futureguide extends Component {
                             <Navbar/>
                             <Switch>
                                 <Route exact path="/perfil" >
-                                    <Perfil username={this.state.usuario} />
+                                    <Perfil />
                                 </Route>
                                 <Route exact path="/carreras" component={Listas} />
                                 <Route exact path="/universidad/:nombre/programa/:name" component={DetailCareer}/>

@@ -22,6 +22,7 @@ router.get('/programas/:nombre/universidades', middleware.checkToken, Programs.g
 Usuarios = new Usuarios();
 router.get('/usuarios', middleware.checkToken, Usuarios.getUsers);
 router.get('/usuarios/:username', Usuarios.getUser);
+router.post('/usuarios/:username/comentarios', middleware.checkToken, Usuarios.postComment);
 //router for careers
 Careers = new Careers();
 router.get('/carrera/:nombreUniversidad/:nombrePrograma/comentarios', middleware.checkToken, Careers.getComments);
