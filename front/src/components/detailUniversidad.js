@@ -17,6 +17,14 @@ export default class universidad extends Component {
             programa: this.props.programa
         }
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.programa !== this.props.programa)
+        {
+            this.setState({
+                programa : this.props.programa
+            })
+        }
+    }
     render() {
         return (
             <div  className="col-12 marginBottom">

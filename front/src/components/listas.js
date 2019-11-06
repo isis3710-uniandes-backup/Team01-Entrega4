@@ -37,6 +37,7 @@ export default class Listas extends Component {
     actualizarUniversidades = (pUniversidades, pNombrePrograma) => {
         let token = Cookies.get("JSESSIONID");
         let universidadesNuevas;
+        console.log(pNombrePrograma);
         if (token) {
             let urlServer = "https://futureguide.herokuapp.com";
             fetch(urlServer + `/programas/${pNombrePrograma}/universidades`, {
@@ -48,12 +49,9 @@ export default class Listas extends Component {
                 .then(res => res.json())
                 .then(json => {
                     universidadesNuevas = json;
-                    console.log(universidadesNuevas);
                     this.setState({
                         universidades: universidadesNuevas,
                         nombrePrograma: pNombrePrograma
-                    }, () => {
-                        console.log(this.state.universidades);
                     })
                 })
 
