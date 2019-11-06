@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/perfil.css';
+import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export default class perfil extends Component{
@@ -56,10 +57,25 @@ export default class perfil extends Component{
                     <div className="row no-gutters">
                         <div className="col-8">
                             <div className="card-body perfil_body">
-                                <h5 className="card-title perfil_title">{this.state.username}</h5>
-                                <p className="card-text perfil_text"><b>Nombre:</b>{" " + this.state.name}</p>
-                                <p className="card-text perfil_text"><b>Correo:</b>{" " + this.state.email}</p>
-                                <p className="card-text perfil_text"><b>Contraseña:</b> {" " + this.state.password}</p>
+                                <h5 className="card-title text-center perfil_title">{this.state.username}</h5>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <div className="col-12">
+                                            <p className="card-text text-center perfil_text1"><b>Nombre</b></p>
+                                        </div>
+                                        <div className="col-12">
+                                            <p className="card-text text-center perfil_text2">{this.state.name}</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="col-12">
+                                            <p className="card-text text-center perfil_text1"><b>Correo</b></p>
+                                        </div>
+                                        <div className="col-12">
+                                            <p className="card-text text-center perfil_text2">{this.state.email}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="col-4 text-center">
@@ -71,23 +87,33 @@ export default class perfil extends Component{
                 <div className="col-12 comentarios">
                     {this.state.comentarios.length != 0 ?
                         <div className="row">
-                            <div id="list-example" className="list-group">
-                                {this.state.comentarios.map((e,index) =>
-                                    <a key={index} className="list-group-item list-group-item-action" href={"#list-item-"+(index)}>Reseña {index+1}</a>
-                                )}
+                            <div className="col-2">
+                                <div id="list-example" className="list-group">
+                                    {this.state.comentarios.map((e,index) =>
+                                        <a key={index} className="list-group-item list-group-item-action" href={"#list-item-"+(index)}>Reseña {index+1}</a>
+                                    )}
+                                </div>
                             </div>
-                            <div data-target="#list-example" data-offset="0" className="scrollspy-example">
-                                {this.state.comentarios.map((e,i)=>
-                                    <div key={i}>
-                                        <h4 id={"list-item-"+(i)}><b>{e['titulo']}</b></h4>
-                                        <p>{e['descripcion']}</p>
-                                        <hr></hr>
-                                    </div>
-                                )}
+                            <div className="col-10 comentario">
+                                <div data-target="#list-example" data-offset="0" className="scrollspy-example">
+                                    {this.state.comentarios.map((e,i)=>
+                                        <div key={i}>
+                                            <h4 id={"list-item-"+(i)}><b>{e['titulo']}</b></h4>
+                                            <p>{e['descripcion']}</p>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>:
-                        <div className="row">
-                            <p>Aun no tienes comentarios.</p>
+                        <div className="row no-comentarios">
+                            <div className="col-12 text-center">
+                                <p>Aun no tienes comentarios. Por favor ayudanos a mejorar nuestra plataforma</p>
+                            </div>
+                            <div className="col-12 text-center">
+                                <Link to="/carreras">
+                                    <button type="button" className="btn btn-success">Ir</button>
+                                </Link>
+                            </div>
                         </div>
                     }
                 </div>

@@ -20,6 +20,7 @@ export default class detailCareer extends Component {
         videos: [],
         comentarios: []
     }
+
     componentDidMount() {
         let token = Cookies.get("JSESSIONID");
         if (token) {

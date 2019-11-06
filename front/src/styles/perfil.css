@@ -1,51 +1,62 @@
 .perfil{
     position: fixed;
-    top: 10%;
-    left: 26%;
+    top: 0%;
+    left: 15%;
+    width: 85%;
 }
 
-.perfil_card{width: 61vw;}
+.perfil_card{
+    width: 61vw;
+    margin: 6% 0% 0% 14%;
+    border-width: 6px;
+}
 .perfil_img{width: 12vw;padding: 10% 0% 10%;}
 .perfil_body{padding: 2rem !important;}
-.perfil_title{font-size: 4vw;
+.perfil_title{
+    font-size: 5vw;
 }
-.perfil_text{margin: 0;font-size: 1vw; font-family: 'Karla', sans-serif}
+.perfil_text1{margin: 0;font-size: 2vw; font-family: 'Karla', sans-serif}
+.perfil_text2{margin: 0;font-size: 1.5vw; font-family: 'Karla', sans-serif; color: #464655}
 
 
-
-.comentarios{margin-top: 2%;}
+.comentarios{
+    margin: 2% 0% 0% 14%;
+    border: 6px solid rgba(0,0,0,.125);
+    border-radius: .45rem;
+    width: 61vw;
+}
 .scrollspy-example{
-    width:50vw;
-    height:22.4vw;
-    overflow-y: scroll;
+    max-height:22.4vw;
+    overflow-y: auto;
     padding-left: 2%;
 }
 
 .scrollspy-example h4{font-size: 1.5vw; font-family: 'Karla', sans-serif}
 .scrollspy-example p{font-size: 1vw; font-family: 'Karla', sans-serif}
 
-#list-example{width: 11vw; overflow-y: scroll; height: 22.4vw;}
+#list-example{width: 9vw; overflow-y: scroll; max-height: 22.4vw;}
 .list-group-item-action{padding: 1vw 1.25vw; font-size: 1vw}
+.comentario{padding: 0}
 
 
 @media (max-width: 768px) {
-    .perfil{left: 11%;}
-    .perfil_card{width: 75vw;}
+    .perfil{left: 0%;width: 100%}
+    .perfil_card{width: 75vw;margin: 8% 0% 0% 10%;}
     .perfil_img{width: 18vw;}
     .perfil_body{padding: 1.5rem !important;}
     .perfil_title{font-size: 5vw}
     .perfil_text{font-size: 1.5vw}
 
     .scrollspy-example{
-        width:58vw;
-        height:32vw;
+        max-height:32vw;
         padding-left: 2%;
     }
 
+    .comentarios{margin: 2% 0% 0% 10%;width: 75vw;}
     .scrollspy-example h4{font-size: 2.5vw;}
     .scrollspy-example p{font-size: 1.8vw;}
 
-    #list-example{width: 17vw;height: 32vw;}
+    #list-example{width: 9vw;height: 32vw;}
     .list-group-item-action{padding: 1.5vw 1.25vw; font-size: 1.5vw}
 }
 
