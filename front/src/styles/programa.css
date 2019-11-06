@@ -1,14 +1,38 @@
 .Programa{
     transition: all .8s;
     background: white;
+    padding : 0;
 }   
 .nombreprograma{
     font-size: 0.8em;
-    font-weight: 500;
+    font-weight: bolder;
+    font-family: 'Karla', 'sans-serif';
+    padding-top: 0.2em;
+    
 }
+.little{
+    height: 45px;
+}
+.badge{
+    width: 99px;
+}
+.badge-financieras{
+    background-color: #57490a;
+    color : white;
+    line-height: normal;
+}
+.badge-ingenieria{
+    background-color: #120a57;
+    color : white;
+    line-height: normal;
 
-.programa-title h3{font-size: 2vw}
+}
+.badge-artes{
+    background-color: #0a573d;
+    color : white;
+    line-height: normal;
 
+}
 .Programa:hover{background-color: #00c0be;cursor:pointer}
 .area{
     font-family: 'Karla', 'sans-serif';
@@ -16,7 +40,16 @@
 }
 
 @media (max-width: 768px) {
-    .programa-title h3{font-size: 2.5vw}
     .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 80px}
+}
+@media (max-width: 642px) {
+    .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 70px;font-size: 0.4em}
+}
+@media (max-width: 540px) {
+    .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 65px; font-size: 0.3em
+    }
 }
 

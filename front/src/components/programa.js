@@ -13,6 +13,16 @@ export default class Programa extends Component {
         }
         this.cambiarUniversidades = this.cambiarUniversidades.bind(this);
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.programa !==  this.props.programa)
+        {
+            this.setState({
+                nombre : this.props.programa.nombre,
+                area: this.props.programa.area,
+                universidades: this.props.programa.universidades
+            })
+        }
+    }
     cambiarUniversidades() {
         this.state.funcionUniversidades(this.state.universidades, this.state.nombre);
     }
@@ -21,12 +31,9 @@ export default class Programa extends Component {
         return (
             <div className="col-12 marginBottom">
                 <Card onClick={this.cambiarUniversidades} className="Programa">
-                    <Card.Body >
-                        <Card.Title className="programa-title">
-                            <br></br>
-                            <h1 className="nombreprograma" >{this.state.nombre}</h1>
-                        </Card.Title>
-                        <h2 className="area">Área: {this.state.area}</h2>
+                    <Card.Body className="little d-flex justify-content-between">
+                        <h1 className="nombreprograma " >{this.state.nombre}</h1>
+                        <span className={`badge badge-${this.state.area === 'ARTES Y CREATIVIDAD'? 'artes' : this.state.area.toLowerCase()} area `}>{this.state.area}</span>
                     </Card.Body>
                 </Card>
             </div>

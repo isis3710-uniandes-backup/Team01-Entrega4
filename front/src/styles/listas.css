@@ -38,6 +38,18 @@
 #ListaProgramas{
     flex-grow: 0.8;
 }
+#searchprogramInput{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 0.3em;
+    border-radius: 0.7em 0.7em;
+
+}
+#searchprogramInput__Container{
+    background-color: #f2f6f7;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
 
 @media (max-width: 768px) {
     .listas{

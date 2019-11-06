@@ -26,6 +26,8 @@ export default class detailCareer extends Component {
             let { nombre, name } = this.props.match.params;
              nombre = nombre.replace("+","");
              nombre = nombre.replace("+","");
+             console.log(nombre);
+             console.log(name);
             fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
@@ -97,7 +99,7 @@ export default class detailCareer extends Component {
                     let json = {
                         titulo: result.value[0],
                         descripcion: result.value[1],
-                        recomendada: result.value[2] == 0 ? false : true
+                        recomendada: result.value[2] === 0 ? false : true
                     };
                     let boddy = JSON.stringify(json);
                     fetch(`https://futureguide.herokuapp.com/carrera/${this.state.universidad.toUpperCase()}/${this.state.programa.toUpperCase()}/${"comentarios"}`, {
