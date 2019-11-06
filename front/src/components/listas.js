@@ -5,12 +5,15 @@ import ListUniversidades from './listUniversidades';
 import Cookies from 'js-cookie';
 import '../styles/listas.css';
 import { Redirect } from "react-router-dom";
+import { Card, FormControl } from 'react-bootstrap';
+import { throws } from 'assert';
 
 export default class Listas extends Component {
     constructor(props) {
         super(props);
         this.state = {
             programas: [],
+            programasTotal : [],
             universidades: [],
             nombrePrograma: ""
         }
@@ -29,9 +32,20 @@ export default class Listas extends Component {
                     resp => resp.json()
                 )
                 .then(json => {
-                    this.setState({ programas: json })
+                    this.setState({ programas: json,
+                        programasTotal : json })
                 })
         }
+    }
+
+    changePrograms = (e) =>  {
+        this.setState({
+            programas : this.state.programasTotal.filter(element => {
+                return element.nombre.includes(e.target.value.toUpperCase())
+             })
+        }, () => {
+            console.log(this.state);
+        })
     }
 
     actualizarUniversidades = (pUniversidades, pNombrePrograma) => {
@@ -66,8 +80,10 @@ export default class Listas extends Component {
         }
         return (
             <Row className="container-fluid listas" style={{ overflowY: "auto" }} role="main">
-                <Col className="col-6" id="ListaProgramas">
-
+                <Col className="col-6" >
+                    <div className="col-12" id="searchprogramInput__Container">
+                    <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar programa..." onChange={this.changePrograms}></input>
+                    </div>
                     <div className="scrollbar scrollbar-primary">
                         <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                     </div>
