@@ -43,7 +43,7 @@ export default class perfil extends Component{
                         username: json['_id'],
                         name: json['nombre'],
                         email: json['correo'],
-                        comentarios: json['comentarios'] == undefined ? []:json['comentarios']
+                        comentarios: json['comentarios'] === undefined ? []:json['comentarios']
                     })
                 });
         }

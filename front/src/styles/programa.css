@@ -13,6 +13,9 @@
 .little{
     height: 45px;
 }
+.badge{
+    width: 99px;
+}
 .badge-financieras{
     background-color: #57490a;
     color : white;
@@ -38,5 +41,15 @@
 
 @media (max-width: 768px) {
     .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 80px}
+}
+@media (max-width: 642px) {
+    .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 70px;font-size: 0.4em}
+}
+@media (max-width: 540px) {
+    .area{font-size: 1.5vw;font-style: italic}
+    .badge{width: 65px; font-size: 0.3em
+    }
 }
 
