@@ -38,7 +38,7 @@ class Usuarios {
         conn.then(client => {
             client.db(databaseName).collection("usuarios").findOne({ _id: username }, (err, result)=> {
                 if(err){
-                    throw err
+                    res.send(err) 
                 }
                 if(result === null){
                     res.status(400);

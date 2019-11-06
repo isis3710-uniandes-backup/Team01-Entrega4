@@ -52,26 +52,33 @@ export default class register extends Component {
                 username: e.target.value
             }, () => {
                 if (this.state.usernameError === null) {
-                    if (this.state.username.length < 6) {
+                    if (this.state.username.length < 6) 
+                    {
                         this.setState({
                             usernameError: 'Su nombre de usuario debe tener más de 6 caracteres'
                         })
                     }
                 }
-                fetch('https://futureguide.herokuapp.com/usuarios/' + this.state.username, {
-                    method: 'GET'
-                })
-                    .then(res => res.status === 200 ? res.json() : null)
-                    .then(json => {
-                        if (json) {
-                            if (json._id === this.state.username) {
-                                console.log("Ya existe");
-                                this.setState({
-                                    usernameError: 'El usuario ya existe, intente otro'
-                                })
-                            }
-                        }
+                if(this.state.username.length > 6){
+
+                    fetch('http://futureguide.herokuapp.com/usuarios/' + this.state.username, {
+                        method: 'GET'
                     })
+                        .then(res => res.status === 200 ? res.json() : null)
+                        .then(json => {
+                            if (json) {
+                                if (json._id === this.state.username) {
+                                    this.setState({
+                                        usernameError: 'El usuario ya existe, intente otro'
+                                    })
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.log("Not the user");
+                        })
+                }
+               
             });
         }
         else if (e.target.id === "name") {
@@ -140,7 +147,7 @@ export default class register extends Component {
                     password: md5(this.state.password)
                 };
                 let boddy = JSON.stringify(json);
-                fetch('https://futureguide.herokuapp.com/register', {
+                fetch('http://futureguide.herokuapp.com/register', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

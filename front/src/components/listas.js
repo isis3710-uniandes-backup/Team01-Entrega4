@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import ListProgramas from './listProgramas';
 import ListUniversidades from './listUniversidades';
 import Cookies from 'js-cookie';
@@ -12,53 +12,53 @@ export default class Listas extends Component {
         this.state = {
             programas: [],
             universidades: [],
-            nombrePrograma:""
+            nombrePrograma: ""
         }
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             fetch('https://futureguide.herokuapp.com/programas',
-            {
+                {
                     method: 'GET',
                     headers: new Headers({
                         'Authorization': token
                     })
-            }).then(
-                resp=> resp.json()
-            )
-            .then(json => {
-                this.setState({programas:json})
-            })
+                }).then(
+                    resp => resp.json()
+                )
+                .then(json => {
+                    this.setState({ programas: json })
+                })
         }
     }
 
-    actualizarUniversidades = (pUniversidades,pNombrePrograma)   =>  {
+    actualizarUniversidades = (pUniversidades, pNombrePrograma) => {
         let token = Cookies.get("JSESSIONID");
         let universidadesNuevas;
         if (token) {
-        let urlServer = "https://futureguide.herokuapp.com";
-        fetch(urlServer+ `/programas/${pNombrePrograma}/universidades`, {
-            method: 'GET',
-            headers: new Headers({
-                'Authorization': token
+            let urlServer = "https://futureguide.herokuapp.com";
+            fetch(urlServer + `/programas/${pNombrePrograma}/universidades`, {
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
             })
-    })
-    .then(res => res.json())
-    .then(json => {
-        universidadesNuevas = json;
-        console.log(universidadesNuevas);
-        this.setState({
-            universidades: universidadesNuevas,
-            nombrePrograma: pNombrePrograma
-        }, () => {
-            console.log(this.state.universidades);
-        })
-    })
+                .then(res => res.json())
+                .then(json => {
+                    universidadesNuevas = json;
+                    console.log(universidadesNuevas);
+                    this.setState({
+                        universidades: universidadesNuevas,
+                        nombrePrograma: pNombrePrograma
+                    }, () => {
+                        console.log(this.state.universidades);
+                    })
+                })
 
-     
-    }
+
+        }
     }
 
     render() {
@@ -67,12 +67,18 @@ export default class Listas extends Component {
             return <Redirect to='/' />
         }
         return (
-            <Row className="container-fluid listas" style={{overflowY : "auto"}} role="main">
+            <Row className="container-fluid listas" style={{ overflowY: "auto" }} role="main">
                 <Col className="col-6" id="ListaProgramas">
-                    <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
+
+                    <div className="scrollbar scrollbar-primary">
+                        <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
+                    </div>
                 </Col>
+
                 <Col className="col-6" id="ListaUniversidades">
-                    <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
+                    <div className="scrollbar scrollbar-universidades">
+                        <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
+                    </div>
                 </Col>
             </Row>
         )

@@ -1,5 +1,6 @@
 #list{
-    padding: 50px;
+  /*  padding: 50px; */
+  margin-right : 0;
 }
 .marginBottom{
     margin-bottom: 0.2rem;

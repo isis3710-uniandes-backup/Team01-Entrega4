@@ -1,7 +1,6 @@
 .Programa{
-    margin-bottom: 1em;
     transition: all .8s;
-    background: #edf7f6;
+    background: white;
 }   
 .nombreprograma{
     font-size: 0.8em;

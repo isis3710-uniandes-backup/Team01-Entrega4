@@ -17,25 +17,6 @@ export default class ListProgramas extends React.Component {
             })
         }
     }
-    /*filtering = e => {
-        let criteria = e.target.value;
-        let filtered = this.state.univFilt;
-        let filtr = filtered.filter(
-            element => {
-                console.log(element.name.includes(criteria));
-                return element.name.includes(criteria);
-            }
-        );
-        if(criteria === '')
-        {
-            filtr = this.state.univFilt;
-        }
-        this.setState({
-            universidades: filtr,
-            criteria : criteria
-        });
-    }*/
-
     render() {
         return (
             <div>
