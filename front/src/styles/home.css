@@ -4,7 +4,10 @@ body{
 #homeContainer{
     min-height: 100vh;
     flex-direction: column;
-    background-color: #edf7f6;
+   /* background-color: #edf7f6; */
+    background-image: url(https://s2.best-wallpaper.net/wallpaper/1600x900/1805/Lot-of-books-in-library_1600x900.jpg);
+    background-size: cover;
+    
 }
 #searchBar{
     border-radius: 0.3em ;
@@ -48,7 +51,10 @@ body{
 #slogan{
     font-size: 5vw;
     font-weight: bolder;
+    color: white;
     padding-bottom: 0.2em;
+    background-color: #024972;
+    border-radius: 0.5rem;
 }
 #homecontainer{
     min-width: 100%;
