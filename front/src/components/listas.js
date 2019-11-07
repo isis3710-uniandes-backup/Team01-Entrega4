@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import '../styles/listas.css';
 import { Redirect } from "react-router-dom";
 import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
 import cap from '../assets/imgs/graduate-cap.png'
 
 export default class Listas extends Component {
@@ -18,7 +19,7 @@ export default class Listas extends Component {
             universidades: [],
             nombrePrograma: "",
             programClicked: false,
-            costoRange : [0,18000000]
+            costoRange: [0, 25000000]
         }
     }
 
@@ -84,9 +85,9 @@ export default class Listas extends Component {
     }
     changeCosto = (event, newValue) => {
         this.setState({
-            costoRange : newValue
+            costoRange: newValue
         });
-      };
+    };
 
     render() {
         let token = Cookies.get("JSESSIONID");
@@ -107,26 +108,27 @@ export default class Listas extends Component {
                 {this.state.programClicked ?
                     <>
                         <Col className="col-6" id="ListaUniversidades" >
-
-                            <div className="col-12" id="searchprogramInput__Container">
-                                <div className="filterBox">
-                                    <div className="row">
-                                        <div className="col-6">
-
-                                            <Slider
-                                                value={this.state.costoRange    }
-                                                onChange={this.changeCosto}
-                                                valueLabelDisplay="auto"
-                                                aria-labelledby="range-slider"
-                                                getAriaValueText={() => {return this.state.costoRange}}
-                                                marks={[{value : 0, label: '$0',},{value : 20000000, label: '$20000',} ]}
-                                            />
-                                        </div>
-                                        <div className="col-6">
-
-                                        </div>
+                            <div className="col-12" id="filterBox">
+                                <h1 className="text-center" id="filtrosTitle">Filtros</h1>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <Typography id="range-slider" gutterBottom>
+                                            Costo del semestre
+                                            </Typography>
+                                        <Slider
+                                            value={this.state.costoRange}
+                                            onChange={this.changeCosto}
+                                            valueLabelDisplay="auto"
+                                            aria-labelledby="range-slider"
+                                            min={0}
+                                            max={25}
+                                            getAriaValueText={() => {
+                                                return this.state.costoRange;
+                                            }}
+                                            marks={[{ value: 0, label: '$0', }, { value: 25, label: '$25M', }]}
+                                        />
                                     </div>
-                                    <div className="row">
+                                    <div className="col-6">
                                         <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
                                     </div>
                                 </div>

@@ -25,7 +25,7 @@ p{
 .cUniversidad:hover{
   background-color: #f9faff;
   cursor:pointer;
-  box-shadow:  0 3px 3px #7e807c;
+  box-shadow: 0 3px 3px #b4b4b4;
 }
 .detailUniversidad-info p{font-size: 1vw}
 .nombreuniversidad{font-size: 1.1vw}
