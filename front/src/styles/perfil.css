@@ -3,12 +3,15 @@
     top: 0%;
     left: 15%;
     width: 85%;
+    background-color: #edf7f6;
+    height: 100%;
 }
 
 .perfil_card{
     width: 61vw;
     margin: 6% 0% 0% 14%;
     border-width: 6px;
+    background-color: #00a0ce;
 }
 .perfil_img{width: 12vw;padding: 10% 0% 10%;}
 .perfil_body{padding: 2rem !important;}
@@ -17,7 +20,7 @@
 }
 .perfil_text1{margin: 0;font-size: 2vw; font-family: 'Karla', sans-serif}
 .perfil_text2{margin: 0;font-size: 1.5vw; font-family: 'Karla', sans-serif; color: #464655}
-
+.btn-success{background-color: #00a0ce; margin-bottom: 6px;}
 
 .comentarios{
     margin: 2% 0% 0% 14%;
@@ -29,6 +32,7 @@
     max-height:22.4vw;
     overflow-y: auto;
     padding-left: 2%;
+    width: 98%;
 }
 
 .scrollspy-example h4{font-size: 1.5vw; font-family: 'Karla', sans-serif}
@@ -36,7 +40,14 @@
 
 #list-example{width: 9vw; overflow-y: scroll; max-height: 22.4vw;}
 .list-group-item-action{padding: 1vw 1.25vw; font-size: 1vw}
-.comentario{padding: 0}
+.comentario{padding: 0 12px;}
+.info-comentario{
+    margin: 12px 0 12px 0;
+    border: 2px solid rgba(0,0,0,.125);
+}
+.boton-comentario{
+    margin-top: 12px;
+}
 
 
 @media (max-width: 768px) {
