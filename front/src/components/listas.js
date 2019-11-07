@@ -5,6 +5,7 @@ import ListUniversidades from './listUniversidades';
 import Cookies from 'js-cookie';
 import '../styles/listas.css';
 import { Redirect } from "react-router-dom";
+import Slider from '@material-ui/core/Slider';
 import cap from '../assets/imgs/graduate-cap.png'
 
 export default class Listas extends Component {
@@ -16,7 +17,8 @@ export default class Listas extends Component {
             universidadesTotal: [],
             universidades: [],
             nombrePrograma: "",
-            programClicked: false
+            programClicked: false,
+            costoRange : [0,18000000]
         }
     }
 
@@ -78,10 +80,13 @@ export default class Listas extends Component {
                         programClicked: true
                     })
                 })
-
-
         }
     }
+    changeCosto = (event, newValue) => {
+        this.setState({
+            costoRange : newValue
+        });
+      };
 
     render() {
         let token = Cookies.get("JSESSIONID");
@@ -99,13 +104,32 @@ export default class Listas extends Component {
                     </div>
                 </Col>
 
-
                 {this.state.programClicked ?
                     <>
                         <Col className="col-6" id="ListaUniversidades" >
 
                             <div className="col-12" id="searchprogramInput__Container">
-                                <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
+                                <div className="filterBox">
+                                    <div className="row">
+                                        <div className="col-6">
+
+                                            <Slider
+                                                value={this.state.costoRange    }
+                                                onChange={this.changeCosto}
+                                                valueLabelDisplay="auto"
+                                                aria-labelledby="range-slider"
+                                                getAriaValueText={() => {return this.state.costoRange}}
+                                                marks={[{value : 0, label: '$0',},{value : 20000000, label: '$20000',} ]}
+                                            />
+                                        </div>
+                                        <div className="col-6">
+
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
+                                    </div>
+                                </div>
                             </div>
                             <div className="scrollbar scrollbar-universidades">
                                 <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
