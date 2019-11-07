@@ -27,8 +27,6 @@ export default class detailCareer extends Component {
             let { nombre, name } = this.props.match.params;
             nombre = nombre.replace("+", "");
             nombre = nombre.replace("+", "");
-            console.log(nombre);
-            console.log(name);
             fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
@@ -226,7 +224,7 @@ export default class detailCareer extends Component {
                     </div>
                     <div className="col-5 d-none d-md-block text-center" id="videosColumn">
                         <h2>Videos</h2>
-                        <div className="scrollbar scrollbar-videos">
+                        <div className="scrollbar scrollbar-videos" tabIndex="0">
                             {this.state.videos.map((element, index) =>
                                 <div key={index} className="embed-responsive embed-responsive-16by9 videos">
                                     <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>

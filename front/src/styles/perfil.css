@@ -20,8 +20,8 @@
 }
 .perfil_text1{margin: 0;font-size: 2vw; font-family: 'Karla', sans-serif}
 .perfil_text2{margin: 0;font-size: 1.5vw; font-family: 'Karla', sans-serif; color: #464655}
-.btn-success{background-color: #00a0ce; margin-bottom: 6px;}
-.btn-success:hover{background-color: #024972}
+.btn-success{background-color: #024972; margin-bottom: 6px;}
+.btn-success:hover{background-color: #00c0be}
 
 .comentarios{
     margin: 2% 0% 0% 14%;

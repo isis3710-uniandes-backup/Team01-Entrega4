@@ -35,7 +35,6 @@ export default class universidad extends Component {
         }
     }
     render() {
-        console.log(this.state);
         return (
             <div  className="col-12 marginBottom">
                  <Link className="linkuniversidad" to ={{

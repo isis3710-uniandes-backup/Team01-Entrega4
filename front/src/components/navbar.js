@@ -3,7 +3,6 @@ import '../styles/navbar.css';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
-import Logo from '../assets/imgs/Logo.png';
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
 import Register from './registro';
 const Swal = require('sweetalert2');
@@ -121,7 +120,7 @@ export default class navbar extends Component {
                     <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><a className="menu__link" aria-label="Perfil" href="/perfil"><i className="fas fa-user-tie"></i>Perfil</a></li>
+                            <li className="menu__item"><Link to="/perfil" className="menu__link" aria-label="Perfil" ><i className="fas fa-user-tie"></i>Perfil</Link></li>
                             {!this.state.alredyLogged ?
                                 <>
                                     <li className="menu__item">
@@ -176,7 +175,10 @@ export default class navbar extends Component {
                                 </div>
                                 <div className="col-6">
                                     <div className="menu_movil__item">
-                                        <Link className="menu_movil__link carreras" to="/">
+                                        <Link className="menu_movil__link carreras" to={{
+                                            pathname: '/',
+                                            state: true
+                                        }}>
                                             <i className="fas fa-sign-out-alt"></i>
                                             Salir
                                         </Link>
@@ -211,9 +213,12 @@ export default class navbar extends Component {
                                         <div className="menu_movil__item text-center"><Link to="/perfil/" className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i></Link></div>
                                     </div>}
                                 <div className="col-6">
-                                    <div className="menu_movil__item text-center">
+                                    <Link  className="menu_movil__item text-center" to={{
+                                        pathname: '/',
+                                        state: true
+                                    }}>
                                         <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
