@@ -94,7 +94,7 @@ export default class perfil extends Component{
                                     )}
                                 </div>
                             </div>
-                            <div data-target="#list-example" data-offset="0" className="col-10 comentario scrollbar-primary scrollspy-example " tabindex="0">
+                            <div data-target="#list-example" data-offset="0" className="col-10 comentario scrollbar-primary scrollspy-example " tabIndex="0">
                                 {this.state.comentarios.map((e,i)=>
                                     <div className="col-12 info-comentario" key={i}>
                                         <h1 className="reseña-title" id={"list-item-"+(i)}><b>{e['titulo']}</b></h1>

@@ -3,7 +3,6 @@ import '../styles/navbar.css';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { Link, Redirect } from "react-router-dom";
-import Logo from '../assets/imgs/Logo.png';
 import LogoCompleto from '../assets/imgs/LogoCompleto.png';
 import Register from './registro';
 const Swal = require('sweetalert2');

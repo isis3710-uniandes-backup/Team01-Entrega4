@@ -91,10 +91,10 @@ export default class Listas extends Component {
         return (
             <Row className="container-fluid listas" style={{ overflowY: "auto" }} role="main">
                 <Col className="col-6" >
-                    <div className="col-12" id="searchprogramInput__Container">
-                        <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar programa..." onChange={this.changePrograms} aria-label="Input para buscar un programa"></input>
+                    <div className="col-12 searchprogramInput__Container">
+                        <input className="form-control form-control-sm searchprogramInput" type="text" placeholder="Buscar programa..." onChange={this.changePrograms} aria-label="Input para buscar un programa"></input>
                     </div>
-                    <div className="scrollbar scrollbar-primary">
+                    <div className="scrollbar scrollbar-primary" tabIndex="0">
                         <ListProgramas funcionUniversidades={this.actualizarUniversidades} programas={this.state.programas}></ListProgramas>
                     </div>
                 </Col>
@@ -104,8 +104,8 @@ export default class Listas extends Component {
                     <>
                         <Col className="col-6" id="ListaUniversidades" >
 
-                            <div className="col-12" id="searchprogramInput__Container">
-                                <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
+                            <div className="col-12 searchprogramInput__Container">
+                                <input className="form-control form-control-sm searchprogramInput" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
                             </div>
                             <div className="scrollbar scrollbar-universidades">
                                 <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
