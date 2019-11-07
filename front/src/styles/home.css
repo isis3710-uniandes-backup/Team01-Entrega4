@@ -55,6 +55,8 @@ body{
     padding-bottom: 0.2em;
     background-color: #024972;
     border-radius: 0.5rem;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
 }
 #homecontainer{
     min-width: 100%;
