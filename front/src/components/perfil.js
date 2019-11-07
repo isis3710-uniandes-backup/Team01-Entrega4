@@ -43,7 +43,8 @@ export default class perfil extends Component{
                     this.setState({
                         username: json['_id'],
                         name: json['nombre'],
-                        email: json['correo']
+                        email: json['correo'],
+                        comentarios: json['comentarios'] === undefined ? []:json['comentarios']
                     })
                 });
         }
@@ -54,9 +55,9 @@ export default class perfil extends Component{
             <div className="container-fluid perfil">
                 <div className="card mb-3 perfil_card" >
                     <div className="row no-gutters">
-                        <div className="col-8">
+                        <div className="col-9">
                             <div className="card-body perfil_body">
-                                <h5 className="card-title text-center perfil_title">{this.state.username}</h5>
+                                <h1 className="card-title text-center perfil_title">{this.state.username}</h1>
                                 <div className="row">
                                     <div className="col-6">
                                         <div className="col-12">
@@ -77,8 +78,8 @@ export default class perfil extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-4 text-center">
-                            <img src="http://lorempixel.com/350/350/" className="card-img rounded-circle perfil_img"alt="..."></img>
+                        <div className="col-3 text-center">
+                            <img src="http://lorempixel.com/350/350/" className="card-img rounded-circle perfil_img"alt="Imagen Aleatoria de Perfil"></img>
                         </div>
                     </div>
                 </div>
@@ -93,10 +94,10 @@ export default class perfil extends Component{
                                     )}
                                 </div>
                             </div>
-                            <div data-target="#list-example" data-offset="0" className="col-10 comentario scrollbar-primary scrollspy-example">
+                            <div data-target="#list-example" data-offset="0" className="col-10 comentario scrollbar-primary scrollspy-example " tabindex="0">
                                 {this.state.comentarios.map((e,i)=>
                                     <div className="col-12 info-comentario" key={i}>
-                                        <h4 id={"list-item-"+(i)}><b>{e['titulo']}</b></h4>
+                                        <h1 className="reseña-title" id={"list-item-"+(i)}><b>{e['titulo']}</b></h1>
                                         <p>{e['descripcion']}</p>
                                     </div>
                                 )}
@@ -104,7 +105,7 @@ export default class perfil extends Component{
                         </div>:
                         <div className="row no-comentarios">
                             <div className="col-12 text-center">
-                                <p>Aun no tienes comentarios. Por favor ayudanos a mejorar nuestra plataforma</p>
+                                <p>Aun no tienes Reseñas. Por favor ayudanos a mejorar nuestra plataforma dejando tus reseñas</p>
                             </div>
                             <div className="col-12 text-center">
                                 <Link to="/carreras">
