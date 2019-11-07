@@ -170,15 +170,15 @@ export default class detailCareer extends Component {
                             <div className="col-12 overflow">
                                 <div className="row justify-content-center" id="marginBottomRow">
                                     {this.state.comentarios.length > 1 ? <>
-                                    <a className="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span className="sr-only">Previous</span>
-                                    </a>
-                                    <a className="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span className="sr-only">Next</span>
-                                    </a>
-                                     </>: false}
+                                        <a className="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span className="sr-only">Previous</span>
+                                        </a>
+                                        <a className="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span className="sr-only">Next</span>
+                                        </a>
+                                    </> : false}
                                 </div>
                                 <div id="carousel-example-1z" className="carousel slide carousel-fade" data-ride="carousel">
                                     <ol className="carousel-indicators">
@@ -226,11 +226,13 @@ export default class detailCareer extends Component {
                     </div>
                     <div className="col-5 d-none d-md-block text-center" id="videosColumn">
                         <h2>Videos</h2>
-                        {this.state.videos.map((element, index) =>
-                            <div key={index} className="embed-responsive embed-responsive-16by9 videos">
-                                <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>
-                            </div>
-                        )}
+                        <div className="scrollbar scrollbar-videos">
+                            {this.state.videos.map((element, index) =>
+                                <div key={index} className="embed-responsive embed-responsive-16by9 videos">
+                                    <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
