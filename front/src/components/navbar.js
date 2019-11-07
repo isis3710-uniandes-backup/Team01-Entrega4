@@ -121,7 +121,7 @@ export default class navbar extends Component {
                     <div className="menu_section section_2"><h1 className="onlyForAxe">Configuración</h1></div>
                     <div className="menu__wrap_2">
                         <ul data-menu="main" className="menu__level">
-                            <li className="menu__item"><a className="menu__link" aria-label="Perfil" href="/perfil"><i className="fas fa-user-tie"></i>Perfil</a></li>
+                            <li className="menu__item"><Link to="/perfil" className="menu__link" aria-label="Perfil" ><i className="fas fa-user-tie"></i>Perfil</Link></li>
                             {!this.state.alredyLogged ?
                                 <>
                                     <li className="menu__item">
