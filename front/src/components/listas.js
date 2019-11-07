@@ -12,8 +12,10 @@ export default class Listas extends Component {
         this.state = {
             programas: [],
             programasTotal : [],
+            universidadesTotal : [],
             universidades: [],
-            nombrePrograma: ""
+            nombrePrograma: "",
+            programClicked : false
         }
     }
 
@@ -30,6 +32,7 @@ export default class Listas extends Component {
                     resp => resp.json()
                 )
                 .then(json => {
+                    
                     this.setState({ programas: json,
                         programasTotal : json })
                 })
@@ -38,18 +41,22 @@ export default class Listas extends Component {
 
     changePrograms = (e) =>  {
         this.setState({
-            programas : this.state.programasTotal.filter(element => {
+            programas : this.state.universidadesTotal.filter(element => {
                 return element.nombre.includes(e.target.value.toUpperCase())
              })
-        }, () => {
-            console.log(this.state);
+        })
+    }
+    changeUniversities = (e) => {
+        this.setState({
+            universidades : this.state.universidadesTotal.filter(element => {
+                return (element.nombre.includes(e.target.value.toUpperCase()) || element.nickname.includes(e.target.value.toUpperCase()))
+             })
         })
     }
 
     actualizarUniversidades = (pUniversidades, pNombrePrograma) => {
         let token = Cookies.get("JSESSIONID");
         let universidadesNuevas;
-        console.log(pNombrePrograma);
         if (token) {
             let urlServer = "https://futureguide.herokuapp.com";
             fetch(urlServer + `/programas/${pNombrePrograma}/universidades`, {
@@ -63,7 +70,9 @@ export default class Listas extends Component {
                     universidadesNuevas = json;
                     this.setState({
                         universidades: universidadesNuevas,
-                        nombrePrograma: pNombrePrograma
+                        universidadesTotal : universidadesNuevas,
+                        nombrePrograma: pNombrePrograma,
+                        programClicked : true
                     })
                 })
 
@@ -87,10 +96,16 @@ export default class Listas extends Component {
                     </div>
                 </Col>
 
-                <Col className="col-6" id="ListaUniversidades">
+
+            <Col className="col-6" id="ListaUniversidades">
+                { this.state.programClicked ? 
+                <>
+                <div className="col-12" id="searchprogramInput__Container">
+                        <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities}></input>
+                    </div>
                     <div className="scrollbar scrollbar-universidades">
                         <ListUniversidades nombrePrograma={this.state.nombrePrograma} universidades={this.state.universidades}></ListUniversidades>
-                    </div>
+                </div> </> : false}
                 </Col>
             </Row>
         )

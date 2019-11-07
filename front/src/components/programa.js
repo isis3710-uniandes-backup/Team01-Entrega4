@@ -33,7 +33,7 @@ export default class Programa extends Component {
                 <Card onClick={this.cambiarUniversidades} className="Programa">
                     <Card.Body className="little d-flex justify-content-between">
                         <h1 className="nombreprograma " >{this.state.nombre}</h1>
-                        <span className={`badge badge-${this.state.area === 'ARTES Y CREATIVIDAD'? 'artes' : this.state.area.toLowerCase()} area `}>{this.state.area}</span>
+                        <span className={`badge badgeProg badge-${this.state.area === 'ARTES Y CREATIVIDAD'? 'artes' : this.state.area.toLowerCase()} area `}>{this.state.area}</span>
                     </Card.Body>
                 </Card>
             </div>
