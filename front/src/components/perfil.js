@@ -52,7 +52,7 @@ export default class perfil extends Component{
 
     render(){
         return(
-            <div className="container-fluid perfil">
+            <div className="container-fluid perfil" role="main">
                 <div className="card mb-3 perfil_card" >
                     <div className="row no-gutters">
                         <div className="col-9">
