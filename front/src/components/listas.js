@@ -41,9 +41,11 @@ export default class Listas extends Component {
 
     changePrograms = (e) =>  {
         this.setState({
-            programas : this.state.universidadesTotal.filter(element => {
-                return element.nombre.includes(e.target.value.toUpperCase())
-             })
+            programas : this.state.programasTotal.filter(element => 
+                 element.nombre.includes(e.target.value.toUpperCase())
+             )
+        }, () => {
+            console.log(this.state);
         })
     }
     changeUniversities = (e) => {
