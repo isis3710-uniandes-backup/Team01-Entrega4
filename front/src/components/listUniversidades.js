@@ -24,8 +24,6 @@ export default class ListUniversidades extends React.Component {
         if(this.props.nombrePrograma !== prevProps.nombrePrograma){
             this.setState({
                 programa : this.props.nombrePrograma
-            }, () => {
-                console.log(this.state.programa);
             })
         }
     }

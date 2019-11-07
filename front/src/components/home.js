@@ -87,7 +87,9 @@ export default class home extends Component {
                 .then(res => res.json())
                 .then(json => {
                     if (json.success === false) {
-
+                        this.setState({
+                            alreadyLogged : false
+                        })
                     }
                     else {
                         let objectFinal = [];
@@ -139,9 +141,7 @@ export default class home extends Component {
         }
         let token = Cookies.get("JSESSIONID");
         if (token) {
-            this.setState({
-                alreadyLogged : true
-            })
+
             fetch("https://futureguide.herokuapp.com/programas/area", {
                 method: 'GET',
                 headers: new Headers({
@@ -151,7 +151,11 @@ export default class home extends Component {
                 .then(res => res.json())
                 .then(json => {
                     if (json.success === false) {
-
+                        this.setState({
+                            alreadyLogged : false
+                        }, () => {
+                            Cookies.remove('JSESSIONID');
+                        });
                     }
                     else {
                         let objectFinal = [];
@@ -207,7 +211,7 @@ export default class home extends Component {
                         </div>
                         :
                         <div className="form-inline">
-                            <button className="btn initialBtns" onClick={this.showToken}>Backend</button>
+                            <button className="btn initialBtns" onClick={this.showToken}>Token</button>
                         <Link to="/carreras">
                             <button className="btn initialBtns">Explorar</button>
                         </Link>

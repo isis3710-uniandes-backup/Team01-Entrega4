@@ -13,7 +13,7 @@
 .little{
     height: 45px;
 }
-.badge{
+.badgeProg{
     width: 99px;
 }
 .badge-financieras{
@@ -41,15 +41,15 @@
 
 @media (max-width: 768px) {
     .area{font-size: 1.5vw;font-style: italic}
-    .badge{width: 80px}
+    .badgeProg{width: 80px}
 }
 @media (max-width: 642px) {
     .area{font-size: 1.5vw;font-style: italic}
-    .badge{width: 70px;font-size: 0.4em}
+    .badgeProg{width: 70px; font-size: 0.4em}
 }
 @media (max-width: 540px) {
     .area{font-size: 1.5vw;font-style: italic}
-    .badge{width: 65px; font-size: 0.3em
+    .badgeProg{width: 57px !important; font-size: 0.35em
     }
 }
 

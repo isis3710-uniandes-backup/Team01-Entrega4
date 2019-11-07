@@ -26,20 +26,19 @@ class LogIn extends Component {
     } 
     logIn() {
         if (this.state.usuario !== "" && this.state.password !== "") {
-
             var data = { _id: this.state.usuario, password: md5(this.state.password) };
            let urlServer = "http://futureguide.herokuapp.com"
          // let urlServer = "http://localhost:3001"
             fetch(urlServer + "/login", {
-                method: 'POST', // or 'PUT'
-                body: JSON.stringify(data), // data can be `string` or {object}!
+                method: 'POST',
+                body: JSON.stringify(data), 
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             }).then(res => res.json())
             .then(json => {
-                Cookies.set('JSESSIONID', json.token , {expires: 2} );
+                Cookies.set('JSESSIONID', json.token , {expires: 0.125} );
                 Cookies.set('USERNAME', this.state.usuario );
                 if (json) {
                     toast('¡Bienvenido de nuevo ' + this.state.usuario + ' !', {

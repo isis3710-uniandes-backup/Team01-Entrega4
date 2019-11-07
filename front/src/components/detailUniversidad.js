@@ -24,12 +24,19 @@ export default class universidad extends Component {
                 programa : this.props.programa
             })
         }
+        if(prevProps.universidad !== this.props.universidad){
+            this.setState({
+                nombre: this.props.universidad.nombre,
+                direccion: this.props.universidad.direccion,
+                puestoNacional: this.props.universidad.puestoNacional,
+                puestoInternacional: this.props.puestoInternacional,
+                imagen: this.props.universidad.logo
+            })
+        }
     }
     render() {
         return (
             <div  className="col-12 marginBottom">
-                {console.log(this.state.nombre.toUpperCase())}
-                {console.log(this.state.programa.toUpperCase())}
                  <Link className="linkuniversidad" to ={{
                     pathname: `/universidad/+${this.state.nombre.toUpperCase()}+/programa/${this.state.programa.toUpperCase()}`}} >
                     <Card className="cUniversidad" >

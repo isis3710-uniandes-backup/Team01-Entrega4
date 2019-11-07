@@ -18,6 +18,7 @@ class Careers {
     getCareer(req, res) {
         let universidad = req.params.nombreUniversidad;
         let programa = req.params.nombrePrograma;
+        console.log(universidad + "   " + programa);
         conn.then(client => {
             client.db(databaseName).collection("universidades").findOne({ $or: [{ nombre: universidad }, { nickname: universidad }] }, (err, result) => {
                 if (err) {
@@ -30,8 +31,11 @@ class Careers {
                             res.send(err);
                         }
                         let programId = resultPro._id;
-                        client.db(databaseName).collection("carreraUniversidad").findOne({ $and: [{ universidad: universityId }, { programa: programId }] }, (err, result) => {
-                            res.send(result);
+                        client.db(databaseName).collection("carreraUniversidad").findOne({ $and: [{ universidad: universityId }, { programa: programId }] }, (err, resultado) => {
+                            if(err){
+                                res.send(err);
+                            }
+                            res.send(resultado);
                         });
 
                     });
