@@ -25,10 +25,10 @@ export default class detailCareer extends Component {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             let { nombre, name } = this.props.match.params;
-             nombre = nombre.replace("+","");
-             nombre = nombre.replace("+","");
-             console.log(nombre);
-             console.log(name);
+            nombre = nombre.replace("+", "");
+            nombre = nombre.replace("+", "");
+            console.log(nombre);
+            console.log(name);
             fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
                 method: 'GET'
             })
@@ -50,7 +50,7 @@ export default class detailCareer extends Component {
         }
     }
 
-    reseña = ()=> {
+    reseña = () => {
         let token = Cookies.get("JSESSIONID");
         if (token) {
             Swal.mixin({
@@ -120,7 +120,7 @@ export default class detailCareer extends Component {
                                 'Content-Type': 'application/json'
                             }),
                             body: boddy
-                        }).then(()=>{
+                        }).then(() => {
                             let coments = this.state.comentarios;
                             coments.push(json)
                             this.setState({
@@ -168,20 +168,54 @@ export default class detailCareer extends Component {
                         </div>
                         <div className="row d-flex justify-content-center">
                             <div className="col-12 overflow">
-                                {this.state.comentarios.map((element, index) =>
-
-                                    <div  key={index} className="card">
-                                        <div className="card-header">
-                                            <h3 id="tituloComentario">{element.titulo}</h3>
-                                        </div>
-                                        <div className="card-body">
-                                            <blockquote className="blockquote mb-0">
-                                                <p id="comentarioDescripcion">"{element.descripcion}"</p>
-                                               {element.recomendada ? <span className="badge badge-style badge-recomendada">Recomendada</span> : <span className="badge badge-style badge-nrecomendada">No recomendada</span>  } 
-                                            </blockquote>
-                                        </div>
+                                <div className="row justify-content-center" id="marginBottomRow">
+                                    {this.state.comentarios.length > 1 ? <>
+                                        <a className="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span className="sr-only">Previous</span>
+                                        </a>
+                                        <a className="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span className="sr-only">Next</span>
+                                        </a>
+                                    </> : false}
+                                </div>
+                                <div id="carousel-example-1z" className="carousel slide carousel-fade" data-ride="carousel">
+                                    <ol className="carousel-indicators">
+                                        <li data-target="#carousel-example-1z" data-slide-to={0} className="active"></li>
+                                        {this.state.comentarios.map((element, index) => index !== 0 ?
+                                            <li key={index} data-target="#carousel-example-1z" data-slide-to={index + 1}></li> : false)}
+                                    </ol>
+                                    <div className="carousel-inner" role="listbox" aria-label="carousel de reseñas">
+                                        {this.state.comentarios.length > 0 ?
+                                            <div className="carousel-item active">
+                                                <div className="card">
+                                                    <div className="card-header">
+                                                        <h3 className="tituloComentario">{this.state.comentarios[0].titulo}</h3>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <blockquote className="blockquote mb-0">
+                                                            <p className="comentarioDescripcion">"{this.state.comentarios[0].descripcion}"</p>
+                                                            {this.state.comentarios[0].recomendada ? <span className="badge badge-style badge-recomendada">Recomendada</span> : <span className="badge badge-style badge-nrecomendada">No recomendada</span>}
+                                                        </blockquote>
+                                                    </div>
+                                                </div>
+                                            </div> : false}
+                                        {this.state.comentarios.map((el, i) => <div key={i} className="carousel-item">
+                                            <div className="card">
+                                                <div className="card-header">
+                                                    <h3 className="tituloComentario">{el.titulo}</h3>
+                                                </div>
+                                                <div className="card-body">
+                                                    <blockquote className="blockquote mb-0">
+                                                        <p className="comentarioDescripcion">"{el.descripcion}"</p>
+                                                        {el.recomendada ? <span className="badge badge-style badge-recomendada">Recomendada</span> : <span className="badge badge-style badge-nrecomendada">No recomendada</span>}
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>)}
                                     </div>
-                            )}
+                                </div>
                             </div>
                         </div>
                         <div className="row boton">
@@ -192,11 +226,13 @@ export default class detailCareer extends Component {
                     </div>
                     <div className="col-5 d-none d-md-block text-center" id="videosColumn">
                         <h2>Videos</h2>
-                        {this.state.videos.map((element, index) =>
-                            <div key={index} className="embed-responsive embed-responsive-16by9 videos">
-                                <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>
-                            </div>
-                        )}
+                        <div className="scrollbar scrollbar-videos">
+                            {this.state.videos.map((element, index) =>
+                                <div key={index} className="embed-responsive embed-responsive-16by9 videos">
+                                    <iframe className="embed-responsive-item" src={element} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title={`Video${index}`} aria-label={`Video${index}`} allowFullScreen></iframe>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

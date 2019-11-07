@@ -29,6 +29,7 @@ export default class Programa extends Component {
 
     render() {
         return (
+            
             <div className="col-12 marginBottom">
                 <Card onClick={this.cambiarUniversidades} className="Programa">
                     <Card.Body className="little d-flex justify-content-between">

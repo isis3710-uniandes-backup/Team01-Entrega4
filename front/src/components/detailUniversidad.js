@@ -35,15 +35,14 @@ export default class universidad extends Component {
         }
     }
     render() {
+        console.log(this.state);
         return (
             <div  className="col-12 marginBottom">
                  <Link className="linkuniversidad" to ={{
                     pathname: `/universidad/+${this.state.nombre.toUpperCase()}+/programa/${this.state.programa.toUpperCase()}`}} >
                     <Card className="cUniversidad" >
-                            <Card.Header>
-                             <h1 className="nombreuniversidad" ><strong>{this.state.nombre}</strong></h1>  
-                            </Card.Header>
                             <Card.Body >
+                            <h1 className="nombreuniversidad" ><strong>{this.state.nombre}</strong></h1>  
                             <div className="row info" >
                                 <div className="col-3" >
                                 <br></br>
@@ -53,7 +52,6 @@ export default class universidad extends Component {
                                     <p>Puesto a nivel nacional: {this.state.puestoNacional}</p>
                                     <p>Puesto a nivel internacional: {this.state.puestoInternacional}</p>
                                     <p>{this.state.direccion}</p>
-                                    <p>{this.state.ciudad}</p>
                                 </div>
                             </div>
                                 

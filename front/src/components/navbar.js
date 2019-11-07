@@ -149,32 +149,34 @@ export default class navbar extends Component {
 
                 <nav id="menu_movil" className="menu_movil d-block d-sm-block d-md-none">
                     <div className="row">
-                        <div className="col-5 d-none d-sm-block col_izq">
+                        <div className="col-6 d-none d-sm-block col_izq">
                             <div className="row">
-                                <div className="col-12">
+                                <div className="col-6">
                                     <Link to="/carreras">
                                         <div className="menu_movil__item"><div className="menu_movil__link carreras" ><i className="fas fa-graduation-cap"></i>Carreras</div></div>
                                     </Link>
                                 </div>
+                                <div className="col-6">
+                                <Link to="/">
+                                        <div className="menu_movil__item"><div className="menu_movil__link carreras" ><i className="fas fa-home"></i>Home</div></div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-2 d-none d-sm-block col_med">
-                            <div className="logo_movil"><img src={Logo} alt="Logo de FutureGuide"></img></div>
-                        </div>
-                        <div className="col-5 d-none d-sm-block col_der">
+                        <div className="col-6 d-none d-sm-block col_der">
                             <div className="row">
                                 <div className="col-6">
-                                {!this.state.alredyLogged ? 
-                                                  <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
+                                    {!this.state.alredyLogged ?
+                                        <div className="menu_movil__item"><div className="menu_movil__link carreras" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i>Ingresar
                                                   <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                                              </div>
-                                                  </div> :    <Link to="/perfil"> <div className="menu_movil__item"><div className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</div></div></Link>
- }
-                  
+                                        </div>
+                                        </div> : <Link to="/perfil"> <div className="menu_movil__item"><div className="menu_movil__link carreras" aria-label="Perfil"><i className="fas fa-user-tie"></i>Perfil</div></div></Link>
+                                    }
+
                                 </div>
                                 <div className="col-6">
                                     <div className="menu_movil__item">
-                                        <Link className="menu_movil__link" to="/">
+                                        <Link className="menu_movil__link carreras" to="/">
                                             <i className="fas fa-sign-out-alt"></i>
                                             Salir
                                         </Link>
@@ -185,32 +187,33 @@ export default class navbar extends Component {
                         </div>
 
 
-                        <div className="col-5 d-block d-sm-none col_izq">
+                        <div className="col-6 d-block d-sm-none col_izq">
                             <div className="row">
-                                <div className="col-12 text-center">
+                                <div className="col-6 text-center">
                                     <Link aria-label="Vamos a ver los programas..." to="/carreras">
-                                        <div className="menu_movil__item"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
+                                        <div className="menu_movil__item text-center"><div className="menu_movil__link" ><i className="fas fa-graduation-cap"></i></div></div>
                                     </Link>
+                                </div>
+                                <div className="col-6">
+                                <Link aria-label="Home button" to="/">
+                                        <div className="menu_movil__item text-center"><div className="menu_movil__link" ><i className="fas fa-home"></i></div></div>
+                                </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-2 d-block d-sm-none col_med">
-                            <div className="logo_movil"><img src={Logo} alt="Logo de FutureGuide"></img></div>
-                        </div>
-                        <div className="col-5 d-block d-sm-none col_der">
+                        <div className="col-6 d-block d-sm-none col_der">
                             <div className="row">
-                                {!this.state.alredyLogged ? 
+                                {!this.state.alredyLogged ?
+                                    <div className="col-6">
+                                        <div className="menu_movil__item text-center"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></div>
+                                        <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
+                                    </div> : <div className="col-6">
+                                        <div className="menu_movil__item text-center"><Link to="/perfil/" className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i></Link></div>
+                                    </div>}
                                 <div className="col-6">
-                                    <div className="menu_movil__item"><div className="menu_movil__link" onClick={this.openLogIn}><i className="fas fa-sign-in-alt"></i></div></div>
-                                    <LogIn mostrar={this.state.logIn} cerrar={this.closeLogIn} />
-                                </div> : <div className="col-6">
-                                    <div className="menu_movil__item"><Link to="/perfil/" className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i></Link></div>
-                                </div> }
-                                <div className="col-6">
-                                    <div className="menu_movil__item">
+                                    <div className="menu_movil__item text-center">
                                         <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

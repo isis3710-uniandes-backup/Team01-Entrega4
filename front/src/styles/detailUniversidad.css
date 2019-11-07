@@ -1,6 +1,6 @@
 .cUniversidad{
-    height : 12em;
-    transition: all .8s;
+    height : 10em;
+    transition: all .9s;
 }   
 .linkuniversidad{
   color: black !important;
@@ -22,7 +22,11 @@ p{
     width: 50px;
     height: 50px;
 }
-.cUniversidad:hover{background-color: #00c0be;cursor:pointer}
+.cUniversidad:hover{
+  background-color: #f9faff;
+  cursor:pointer;
+  box-shadow:  0 3px 3px #7e807c;
+}
 .detailUniversidad-info p{font-size: 1vw}
 .nombreuniversidad{font-size: 1.1vw}
 
@@ -30,11 +34,21 @@ p{
     .Universidad {
       width: 99% !important;
     }
+    .cUniversidad{
+      height: 9em ;
   }
+  .LogoUniversidad{
+    width: 41px;
+    height: 41px;
+}
+}
 
 @media (max-width: 768px) {
     .nombreuniversidad{font-size: 1.8vw}
     .detailUniversidad-info p{font-size: 1.5vw}
+    .cUniversidad{
+      height: 9em ;
+  }
 }
 
 
