@@ -1,4 +1,5 @@
 const mongoClient = require("mongodb").MongoClient;
+var ObjectParser = require("mongodb").ObjectID;
 const { databaseUser, databasePassword, databaseName } = require('../config');
 const uri = "mongodb+srv://"+databaseUser+":"+databasePassword+"@educapp-viylh.gcp.mongodb.net/test?retryWrites=true&w=majority";
 let conn = mongoClient.connect(uri, {
@@ -60,7 +61,29 @@ class Programs
                                 res.send(err);
                             }
                             else{
-                                res.send(data);
+                                let results = [] ;
+                                client.db(databaseName).collection("universidades").find({_id : {$in : result.universidades}})
+                                .toArray((err,data2)=> {
+                                    for (let index = 0; index < data.length; index++) {
+                                        const uDetail = data[index];
+                                        for (let j = 0; j < data2.length; j++) {
+                                            const universidad = data2[j];
+                                           let id1 = uDetail.universidad.toString();
+                                           let id2 = universidad._id.toString();
+                                            if((id1) ===  (id2) )
+                                            {
+                                                uDetail.nombre = universidad.nombre;
+                                                uDetail.direccion = universidad.direccion;
+                                                uDetail.logo = universidad.logo;
+                                                uDetail.puestoNacional = universidad.puestoNacional;
+                                                uDetail.puestoInternacional = universidad.puestoInternacional;
+                                                uDetail.nickname = universidad.nickname;
+                                                results.push(uDetail);
+                                            }  
+                                        }
+                                    }
+                                    res.send(results);
+                                })
                             }
 
                         })
