@@ -64,7 +64,9 @@ export default class Listas extends Component {
         let token = Cookies.get("JSESSIONID");
         let universidadesNuevas;
         if (token) {
-            let urlServer = "https://futureguide.herokuapp.com";
+           // let urlServer = "https://futureguide.herokuapp.com";
+        let urlServer = "http://localhost:3001";
+
             fetch(urlServer + `/programas/${pNombrePrograma}/universidades/detail`, {
                 method: 'GET',
                 headers: new Headers({
@@ -84,9 +86,16 @@ export default class Listas extends Component {
         }
     }
     changeCosto = (event, newValue) => {
-
         this.setState({
-            costoRange: newValue
+            costoRange: newValue,
+            universidades : this.state.universidadesTotal.filter(element => {
+                if(element.costo !== 'Basado en estrato social'){
+                    console.log(element.costo);
+                    return ((element.costo <= (newValue[1]*1000000) ) && (element.costo >= (newValue[0]**1000000)))
+                }
+            })
+        }, () => {
+            console.log(this.state.universidades);
         });
     };
 

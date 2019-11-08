@@ -11,7 +11,8 @@ export default class universidad extends Component {
             nombre: this.props.universidad.nombre,
             direccion: this.props.universidad.direccion,
             puestoNacional: this.props.universidad.puestoNacional,
-            puestoInternacional: this.props.puestoInternacional,
+            puestoInternacional: this.props.universidad.puestoInternacional,
+            costo : this.props.universidad.costo,
             imagen: this.props.universidad.logo,
             ciudad: this.props.ciudad,
             programa: this.props.programa
@@ -51,6 +52,7 @@ export default class universidad extends Component {
                                     <p>Puesto a nivel nacional: {this.state.puestoNacional}</p>
                                     <p>Puesto a nivel internacional: {this.state.puestoInternacional}</p>
                                     <p>{this.state.direccion}</p>
+                                    <p>Costo : {this.state.costo}</p>
                                 </div>
                             </div>
                                 
