@@ -8,7 +8,7 @@ import cashImage from "../assets/imgs/cash.png"
 import acreditacionInternacionalImg from "../assets/imgs/global-marketing.png"
 import "../styles/detailCareer.css";
 import Swal from "sweetalert2";
-const formatter = new Intl.NumberFormat("es-COL",{
+const formatter = new Intl.NumberFormat("en-US",{
     style : 'currency',
     currency : 'COP',
     minimumFractionDigits: 2
@@ -162,7 +162,7 @@ export default class detailCareer extends Component {
                                 {this.state.altaCalidad ? <span className="badge badge-calite">Alta calidad</span> : false}
                                 <br />
                                 <strong>Costo semestre </strong>
-                                <strong className="atributosCareer">${this.state.costo}</strong>
+                                <strong className="atributosCareer">{ typeof this.state.costo === 'number' ? formatter.format(this.state.costo) : this.state.costo}</strong>
 
                             </div>
                             <ul className="col-lg-6 col-xl-6 col-md-6 col-12x   list-group list-group-flush">

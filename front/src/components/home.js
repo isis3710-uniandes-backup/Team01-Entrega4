@@ -6,7 +6,7 @@ import Register from './registro';
 import LogIn from './logIn';
 import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
-
+import homeImage from '../assets/imgs/home.jpg';
 
 export default class home extends Component {
 
@@ -181,7 +181,7 @@ export default class home extends Component {
 
     render() {
         return (
-            <div role="main" id="homecontainer" className="container">
+            <div role="main" id="homecontainer" className="container" style={{backgroundImage : homeImage}}>
                       <ToastContainer
                 containerId ={'A'}
                     position="bottom-right"
