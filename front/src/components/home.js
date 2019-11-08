@@ -72,7 +72,6 @@ export default class home extends Component {
             let botones = document.getElementsByClassName("initialBtns");
             for (let index = 0; index < botones.length; index++) {
                 const element = botones[index];
-                console.log(element);
                 element.classList.remove("hidde");
             }
         });
@@ -128,7 +127,6 @@ export default class home extends Component {
        let botones = document.getElementsByClassName("initialBtns");
        for (let index = 0; index < botones.length; index++) {
            const element = botones[index];
-           console.log(element);
            element.classList.add("hidde");
        }
        

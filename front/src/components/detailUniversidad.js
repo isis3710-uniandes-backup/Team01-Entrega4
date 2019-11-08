@@ -31,7 +31,8 @@ export default class universidad extends Component {
                 direccion: this.props.universidad.direccion,
                 puestoNacional: this.props.universidad.puestoNacional,
                 puestoInternacional: this.props.puestoInternacional,
-                imagen: this.props.universidad.logo
+                imagen: this.props.universidad.logo,
+                costo : this.props.universidad.costo
             })
         }
     }

@@ -8,6 +8,11 @@ import cashImage from "../assets/imgs/cash.png"
 import acreditacionInternacionalImg from "../assets/imgs/global-marketing.png"
 import "../styles/detailCareer.css";
 import Swal from "sweetalert2";
+const formatter = new Intl.NumberFormat("es-COL",{
+    style : 'currency',
+    currency : 'COP',
+    minimumFractionDigits: 2
+})
 export default class detailCareer extends Component {
     state = {
         universidad: "",
@@ -36,7 +41,6 @@ export default class detailCareer extends Component {
             )
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
                     this.setState({
                         universidad: nombre,
                         programa: name,
@@ -55,6 +59,10 @@ export default class detailCareer extends Component {
     reseña = () => {
         let token = Cookies.get("JSESSIONID");
         if (token) {
+            let botones = document.getElementsByClassName("btnNewComment");
+            let boton = botones[0];
+            boton.classList.add("hidde");
+
             Swal.mixin({
                 input: 'text',
                 confirmButtonText: 'Siguiente &rarr;',
@@ -97,6 +105,10 @@ export default class detailCareer extends Component {
                         toast: true,
                         showConfirmButton: false,
                         timer: 2000
+                    }).then(e => {
+                        let botones = document.getElementsByClassName("btnNewComment");
+                        let boton = botones[0];
+                        boton.classList.remove("hidde");
                     });
 
                     let json = {
@@ -160,7 +172,9 @@ export default class detailCareer extends Component {
                                 </li>
                                 <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={cashImage} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
-                                    <p className="atributosCareer">{this.state.salario}</p> <strong className=" cursiveAnotation text-right">en promedio.</strong>
+                                    <p className="atributosCareer">{
+                                        formatter.format(this.state.salario)
+                                    }</p> <strong className=" cursiveAnotation text-right">en promedio.</strong>
                                 </li>
                                 {this.state.acreditacionInternacional ? <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={acreditacionInternacionalImg} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />

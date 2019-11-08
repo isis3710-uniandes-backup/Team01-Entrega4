@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../styles/registro.css';
-import Swal from "sweetalert2";
+import {toast } from 'react-toastify';
 const md5 = require("md5");
 
 
@@ -159,24 +159,40 @@ export default class register extends Component {
                 .then(res => {
                         res.json()
                         if (res.status === 200) {
-                            Swal.fire({
-                                type: 'success',
-                                title: 'Registro exitoso',
-                                text: '¡Diviértete en nuestra plataforma!',
-                                timer: 2000
+                            toast('¡Registro exitoso, ahora ingresa!', {
+                                containerId : 'A',
+                                position: "bottom-right",
+                                autoClose: 2000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true
                             });
                             this.hide();
                         } else if (res.status === 500) {
-                            Swal.fire({
-                                type: 'error',
-                                title: 'Error en el servidor',
-                                text: 'Vuelve a intentarlo',
-                                timer: 1500
+                            toast.error('Lo sentimos, algo fallo en el servidor. Vuelve a intentarlo.', {
+                                containerId : 'A',
+                                position: "top-center",
+                                autoClose: 1500,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true
                             });
                         }
                     }
                     )
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => {
+                        toast.error('Error en el servidor. Vuelve a intentarlo', {
+                            containerId : 'A',
+                            position: "top-center",
+                            autoClose: 1500,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true
+                        });
+                    });
             }
             else {
                 console.error("XD");
