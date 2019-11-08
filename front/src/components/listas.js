@@ -90,7 +90,10 @@ export default class Listas extends Component {
             costoRange: newValue,
             universidades : this.state.universidadesTotal.filter(element => {
                 if(element.costo !== 'Basado en estrato social'){
-                    return ((element.costo <= (newValue[1]*1000000) ) && (element.costo >= (newValue[0]**1000000)))
+                    return ((element.costo <= (newValue[1]*1000000) ) && (element.costo >= (newValue[0]*1000000)))
+                }
+                else{
+                    return true;
                 }
             })
         });

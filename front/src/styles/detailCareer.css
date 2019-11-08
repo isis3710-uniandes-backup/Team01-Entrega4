@@ -10,13 +10,13 @@
 }
 .atributosCareer{
     font-weight: 450;
-    font-size: 1.8vw;
+    font-size: 1.2vw;
     text-align: center;
     font-family: 'Karla', sans-serif;
 }
 .cursiveAnotation{
     font-weight: 400;
-    font-size: 1.5vw;
+    font-size: 0.9vw;
     font-style: italic;
     font-family: 'Karla', sans-serif;
 
@@ -129,6 +129,9 @@ body{
     background: #acc1ee !important;
     color : black !important;
 
+}
+#acreditacionInt{
+    font-weight: 500;
 }
 
 

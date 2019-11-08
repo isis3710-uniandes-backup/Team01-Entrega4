@@ -178,7 +178,7 @@ export default class detailCareer extends Component {
                                 </li>
                                 {this.state.acreditacionInternacional ? <li className="list-group-item  d-flex justify-content-between align-items-center">
                                     <img src={acreditacionInternacionalImg} className="img-fluid img-responsive img-Little" alt="Duracion de la carrera" />
-                                    <p className="atributosCareer">{this.state.acreditacionInternacional}</p>
+                                    <p className="atributosCareer" id="acreditacionInt">{this.state.acreditacionInternacional}</p>
                                 </li> : false}
                             </ul>
                         </div>
@@ -204,7 +204,7 @@ export default class detailCareer extends Component {
                                     </ol>
                                     <div className="carousel-inner" role="listbox" aria-label="carousel de reseñas">
                                         {this.state.comentarios.length > 0 ?
-                                            <div className="carousel-item active" role="option">
+                                            <div className="carousel-item active" aria-selected="true" role="option">
                                                 <div className="card">
                                                     <div className="card-header">
                                                         <h3 className="tituloComentario">{this.state.comentarios[0].titulo}</h3>

@@ -8,7 +8,6 @@
     font-weight: bolder;
     font-family: 'Karla', 'sans-serif';
     padding-top: 0.2em;
-    
 }
 .little{
     height: 45px;
@@ -42,14 +41,19 @@
 @media (max-width: 768px) {
     .area{font-size: 1.5vw;font-style: italic}
     .badgeProg{width: 80px}
+    .nombreprograma{font-size: 0.6em;}
 }
 @media (max-width: 642px) {
     .area{font-size: 1.5vw;font-style: italic}
     .badgeProg{width: 70px; font-size: 0.4em}
+    .nombreprograma{font-size: 0.55em;}
+
 }
 @media (max-width: 540px) {
     .area{font-size: 1.5vw;font-style: italic}
     .badgeProg{width: 57px !important; font-size: 0.35em
     }
+    .nombreprograma{font-size: 0.50em;}
+
 }
 
