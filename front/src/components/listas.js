@@ -65,7 +65,7 @@ export default class Listas extends Component {
         let universidadesNuevas;
         if (token) {
             let urlServer = "https://futureguide.herokuapp.com";
-            fetch(urlServer + `/programas/${pNombrePrograma}/universidades`, {
+            fetch(urlServer + `/programas/${pNombrePrograma}/universidades/detail`, {
                 method: 'GET',
                 headers: new Headers({
                     'Authorization': token
@@ -84,6 +84,7 @@ export default class Listas extends Component {
         }
     }
     changeCosto = (event, newValue) => {
+
         this.setState({
             costoRange: newValue
         });

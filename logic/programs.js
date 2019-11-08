@@ -46,6 +46,29 @@ class Programs
             })
         })
     }
+    getUniversitiesDetail(req,res){
+        let nombrePrograma = req.params.nombre;
+        conn.then(client => {
+            client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma},(err, result) => {
+                if(err){
+                    res.send(err);
+                }
+                if(result.universidades.length > 0){
+                        client.db(databaseName).collection("carreraUniversidad").find({programa: result._id})
+                        .toArray((err,data)=> {
+                            if(err){
+                                res.send(err);
+                            }
+                            else{
+                                res.send(data);
+                            }
+
+                        })
+                }
+
+            })
+        })
+    }
     /**
      * Get the universities of an specific program
      * @param {*} req 
@@ -60,7 +83,6 @@ class Programs
               {
                   res.status(500);
               }
-              console.log(result);
             if(result.universidades.length > 0)
             {
                 conn.then(client => {
