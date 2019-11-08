@@ -55,7 +55,7 @@ export default class detailCareer extends Component {
                 input: 'text',
                 confirmButtonText: 'Siguiente &rarr;',
                 showCancelButton: true,
-                confirmButtonColor: '#00c0be',
+                confirmButtonColor: '#024972',
                 cancelButtonColor: '#464655',
                 cancelButtonText: 'Cancelar',
                 background: '#fff',
@@ -186,7 +186,7 @@ export default class detailCareer extends Component {
                                     </ol>
                                     <div className="carousel-inner" role="listbox" aria-label="carousel de reseñas">
                                         {this.state.comentarios.length > 0 ?
-                                            <div className="carousel-item active">
+                                            <div className="carousel-item active" role="option">
                                                 <div className="card">
                                                     <div className="card-header">
                                                         <h3 className="tituloComentario">{this.state.comentarios[0].titulo}</h3>
@@ -218,7 +218,7 @@ export default class detailCareer extends Component {
                         </div>
                         <div className="row boton">
                             <div className="col-12 text-center">
-                                <button type="button" className="btn btn-success" onClick={this.reseña}>Agregar</button>
+                                <button type="button" className="btn btnNewComment" onClick={this.reseña}>Nuevo comentario</button>
                             </div>
                         </div>
                     </div>

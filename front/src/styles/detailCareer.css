@@ -112,6 +112,26 @@
 body{
     background-color: transparent !important;
 }
+.swal2-active-progress-step{
+    background: #002a83 !important;
+    color : white;
+}
+.btnNewComment{
+    background-color: #062363;
+    color : #e2e2e4;
+    transition: 0.4s all;
+}
+.btnNewComment:hover{
+    background-color: #0b2d77;
+    color : #e2e2e4;
+}
+.swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{
+    background: #acc1ee !important;
+    color : black !important;
+
+}
+
+
 @media (max-width: 885px) {
     #programName{
         font-size: 2vw;

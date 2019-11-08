@@ -111,7 +111,7 @@ export default class Listas extends Component {
                             <div className="col-12" id="filterBox">
                                 <h1 className="text-center" id="filtrosTitle">Filtros</h1>
                                 <div className="row">
-                                    <div className="col-6">
+                                    <div className="col-md-6 col-xl-6 col-12 ">
                                         <Typography id="range-slider" gutterBottom>
                                             Costo del semestre
                                             </Typography>
@@ -128,7 +128,7 @@ export default class Listas extends Component {
                                             marks={[{ value: 0, label: '$0', }, { value: 25, label: '$25M', }]}
                                         />
                                     </div>
-                                    <div className="col-6">
+                                    <div className="col-md-6 col-xl-6 col-12 ">
                                         <input id="searchprogramInput" className="form-control form-control-sm" type="text" placeholder="Buscar universidad..." onChange={this.changeUniversities} aria-label="Input para buscar una universidad"></input>
                                     </div>
                                 </div>

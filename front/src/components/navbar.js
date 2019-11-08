@@ -213,11 +213,11 @@ export default class navbar extends Component {
                                         <div className="menu_movil__item text-center"><Link to="/perfil/" className="menu_movil__link" aria-label="Perfil"><i className="fas fa-user-tie"></i></Link></div>
                                     </div>}
                                 <div className="col-6">
-                                    <Link  className="menu_movil__item text-center" to={{
+                                    <Link aria-label="Salirse"  className="menu_movil__item text-center" to={{
                                         pathname: '/',
                                         state: true
                                     }}>
-                                        <div className="menu_movil__link" ><i className="fas fa-sign-in-alt" ></i></div>
+                                        <div className="menu_movil__link" ><i className="fas fa-sign-out-alt" ></i></div>
                                     </Link>
                                 </div>
                             </div>
