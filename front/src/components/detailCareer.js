@@ -28,8 +28,12 @@ export default class detailCareer extends Component {
             nombre = nombre.replace("+", "");
             nombre = nombre.replace("+", "");
             fetch(`https://futureguide.herokuapp.com/carrera/${nombre.toUpperCase()}/${name.toUpperCase()}`, {
-                method: 'GET'
-            })
+                method: 'GET',
+                headers: new Headers({
+                    'Authorization': token
+                })
+            }
+            )
                 .then(res => res.json())
                 .then(json => {
                     console.log(json)

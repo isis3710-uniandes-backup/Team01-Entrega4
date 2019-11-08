@@ -64,8 +64,8 @@ export default class Listas extends Component {
         let token = Cookies.get("JSESSIONID");
         let universidadesNuevas;
         if (token) {
-           // let urlServer = "https://futureguide.herokuapp.com";
-        let urlServer = "http://localhost:3001";
+            let urlServer = "https://futureguide.herokuapp.com";
+        //let urlServer = "http://localhost:3001";
 
             fetch(urlServer + `/programas/${pNombrePrograma}/universidades/detail`, {
                 method: 'GET',
