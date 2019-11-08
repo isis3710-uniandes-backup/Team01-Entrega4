@@ -2,7 +2,7 @@
 
 * [UML](https://www.lucidchart.com/documents/edit/4ed6e04c-3fc5-49f3-95b0-b5c3c09af656?shared=true&) - Diagrama UML del Proyecto 📋
 * [FutureGuideVideo](https://www.youtube.com/watch?v=VshXXhN3a8k) - Video Propuesta
-* [FutureGuideApp](https://) - Video Funcionalidades
+* [FutureGuideApp](https://youtu.be/z2ddwnfWDug) - Video Funcionalidades
 * [Página Web](http://futureguide.herokuapp.com/) - Link de la página web
 
 ### Descripción
