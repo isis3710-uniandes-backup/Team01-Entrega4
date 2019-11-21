@@ -104,7 +104,7 @@ class Programs
           client.db(databaseName).collection("programas").findOne({nombre : nombrePrograma}, (err,result) => {
               if(err)
               {
-                  res.status(500);
+                  res.status(500).send("El servidor está caído.");
               }
             if(result.universidades.length > 0)
             {
