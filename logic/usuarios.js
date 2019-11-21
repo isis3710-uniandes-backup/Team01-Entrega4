@@ -41,8 +41,7 @@ class Usuarios {
                     res.send(err) 
                 }
                 if(result === null){
-                    res.status(400);
-
+                    res.status(400).send("El usuario no existe");
                 }
                 else{
                     res.send(result);
