@@ -75,6 +75,7 @@ export default class register extends Component {
                             }
                         })
                         .catch(error => {
+                            console.log(error);
                             console.log("Not the user");
                         })
                 }
@@ -222,7 +223,7 @@ export default class register extends Component {
                                     onChange={this.changeValue} title="Username"  aria-label="Username">
                                 </Form.Control>
                                 <div className='invalid-feedback'>{this.state.usernameError}</div>
-                                {checkUsername ? <div /> : <strong className="`valid`ation">*Rellena este campo</strong>}
+                                {checkUsername ? <div /> : <strong className="`validation">*Rellena este campo</strong>}
                             </Form.Group>
 
                             <Form.Group >
